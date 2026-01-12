@@ -1,0 +1,1444 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 210 30% 98%;
+    --foreground: 220 40% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 40% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 40% 10%;
+
+    --primary: 199 89% 48%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 199 89% 55%;
+
+    --secondary: 187 92% 42%;
+    --secondary-foreground: 220 40% 10%;
+
+    --muted: 210 20% 95%;
+    --muted-foreground: 220 15% 35%;
+
+    --accent: 210 20% 95%;
+    --accent-foreground: 220 40% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 15% 90%;
+    --input: 220 15% 90%;
+    --ring: 199 89% 48%;
+
+    --radius: 1rem;
+
+    --gradient-primary: linear-gradient(135deg, hsl(199 89% 48%), hsl(187 92% 42%));
+    --gradient-accent: linear-gradient(135deg, hsl(262 83% 58%), hsl(316 70% 50%));
+    --gradient-subtle: linear-gradient(180deg, rgba(14, 165, 233, 0.03), transparent);
+
+    --shadow-premium: 0 4px 24px -4px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.08);
+    --shadow-glow: 0 0 25px rgba(14, 165, 233, 0.2);
+  }
+
+  .dark {
+    --background: 222 47% 12%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 15%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 15%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 199 89% 48%;
+    --primary-foreground: 222 47% 6%;
+    --primary-glow: 199 89% 48%;
+
+    --secondary: 187 92% 45%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 25%;
+    --muted-foreground: 215 20.2% 75%;
+
+    --accent: 217.2 32.6% 25%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 20%;
+    --input: 217.2 32.6% 20%;
+    --ring: 199 89% 48%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(199 89% 48%), hsl(187 92% 45%));
+    --gradient-accent: linear-gradient(135deg, hsl(262 83% 58%), hsl(316 70% 50%));
+    --gradient-subtle: linear-gradient(180deg, rgba(30, 41, 59, 0.6), rgba(15, 23, 42, 0.3));
+
+    --shadow-premium: 0 20px 50px -12px rgba(0, 0, 0, 0.4);
+    --shadow-glow: 0 0 30px rgba(14, 165, 233, 0.2);
+
+    --sidebar-background: 222 47% 10%;
+    --sidebar-foreground: 210 40% 95%;
+    --sidebar-primary: 199 89% 48%;
+    --sidebar-primary-foreground: 222 47% 6%;
+    --sidebar-accent: 217 33% 18%;
+    --sidebar-accent-foreground: 210 40% 95%;
+    --sidebar-border: 217 33% 18%;
+    --sidebar-ring: 199 89% 48%;
+  }
+
+  /* Atmosphere Themes */
+  .atmosphere-rain {
+    --primary: 200 100% 45%;
+    --primary-glow: 200 100% 60%;
+    --background: 210 90% 4%;
+    --card: 210 80% 6%;
+    filter: hue-rotate(-5deg) saturate(1.2) contrast(1.1) brightness(0.9);
+  }
+
+  .atmosphere-snow {
+    --primary: 190 100% 60%;
+    --primary-glow: 190 100% 80%;
+    filter: brightness(1.05) saturate(0.95);
+  }
+
+  .atmosphere-aurora {
+    --primary: 150 100% 50%;
+    --primary-glow: 150 100% 70%;
+    --background: 260 60% 3%;
+    --card: 260 50% 5%;
+    filter: hue-rotate(15deg) contrast(1.1);
+  }
+
+  .atmosphere-wind {
+    --muted-foreground: 215 10% 50%;
+    filter: saturate(0.8) brightness(0.9);
+  }
+
+  .atmosphere-ocean {
+    --primary: 195 100% 45%;
+    --secondary: 210 100% 30%;
+    --background: 220 80% 4%;
+    --card: 220 70% 6%;
+    filter: hue-rotate(-5deg) saturate(1.2) contrast(1.1) brightness(0.95);
+  }
+
+  .atmosphere-cyberstorm {
+    --primary: 290 100% 50%;
+    --primary-glow: 290 100% 70%;
+    --background: 280 80% 2%;
+    --card: 280 70% 4%;
+    --border: 320 100% 30%;
+    animation: global-glitch 5s infinite;
+    filter: hue-rotate(-20deg) contrast(1.3) brightness(0.8);
+  }
+
+  .atmosphere-solarflare {
+    --primary: 30 100% 50%;
+    --primary-glow: 30 100% 70%;
+    --background: 10 70% 4%;
+    --card: 10 60% 6%;
+    --border: 30 100% 20%;
+    filter: sepia(0.3) contrast(1.2) brightness(1.2);
+  }
+
+  .atmosphere-sandstorm {
+    --primary: 40 80% 40%;
+    --background: 35 60% 10%;
+    --foreground: 40 50% 90%;
+    --card: 35 50% 12%;
+    filter: sepia(0.8) saturate(1.5) contrast(0.9);
+  }
+
+  .atmosphere-stardust {
+    --primary: 270 100% 60%;
+    --secondary: 330 100% 60%;
+    --background: 250 50% 5%;
+    --card: 250 50% 8%;
+    filter: brightness(1.2) saturate(1.1) hue-rotate(-5deg);
+  }
+
+  .atmosphere-ocean {
+    --primary: 195 100% 45%;
+    --secondary: 210 100% 30%;
+    --background: 220 80% 4%;
+    --card: 220 70% 6%;
+    filter: hue-rotate(-10deg) saturate(1.3) contrast(1.1) brightness(0.95);
+  }
+
+  /* Interaction Logic */
+  .shimmer-data-flow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.05), transparent);
+    background-size: 200% 100%;
+    animation: data-stream 8s linear infinite;
+    pointer-events: none;
+  }
+
+  @keyframes data-stream {
+    0% {
+      background-position: -200% 0;
+    }
+
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  /* Global Atmosphere Animations */
+  @keyframes global-glitch {
+
+    0%,
+    95%,
+    100% {
+      filter: none;
+    }
+
+    96% {
+      filter: contrast(1.5) hue-rotate(90deg);
+      transform: translate(2px, 1px);
+    }
+
+    97% {
+      filter: invert(0.1);
+      transform: translate(-2px, -1px);
+    }
+
+    98% {
+      filter: none;
+      transform: translate(0);
+    }
+  }
+
+  @keyframes wind-sway {
+
+    0%,
+    100% {
+      transform: rotate(0deg) translateY(0);
+    }
+
+    50% {
+      transform: rotate(1.5deg) translateY(-5px) translateX(5px);
+    }
+  }
+
+  @keyframes heat-haze {
+
+    0%,
+    100% {
+      filter: blur(0px);
+      transform: scale(1);
+    }
+
+    50% {
+      filter: blur(0.5px);
+      transform: scale(1.005) skewX(0.5deg);
+    }
+  }
+
+  @keyframes drip-move {
+    0% {
+      transform: translateY(-20px) scaleY(1);
+      opacity: 0;
+    }
+
+    10% {
+      opacity: 0.8;
+    }
+
+    90% {
+      opacity: 0.5;
+    }
+
+    100% {
+      transform: translateY(100px) scaleY(1.5);
+      opacity: 0;
+    }
+  }
+
+  @keyframes wave-impact-splash {
+    0% {
+      transform: translateY(100vh) scale(0.5);
+      opacity: 0;
+      filter: blur(10px);
+    }
+
+    30% {
+      opacity: 0.9;
+      filter: blur(0px);
+    }
+
+    100% {
+      transform: translateY(-30vh) scale(3);
+      opacity: 0;
+      filter: blur(20px);
+    }
+  }
+
+  @keyframes post-impact-shake {
+
+    0%,
+    38%,
+    46%,
+    100% {
+      transform: translate(0, 0) rotate(0deg);
+    }
+
+    40% {
+      transform: translate(-8px, -3px) rotate(-1.5deg);
+    }
+
+    42% {
+      transform: translate(8px, 3px) rotate(1.5deg);
+    }
+
+  }
+}
+
+/* Physic Interaction Logic */
+
+/* Rain: Double drips and wet surfaces */
+.atmosphere-rain .card-3d,
+.atmosphere-rain .glass-card {
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.02) !important;
+  border-color: rgba(56, 189, 248, 0.2) !important;
+}
+
+.atmosphere-rain .card-3d::after,
+.atmosphere-rain .glass-card::after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 15%;
+  width: 2px;
+  height: 20px;
+  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.7));
+  border-radius: 50%;
+  animation: drip-move 3.5s linear infinite;
+  z-index: 50;
+}
+
+.atmosphere-rain .card-3d::before,
+.atmosphere-rain .glass-card::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 85%;
+  width: 1.5px;
+  height: 15px;
+  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.5));
+  border-radius: 50%;
+  animation: drip-move 2.8s linear infinite;
+  animation-delay: -1.5s;
+  z-index: 50;
+}
+
+/* Snow: Clean mode without accumulation */
+.atmosphere-snow .card-3d,
+.atmosphere-snow .glass-card {
+  transition: all 0.3s ease;
+}
+
+/* Ocean: Impact response */
+.atmosphere-ocean .card-3d,
+.atmosphere-ocean .glass-card {
+  animation: post-impact-shake 12s ease-in-out infinite;
+  border-bottom: 2px solid rgba(56, 189, 248, 0.3) !important;
+}
+
+/* Applying sway to cards when windy */
+.atmosphere-wind .card-3d,
+.atmosphere-wind .glass-banking,
+.atmosphere-wind [class*="badge"],
+.atmosphere-wind button:not([class*="fixed"]) {
+  animation: wind-sway 4s ease-in-out infinite;
+}
+
+.atmosphere-solarflare main {
+  animation: heat-haze 3s ease-in-out infinite;
+}
+
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+  /* Offset for floating header */
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  :root body {
+    background: linear-gradient(135deg, #f8fafc 0%, #e8f4fc 50%, #f0f9ff 100%);
+    background-attachment: fixed;
+  }
+
+  .dark body {
+    background-color: hsl(var(--background));
+    background-image: none;
+  }
+}
+
+/* Fog animation - gentle drifting */
+@keyframes fog-drift-1 {
+  0% {
+    transform: translate(-10%, -10%) rotate(0deg);
+  }
+
+  50% {
+    transform: translate(10%, 10%) rotate(5deg);
+  }
+
+  100% {
+    transform: translate(-10%, -10%) rotate(0deg);
+  }
+}
+
+@keyframes fog-drift-2 {
+  0% {
+    transform: translate(5%, 5%) rotate(0deg);
+  }
+
+  50% {
+    transform: translate(-5%, -5%) rotate(-3deg);
+  }
+
+  100% {
+    transform: translate(5%, 5%) rotate(0deg);
+  }
+}
+
+
+
+@keyframes grid-move {
+  0% {
+    transform: perspective(500px) rotateX(60deg) translateY(0) translateZ(-200px);
+  }
+
+  100% {
+    transform: perspective(500px) rotateX(60deg) translateY(50px) translateZ(-200px);
+  }
+}
+
+/* Premium Glass Effect */
+@layer utilities {
+  .glass {
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(14, 165, 233, 0.15);
+    box-shadow: 0 4px 16px rgba(14, 165, 233, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+
+  .dark .glass {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: none;
+  }
+
+  .glass-card {
+    background-color: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(14, 165, 233, 0.12);
+    border-radius: 1rem;
+    box-shadow: 0 4px 24px rgba(14, 165, 233, 0.1), 0 2px 8px rgba(0, 0, 0, 0.06);
+  }
+
+  .dark .glass-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.05),
+      0 20px 60px -10px rgba(0, 0, 0, 0.3);
+  }
+
+  .neon-glow {
+    box-shadow:
+      0 0 20px hsl(var(--primary) / 0.3),
+      0 0 60px hsl(var(--primary) / 0.1);
+  }
+
+  .card-3d {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .card-3d:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow:
+      0 20px 40px -15px hsl(var(--primary) / 0.25),
+      0 0 0 1px hsl(var(--primary) / 0.1);
+  }
+
+  .text-gradient {
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-image: linear-gradient(to right, hsl(var(--primary)), hsl(var(--secondary)), hsl(var(--accent)));
+  }
+}
+
+/* Floating Orbs Animation */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+  }
+}
+
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s linear infinite;
+}
+
+@keyframes heatmap-pulse {
+  0% {
+    fill-opacity: 0.1;
+  }
+
+  50% {
+    fill-opacity: 0.3;
+  }
+
+  100% {
+    fill-opacity: 0.1;
+  }
+}
+
+.heatmap-pulse {
+  animation: heatmap-pulse 3s ease-in-out infinite;
+}
+
+/* Stat Counter Animation */
+@keyframes count-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-count {
+  animation: count-up 0.5s ease-out forwards;
+}
+
+/* ============================================
+   ENHANCED INTERACTIVE EFFECTS
+   ============================================ */
+
+/* Button Hover Glow Effect */
+button,
+.btn,
+[role="button"] {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+button:hover,
+.btn:hover,
+[role="button"]:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px hsl(var(--primary) / 0.2);
+}
+
+button:active,
+.btn:active,
+[role="button"]:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Ripple effect on click */
+button::after,
+.btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s;
+}
+
+button:active::after,
+.btn:active::after {
+  width: 200px;
+  height: 200px;
+}
+
+/* Card Hover Effects */
+.card,
+[data-slot="card"] {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover,
+[data-slot="card"]:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 10px 30px -10px hsl(var(--primary) / 0.15),
+    0 0 0 1px hsl(var(--primary) / 0.05);
+}
+
+/* Input Focus Glow */
+input:focus,
+textarea:focus,
+select:focus {
+  box-shadow:
+    0 0 0 2px hsl(var(--primary) / 0.2),
+    0 4px 12px hsl(var(--primary) / 0.1);
+  border-color: hsl(var(--primary)) !important;
+}
+
+/* Badge Pulse */
+.badge-pulse {
+  animation: badge-pulse 2s ease-in-out infinite;
+}
+
+@keyframes badge-pulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 hsl(var(--primary) / 0.4);
+  }
+
+  50% {
+    box-shadow: 0 0 0 8px hsl(var(--primary) / 0);
+  }
+}
+
+/* Link Hover Underline */
+a {
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: hsl(var(--primary));
+}
+
+/* Tab Indicator Animation */
+[role="tab"] {
+  transition: all 0.2s ease;
+}
+
+[role="tab"]:hover {
+  background: hsl(var(--primary) / 0.1);
+}
+
+[role="tab"][data-state="active"] {
+  box-shadow: inset 0 -2px 0 hsl(var(--primary));
+}
+
+/* Smooth Icon Hover */
+svg {
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+button:hover svg,
+a:hover svg {
+  transform: scale(1.1);
+}
+
+/* ============================================
+   SUBTLE RAIN EFFECT (Global Background)
+   ============================================ */
+@keyframes rain-fall {
+  0% {
+    transform: translateY(-100vh);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.3;
+  }
+
+  90% {
+    opacity: 0.3;
+  }
+
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+body::after {
+  content: none;
+}
+
+@keyframes rain-drift {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 0 100vh;
+  }
+}
+
+/* Premium Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary) / 0.5);
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.7);
+}
+
+/* Dark mode enhancements */
+.dark body {
+  background-color: #020617;
+  /* Solid very dark blue/black */
+  background-image: none !important;
+}
+
+/* Ensure content is above effects */
+main,
+.main-content,
+[role="main"] {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================
+   🎨 PREMIUM UX/UI EFFECTS COLLECTION
+   ============================================ */
+
+/* 1. ANIMATED GRADIENT TEXT */
+.gradient-text {
+  background: linear-gradient(90deg,
+      hsl(var(--primary)) 0%,
+      hsl(var(--secondary)) 25%,
+      hsl(var(--accent)) 50%,
+      hsl(var(--secondary)) 75%,
+      hsl(var(--primary)) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 3s ease infinite;
+}
+
+@keyframes gradient-shift {
+
+  0%,
+  100% {
+    background-position: 0% center;
+  }
+
+  50% {
+    background-position: 200% center;
+  }
+}
+
+/* 2. 3D TILT CARD EFFECT */
+.tilt-card {
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform;
+}
+
+.tilt-card:hover {
+  transform: perspective(1000px) rotateX(5deg) rotateY(-5deg) translateZ(20px);
+  box-shadow:
+    20px 20px 60px rgba(0, 0, 0, 0.3),
+    -5px -5px 20px rgba(255, 255, 255, 0.05),
+    0 0 40px hsl(var(--primary) / 0.15);
+}
+
+.tilt-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      transparent 50%);
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.tilt-card:hover::before {
+  opacity: 1;
+}
+
+/* 3. STAGGER ANIMATION FOR LISTS */
+.stagger-item {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: stagger-in 0.5s ease forwards;
+}
+
+.stagger-item:nth-child(1) {
+  animation-delay: 0.05s;
+}
+
+.stagger-item:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.stagger-item:nth-child(3) {
+  animation-delay: 0.15s;
+}
+
+.stagger-item:nth-child(4) {
+  animation-delay: 0.2s;
+}
+
+.stagger-item:nth-child(5) {
+  animation-delay: 0.25s;
+}
+
+.stagger-item:nth-child(6) {
+  animation-delay: 0.3s;
+}
+
+.stagger-item:nth-child(7) {
+  animation-delay: 0.35s;
+}
+
+.stagger-item:nth-child(8) {
+  animation-delay: 0.4s;
+}
+
+.stagger-item:nth-child(9) {
+  animation-delay: 0.45s;
+}
+
+.stagger-item:nth-child(10) {
+  animation-delay: 0.5s;
+}
+
+@keyframes stagger-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 4. SHIMMER LOADING EFFECT */
+.shimmer {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(90deg,
+      hsl(var(--muted)) 0%,
+      hsl(var(--muted) / 0.5) 50%,
+      hsl(var(--muted)) 100%);
+  background-size: 200% 100%;
+  animation: shimmer-effect 1.5s ease-in-out infinite;
+}
+
+@keyframes shimmer-effect {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* 5. MAGNETIC BUTTON EFFECT */
+.magnetic-btn {
+  position: relative;
+  transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.magnetic-btn:hover {
+  transform: scale(1.05);
+}
+
+.magnetic-btn::before {
+  content: '';
+  position: absolute;
+  inset: -5px;
+  background: radial-gradient(circle, hsl(var(--primary) / 0.3) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: inherit;
+}
+
+.magnetic-btn:hover::before {
+  opacity: 1;
+}
+
+/* 6. LIQUID BUTTON EFFECT */
+.liquid-btn {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.liquid-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: hsl(var(--primary) / 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+  z-index: -1;
+}
+
+.liquid-btn:hover::before {
+  width: 300%;
+  height: 300%;
+}
+
+/* 7. GLOWING BORDER ANIMATION */
+.glow-border {
+  position: relative;
+}
+
+.glow-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(45deg,
+      hsl(var(--primary)),
+      hsl(var(--secondary)),
+      hsl(var(--accent)),
+      hsl(var(--primary)));
+  background-size: 400% 400%;
+  border-radius: inherit;
+  z-index: -1;
+  animation: glow-rotate 3s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.glow-border:hover::before {
+  opacity: 1;
+}
+
+@keyframes glow-rotate {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* 8. PULSE MARKER EFFECT */
+.pulse-marker {
+  position: relative;
+}
+
+.pulse-marker::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border: 2px solid hsl(var(--primary));
+  border-radius: 50%;
+  animation: pulse-ring 1.5s ease-out infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* 9. PAGE TRANSITION */
+.page-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.page-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 10. ANIMATED COUNT-UP NUMBERS */
+.count-up {
+  display: inline-block;
+  animation: count-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes count-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) translateY(20px);
+  }
+
+  60% {
+    transform: scale(1.1) translateY(-5px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* 11. STICKY HEADER WITH BLUR */
+.sticky-header {
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(12px);
+  background: hsl(var(--background) / 0.8);
+  border-bottom: 1px solid hsl(var(--border) / 0.5);
+  transition: all 0.3s ease;
+  z-index: 50;
+}
+
+.sticky-header.scrolled {
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* 12. EXPANDABLE SEARCH */
+.expandable-search {
+  width: 40px;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.expandable-search:focus-within {
+  width: 250px;
+}
+
+/* 13. PROGRESS BAR WITH GLOW */
+.progress-glow {
+  position: relative;
+  overflow: hidden;
+  background: hsl(var(--muted));
+  border-radius: 9999px;
+}
+
+.progress-glow .bar {
+  height: 100%;
+  background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--secondary)));
+  border-radius: inherit;
+  transition: width 0.5s ease;
+  position: relative;
+}
+
+.progress-glow .bar::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 100%;
+  background: white;
+  filter: blur(8px);
+  opacity: 0.6;
+  animation: progress-shine 1s ease-in-out infinite;
+}
+
+@keyframes progress-shine {
+
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* 14. CONFETTI SUCCESS EFFECT */
+.confetti-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+/* 15. WATER RIPPLE ON CLICK */
+.ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple-effect {
+  position: absolute;
+  border-radius: 50%;
+  background: hsl(var(--primary) / 0.3);
+  transform: scale(0);
+  animation: ripple-spread 0.6s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes ripple-spread {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* 16. GLITCH EFFECT FOR ALERTS */
+.glitch {
+  position: relative;
+  animation: glitch-skew 2s infinite linear alternate-reverse;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch::before {
+  color: hsl(var(--destructive));
+  animation: glitch-effect 0.3s infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+  transform: translate(-2px, -2px);
+}
+
+.glitch::after {
+  color: hsl(var(--primary));
+  animation: glitch-effect 0.3s infinite reverse;
+  clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+  transform: translate(2px, 2px);
+}
+
+@keyframes glitch-effect {
+
+  0%,
+  100% {
+    transform: translate(0);
+  }
+
+  20% {
+    transform: translate(-2px, 2px);
+  }
+
+  40% {
+    transform: translate(-2px, -2px);
+  }
+
+  60% {
+    transform: translate(2px, 2px);
+  }
+
+  80% {
+    transform: translate(2px, -2px);
+  }
+}
+
+@keyframes glitch-skew {
+
+  0%,
+  100% {
+    transform: skew(0deg);
+  }
+
+  20% {
+    transform: skew(-1deg);
+  }
+
+  40% {
+    transform: skew(1deg);
+  }
+
+  60% {
+    transform: skew(-0.5deg);
+  }
+
+  80% {
+    transform: skew(0.5deg);
+  }
+}
+
+/* 17. MORPHING BACKGROUND SHAPES */
+.morph-bg {
+  position: fixed;
+  width: 400px;
+  height: 400px;
+  background: linear-gradient(135deg, hsl(var(--primary) / 0.1), hsl(var(--secondary) / 0.1));
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  animation: morph 8s ease-in-out infinite;
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+@keyframes morph {
+
+  0%,
+  100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+
+  50% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  }
+}
+
+/* 18. FLOATING ACTION BUTTON */
+.fab {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+  box-shadow:
+    0 4px 20px hsl(var(--primary) / 0.4),
+    0 0 40px hsl(var(--primary) / 0.2);
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+
+.fab:hover {
+  transform: scale(1.1) translateY(-4px);
+  box-shadow:
+    0 8px 30px hsl(var(--primary) / 0.5),
+    0 0 60px hsl(var(--primary) / 0.3);
+}
+
+/* 19. TOOLTIP WITH ANIMATION */
+.tooltip-animated {
+  position: relative;
+}
+
+.tooltip-animated::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  padding: 8px 12px;
+  background: hsl(var(--popover));
+  color: hsl(var(--popover-foreground));
+  border-radius: 8px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.tooltip-animated:hover::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(-8px);
+}
+
+/* 20. KEYBOARD NAVIGATION INDICATORS */
+:focus-visible {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* 21. SMOOTH PARALLAX HELPER */
+.parallax-slow {
+  transform: translateY(calc(var(--scroll) * 0.3));
+}
+
+.parallax-medium {
+  transform: translateY(calc(var(--scroll) * 0.5));
+}
+
+.parallax-fast {
+  transform: translateY(calc(var(--scroll) * 0.7));
+}
+
+/* 22. ANIMATED HAMBURGER MENU */
+.hamburger {
+  width: 24px;
+  height: 18px;
+  position: relative;
+  cursor: pointer;
+}
+
+.hamburger span {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  transition: all 0.3s ease;
+}
+
+.hamburger span:nth-child(1) {
+  top: 0;
+}
+
+.hamburger span:nth-child(2) {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.hamburger span:nth-child(3) {
+  bottom: 0;
+}
+
+.hamburger.open span:nth-child(1) {
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+  bottom: 50%;
+  transform: translateY(50%) rotate(-45deg);
+}
+
+/* 23. CHART ANIMATION */
+.chart-animate {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: chart-draw 2s ease forwards;
+}
+
+@keyframes chart-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* 24. REAL-TIME DATA PULSE */
+.data-live::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 8px;
+  height: 8px;
+  background: #22c55e;
+  border-radius: 50%;
+  animation: live-pulse 2s ease-in-out infinite;
+}
+
+@keyframes live-pulse {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+  }
+
+  50% {
+    box-shadow: 0 0 0 8px rgba(34, 197, 94, 0);
+  }
+}
+
+/* 25. SMOOTH THEME TRANSITION */
+*,
+*::before,
+*::after {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
+}
