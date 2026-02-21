@@ -116,18 +116,56 @@ cd backend && python test_integration.py
 npm run test:e2e
 ```
 
-## Screenshots
-### Main Dashboard
-![Smart City Dashboard](public/city_hero.png)
+## Pages & Screenshots
+### 1) Dashboard (`/`)
+Central city operations view: map overview, city status, AI highlights, and quick actions.
 
-### Digital City Background
-![Almaty Tech Background](public/almaty_tech_bg.png)
+![Dashboard](docs_screenshots/01-dashboard.png)
 
-### AI Assistant Persona
-![AI Avatar](public/ai_avatar.png)
+### 2) Eco Routing (`/eco-routing`)
+Green route planning with route alternatives and sustainability-oriented routing logic.
 
-### Citizen Profile Persona
-![Citizen Avatar](public/citizen_avatar.png)
+![Eco Routing](docs_screenshots/02-eco-routing.png)
+
+### 3) Analytics (`/analytics`)
+Urban analytics and monitoring KPIs for city services and performance trends.
+
+![Analytics](docs_screenshots/03-analytics.png)
+
+### 4) Public Transport (`/transport`)
+Transport operations page: route and fleet visibility for buses/public mobility.
+
+![Transport](docs_screenshots/04-transport.png)
+
+### 5) Emergency (`/emergency`)
+Emergency coordination panel with incidents and operational response context.
+
+![Emergency](docs_screenshots/05-emergency.png)
+
+### 6) Community (`/community`)
+Citizen interaction area for public control, participation, and social feedback.
+
+![Community](docs_screenshots/06-community.png)
+
+### 7) Profile (`/profile`)
+Citizen profile and personal activity/identity section.
+
+![Profile](docs_screenshots/07-profile.png)
+
+### 8) Admin (`/admin`)
+Administrative dashboard with user management and system-level controls.
+
+![Admin](docs_screenshots/08-admin.png)
+
+### 9) Infrastructure (`/infrastructure`)
+Infrastructure and safety monitoring views for city assets and health indicators.
+
+![Infrastructure](docs_screenshots/09-infrastructure.png)
+
+### 10) Ecosystem (`/ecosystem`)
+Broader city ecosystem module integrating connected platform domains.
+
+![Ecosystem](docs_screenshots/10-ecosystem.png)
 
 ## Project Structure
 ```text
