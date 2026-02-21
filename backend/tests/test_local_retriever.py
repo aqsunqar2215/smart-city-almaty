@@ -25,6 +25,13 @@ class LocalRetrieverTests(unittest.TestCase):
         top_category = results[0].category
         self.assertIn(top_category, {"TRANSPORT", "CITY_INFO", "GENERAL", "CHAT"})
 
+    def test_weather_query_avoids_chat_as_top_result(self) -> None:
+        retriever = get_local_retriever()
+        results = retriever.retrieve("i need to know about weather", context_topic="", top_k=3)
+        self.assertGreaterEqual(len(results), 1)
+        self.assertNotEqual(results[0].category, "CHAT")
+        self.assertIn(results[0].category, {"ECOLOGY", "WEATHER", "CITY_INFO", "GENERAL"})
+
 
 if __name__ == "__main__":
     unittest.main()

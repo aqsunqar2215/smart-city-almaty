@@ -1,4 +1,4 @@
-import { EcoRoute, EcoRoutingProfile, EcoRoutingResponse } from '@/types/ecoRouting';
+import { AvoidArea, EcoRoute, EcoRoutingProfile, EcoRoutingResponse } from '@/types/ecoRouting';
 
 interface RawRouteCompare {
   delta_time_s: number;
@@ -82,7 +82,8 @@ const mapRoute = (route: RawRoute): EcoRoute => ({
 export const fetchEcoRoutes = async (
   start: { lat: number; lng: number },
   end: { lat: number; lng: number },
-  profile: EcoRoutingProfile
+  profile: EcoRoutingProfile,
+  avoidAreas: AvoidArea[] = []
 ): Promise<EcoRoutingResponse> => {
   const controller = new AbortController();
   const timeoutId = window.setTimeout(() => controller.abort(), 9000);
@@ -97,6 +98,13 @@ export const fetchEcoRoutes = async (
         end,
         profile,
         departure_time: new Date().toISOString(),
+        avoid_areas: avoidAreas
+          .filter((area) => area.enabled)
+          .map((area) => ({
+            lat: area.lat,
+            lng: area.lng,
+            radius_m: area.radiusM,
+          })),
       }),
     });
 

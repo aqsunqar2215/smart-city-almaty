@@ -332,6 +332,13 @@ export const generateChatResponse = async (
     const user = userStr ? JSON.parse(userStr) : null;
     const userId = user?.id ? parseInt(user.id) : null;
 
+    const compactHistory = history
+      .slice(-14)
+      .map((m) => ({
+        role: m.role,
+        content: (m.content || '').replace(/\s+/g, ' ').trim().slice(0, 320)
+      }));
+
     const response = await fetch('http://localhost:8000/api/ai/analyze', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -341,7 +348,7 @@ export const generateChatResponse = async (
         enable_internet_fallback: false,
         context: {
           ...cityData,
-          history: history.slice(-5) // Pass last 5 messages for context
+          history: compactHistory
         }
       })
     });

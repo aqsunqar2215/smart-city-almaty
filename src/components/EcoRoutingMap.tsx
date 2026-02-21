@@ -1,8 +1,9 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { Crosshair, Layers, MapPinned, MoonStar, Sun } from 'lucide-react';
-import { EcoRoute } from '@/types/ecoRouting';
+import { Compass, Crosshair, Expand, Layers, MapPinned, Minimize, MoonStar, Sun } from 'lucide-react';
+import { AvoidArea, EcoRoute } from '@/types/ecoRouting';
+import { ECO_ROUTING_TEXT } from '@/lib/ecoRoutingTexts';
 
 interface RoutePoint {
   lat: number;
@@ -14,11 +15,19 @@ interface EcoRoutingMapProps {
   routes: EcoRoute[];
   startPoint: RoutePoint | null;
   endPoint: RoutePoint | null;
+  avoidAreas: AvoidArea[];
   showTraffic: boolean;
   showAirQuality: boolean;
+  isAddingAvoidArea?: boolean;
+  selectedAvoidAreaId?: string | null;
   onMapClick?: (point: RoutePoint) => void;
-  selectedRouteId?: string;
   onRouteSelect?: (routeId: string) => void;
+  onAddAvoidArea?: (point: RoutePoint) => void;
+  onAvoidAreaMove?: (id: string, point: RoutePoint) => void;
+  onAvoidAreaSelect?: (id: string) => void;
+  selectedRouteId?: string;
+  onStartPointChange?: (point: RoutePoint) => void;
+  onEndPointChange?: (point: RoutePoint) => void;
 }
 
 const getAqiColor = (aqi: number): string => {
@@ -36,25 +45,60 @@ const EcoRoutingMap: React.FC<EcoRoutingMapProps> = ({
   routes,
   startPoint,
   endPoint,
+  avoidAreas,
   showTraffic,
   showAirQuality,
+  isAddingAvoidArea = false,
+  selectedAvoidAreaId,
   onMapClick,
-  selectedRouteId,
   onRouteSelect,
+  onAddAvoidArea,
+  onAvoidAreaMove,
+  onAvoidAreaSelect,
+  selectedRouteId,
+  onStartPointChange,
+  onEndPointChange,
 }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
   const mapRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<L.Map | null>(null);
   const tileLayerRef = useRef<L.TileLayer | null>(null);
+  const scaleControlRef = useRef<L.Control.Scale | null>(null);
   const onMapClickRef = useRef<EcoRoutingMapProps['onMapClick']>(onMapClick);
+  const onRouteSelectRef = useRef<EcoRoutingMapProps['onRouteSelect']>(onRouteSelect);
+  const onAddAvoidAreaRef = useRef<EcoRoutingMapProps['onAddAvoidArea']>(onAddAvoidArea);
+  const onAvoidAreaMoveRef = useRef<EcoRoutingMapProps['onAvoidAreaMove']>(onAvoidAreaMove);
+  const onAvoidAreaSelectRef = useRef<EcoRoutingMapProps['onAvoidAreaSelect']>(onAvoidAreaSelect);
+  const onStartPointChangeRef = useRef<EcoRoutingMapProps['onStartPointChange']>(onStartPointChange);
+  const onEndPointChangeRef = useRef<EcoRoutingMapProps['onEndPointChange']>(onEndPointChange);
+  const isAddingAvoidAreaRef = useRef<boolean>(isAddingAvoidArea);
   const [mapTheme, setMapTheme] = useState<'dark' | 'light'>('dark');
+  const [isFullscreen, setIsFullscreen] = useState(false);
   const layersRef = useRef<{
     routes: L.LayerGroup;
     markers: L.LayerGroup;
+    avoid: L.LayerGroup;
   } | null>(null);
 
   useEffect(() => {
     onMapClickRef.current = onMapClick;
-  }, [onMapClick]);
+    onRouteSelectRef.current = onRouteSelect;
+    onAddAvoidAreaRef.current = onAddAvoidArea;
+    onAvoidAreaMoveRef.current = onAvoidAreaMove;
+    onAvoidAreaSelectRef.current = onAvoidAreaSelect;
+    onStartPointChangeRef.current = onStartPointChange;
+    onEndPointChangeRef.current = onEndPointChange;
+    isAddingAvoidAreaRef.current = isAddingAvoidArea;
+  }, [
+    onMapClick,
+    onRouteSelect,
+    onAddAvoidArea,
+    onAvoidAreaMove,
+    onAvoidAreaSelect,
+    onStartPointChange,
+    onEndPointChange,
+    isAddingAvoidArea,
+  ]);
 
   const getSelectedOrRecommendedRoute = useCallback(() => {
     return routes.find((route) => route.id === selectedRouteId) ?? routes.find((route) => route.type === 'recommended');
@@ -82,6 +126,15 @@ const EcoRoutingMap: React.FC<EcoRoutingMapProps> = ({
     mapInstanceRef.current.fitBounds(bounds, { padding: [55, 55], maxZoom: 15 });
   }, [startPoint, endPoint]);
 
+  const toggleFullscreen = useCallback(async () => {
+    if (!containerRef.current) return;
+    if (!document.fullscreenElement) {
+      await containerRef.current.requestFullscreen();
+      return;
+    }
+    await document.exitFullscreen();
+  }, []);
+
   useEffect(() => {
     if (!mapRef.current || mapInstanceRef.current) return;
 
@@ -97,14 +150,22 @@ const EcoRoutingMap: React.FC<EcoRoutingMapProps> = ({
       maxZoom: 20,
     }).addTo(map);
 
+    scaleControlRef.current = L.control.scale({ imperial: false, position: 'bottomleft' }).addTo(map);
+
     layersRef.current = {
       routes: L.layerGroup().addTo(map),
       markers: L.layerGroup().addTo(map),
+      avoid: L.layerGroup().addTo(map),
     };
 
     map.on('click', (e) => {
+      const point = { lat: e.latlng.lat, lng: e.latlng.lng };
+      if (isAddingAvoidAreaRef.current && onAddAvoidAreaRef.current) {
+        onAddAvoidAreaRef.current(point);
+        return;
+      }
       if (onMapClickRef.current) {
-        onMapClickRef.current({ lat: e.latlng.lat, lng: e.latlng.lng });
+        onMapClickRef.current(point);
       }
     });
 
@@ -122,6 +183,20 @@ const EcoRoutingMap: React.FC<EcoRoutingMapProps> = ({
   }, [mapTheme]);
 
   useEffect(() => {
+    const onFullscreenChange = () => {
+      const active = Boolean(document.fullscreenElement);
+      setIsFullscreen(active);
+      window.setTimeout(() => {
+        mapInstanceRef.current?.invalidateSize();
+      }, 80);
+    };
+    document.addEventListener('fullscreenchange', onFullscreenChange);
+    return () => {
+      document.removeEventListener('fullscreenchange', onFullscreenChange);
+    };
+  }, []);
+
+  useEffect(() => {
     if (!layersRef.current) return;
     layersRef.current.routes.clearLayers();
 
@@ -135,9 +210,7 @@ const EcoRoutingMap: React.FC<EcoRoutingMapProps> = ({
     orderedRoutes.forEach((route) => {
       const isSelected = route.id === selectedRouteId || (!selectedRouteId && route.type === 'recommended');
       const isRecommended = route.type === 'recommended';
-
-      const rawPath = route.polyline.map((point) => [point[0], point[1]] as L.LatLngExpression);
-      const path = rawPath;
+      const path = route.polyline.map((point) => [point[0], point[1]] as L.LatLngExpression);
       if (path.length < 2) return;
 
       const defaultColor = isRecommended ? '#00e5ff' : '#64748b';
@@ -156,7 +229,7 @@ const EcoRoutingMap: React.FC<EcoRoutingMapProps> = ({
       }
 
       const attachRouteEvents = (line: L.Polyline) => {
-        line.on('click', () => onRouteSelect?.(route.id));
+        line.on('click', () => onRouteSelectRef.current?.(route.id));
         line.bindTooltip(tooltipText, { sticky: true });
       };
 
@@ -176,8 +249,7 @@ const EcoRoutingMap: React.FC<EcoRoutingMapProps> = ({
             route.aqiProfile.length - 1,
             Math.floor((idx / Math.max(1, segments)) * route.aqiProfile.length)
           );
-          const segmentPath = [path[idx], path[idx + 1]];
-          L.polyline(segmentPath, {
+          L.polyline([path[idx], path[idx + 1]], {
             color: getAqiColor(route.aqiProfile[profileIdx]),
             weight: 6,
             opacity: 0.95,
@@ -196,9 +268,7 @@ const EcoRoutingMap: React.FC<EcoRoutingMapProps> = ({
           lineJoin: 'round',
         }).addTo(layersRef.current!.routes);
         attachRouteEvents(line);
-        if (isSelected) {
-          line.bringToFront();
-        }
+        if (isSelected) line.bringToFront();
       }
 
       if (showTraffic && isSelected && !showAirQuality) {
@@ -214,11 +284,6 @@ const EcoRoutingMap: React.FC<EcoRoutingMapProps> = ({
       }
     });
   }, [routes, selectedRouteId, showAirQuality, showTraffic]);
-
-  useEffect(() => {
-    if (routes.length === 0) return;
-    fitToSelectedRoute();
-  }, [routes, selectedRouteId, fitToSelectedRoute]);
 
   useEffect(() => {
     if (!layersRef.current) return;
@@ -240,14 +305,19 @@ const EcoRoutingMap: React.FC<EcoRoutingMapProps> = ({
           color: white;
           font-weight: bold;
           font-size: 14px;
+          cursor: grab;
         ">A</div>`,
         iconSize: [32, 32],
         iconAnchor: [16, 16],
       });
 
-      L.marker([startPoint.lat, startPoint.lng], { icon: startIcon })
+      L.marker([startPoint.lat, startPoint.lng], { icon: startIcon, draggable: true })
         .bindPopup(`<b>Start:</b> ${startPoint.name || 'Selected location'}`)
         .on('click', () => fitToPoints())
+        .on('dragend', (event) => {
+          const ll = event.target.getLatLng();
+          onStartPointChangeRef.current?.({ lat: ll.lat, lng: ll.lng, name: startPoint.name || 'Start point' });
+        })
         .addTo(layersRef.current!.markers);
     }
 
@@ -267,14 +337,19 @@ const EcoRoutingMap: React.FC<EcoRoutingMapProps> = ({
           color: white;
           font-weight: bold;
           font-size: 14px;
+          cursor: grab;
         ">B</div>`,
         iconSize: [32, 32],
         iconAnchor: [16, 16],
       });
 
-      L.marker([endPoint.lat, endPoint.lng], { icon: endIcon })
+      L.marker([endPoint.lat, endPoint.lng], { icon: endIcon, draggable: true })
         .bindPopup(`<b>Destination:</b> ${endPoint.name || 'Selected location'}`)
         .on('click', () => fitToPoints())
+        .on('dragend', (event) => {
+          const ll = event.target.getLatLng();
+          onEndPointChangeRef.current?.({ lat: ll.lat, lng: ll.lng, name: endPoint.name || 'Destination' });
+        })
         .addTo(layersRef.current!.markers);
     }
 
@@ -283,45 +358,122 @@ const EcoRoutingMap: React.FC<EcoRoutingMapProps> = ({
     }
   }, [startPoint, endPoint, routes.length, fitToPoints]);
 
+  useEffect(() => {
+    if (!layersRef.current) return;
+    layersRef.current.avoid.clearLayers();
+
+    avoidAreas.forEach((area) => {
+      const selected = area.id === selectedAvoidAreaId;
+      const active = area.enabled;
+      const stroke = active ? (selected ? '#f43f5e' : '#ef4444') : '#6b7280';
+      const fill = active ? '#ef4444' : '#6b7280';
+
+      const circle = L.circle([area.lat, area.lng], {
+        radius: area.radiusM,
+        color: stroke,
+        weight: selected ? 2.8 : 2,
+        dashArray: active ? undefined : '5,5',
+        opacity: active ? 0.95 : 0.7,
+        fillColor: fill,
+        fillOpacity: active ? 0.14 : 0.08,
+      }).addTo(layersRef.current!.avoid);
+      circle.bindTooltip(`${Math.round(area.radiusM)} m`, { permanent: false, direction: 'center' });
+      circle.on('click', () => onAvoidAreaSelectRef.current?.(area.id));
+
+      const avoidIcon = L.divIcon({
+        className: 'avoid-area-marker',
+        html: `<div style="
+          width: 18px;
+          height: 18px;
+          border-radius: 50%;
+          border: 2px solid #fff;
+          background: ${active ? '#ef4444' : '#6b7280'};
+          box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+          cursor: grab;
+        "></div>`,
+        iconSize: [18, 18],
+        iconAnchor: [9, 9],
+      });
+
+      L.marker([area.lat, area.lng], { icon: avoidIcon, draggable: true })
+        .on('click', () => onAvoidAreaSelectRef.current?.(area.id))
+        .on('dragend', (event) => {
+          const ll = event.target.getLatLng();
+          onAvoidAreaMoveRef.current?.(area.id, { lat: ll.lat, lng: ll.lng });
+        })
+        .addTo(layersRef.current!.avoid);
+    });
+  }, [avoidAreas, selectedAvoidAreaId]);
+
+  useEffect(() => {
+    if (routes.length === 0) return;
+    fitToSelectedRoute();
+  }, [routes, selectedRouteId, fitToSelectedRoute]);
+
   return (
-    <div className="relative h-full w-full rounded-lg overflow-hidden" style={{ minHeight: '400px', zIndex: 0 }}>
+    <div
+      ref={containerRef}
+      className={`relative h-full w-full overflow-hidden ${isFullscreen ? 'rounded-none' : 'rounded-lg'}`}
+      style={{ minHeight: isFullscreen ? '100vh' : '400px', zIndex: 0 }}
+    >
       <div ref={mapRef} className="h-full w-full" />
 
       <div className="absolute right-3 top-3 z-[450] flex flex-col gap-2">
         <button
           onClick={fitToSelectedRoute}
           className="inline-flex items-center gap-1.5 rounded-xl border border-border/70 bg-card/85 px-2.5 py-2 text-[10px] font-bold uppercase tracking-wider text-foreground shadow-xl backdrop-blur hover:bg-card"
-          title="Focus selected route"
+          title={ECO_ROUTING_TEXT.map.focusRouteTitle}
         >
           <Crosshair className="h-3.5 w-3.5" />
-          Route
+          {ECO_ROUTING_TEXT.map.focusRoute}
         </button>
         <button
           onClick={fitToAllRoutes}
           className="inline-flex items-center gap-1.5 rounded-xl border border-border/70 bg-card/85 px-2.5 py-2 text-[10px] font-bold uppercase tracking-wider text-foreground shadow-xl backdrop-blur hover:bg-card"
-          title="Fit all alternatives"
+          title={ECO_ROUTING_TEXT.map.focusAllTitle}
         >
           <Layers className="h-3.5 w-3.5" />
-          All
+          {ECO_ROUTING_TEXT.map.focusAll}
         </button>
         <button
           onClick={fitToPoints}
           className="inline-flex items-center gap-1.5 rounded-xl border border-border/70 bg-card/85 px-2.5 py-2 text-[10px] font-bold uppercase tracking-wider text-foreground shadow-xl backdrop-blur hover:bg-card"
-          title="Fit start and destination"
+          title={ECO_ROUTING_TEXT.map.focusPointsTitle}
         >
           <MapPinned className="h-3.5 w-3.5" />
-          A-B
+          {ECO_ROUTING_TEXT.map.focusPoints}
         </button>
       </div>
 
-      <button
-        onClick={() => setMapTheme((prev) => (prev === 'dark' ? 'light' : 'dark'))}
-        className="absolute left-3 top-3 z-[450] inline-flex items-center gap-1.5 rounded-xl border border-border/70 bg-card/85 px-2.5 py-2 text-[10px] font-bold uppercase tracking-wider text-foreground shadow-xl backdrop-blur hover:bg-card"
-        title="Toggle map theme"
-      >
-        {mapTheme === 'dark' ? <Sun className="h-3.5 w-3.5" /> : <MoonStar className="h-3.5 w-3.5" />}
-        {mapTheme === 'dark' ? 'Light' : 'Dark'}
-      </button>
+      <div className="absolute left-3 top-3 z-[450] flex flex-col gap-2">
+        <button
+          onClick={() => setMapTheme((prev) => (prev === 'dark' ? 'light' : 'dark'))}
+          className="inline-flex items-center gap-1.5 rounded-xl border border-border/70 bg-card/85 px-2.5 py-2 text-[10px] font-bold uppercase tracking-wider text-foreground shadow-xl backdrop-blur hover:bg-card"
+          title={ECO_ROUTING_TEXT.map.toggleThemeTitle}
+        >
+          {mapTheme === 'dark' ? <Sun className="h-3.5 w-3.5" /> : <MoonStar className="h-3.5 w-3.5" />}
+          {mapTheme === 'dark' ? ECO_ROUTING_TEXT.map.lightMode : ECO_ROUTING_TEXT.map.darkMode}
+        </button>
+        <button
+          onClick={() => void toggleFullscreen()}
+          className="inline-flex items-center gap-1.5 rounded-xl border border-border/70 bg-card/85 px-2.5 py-2 text-[10px] font-bold uppercase tracking-wider text-foreground shadow-xl backdrop-blur hover:bg-card"
+          title={ECO_ROUTING_TEXT.map.fullscreenTitle}
+        >
+          {isFullscreen ? <Minimize className="h-3.5 w-3.5" /> : <Expand className="h-3.5 w-3.5" />}
+          {isFullscreen ? ECO_ROUTING_TEXT.map.fullscreenExit : ECO_ROUTING_TEXT.map.fullscreenEnter}
+        </button>
+      </div>
+
+      <div className="absolute left-3 bottom-3 z-[450] inline-flex items-center gap-2 rounded-xl border border-border/70 bg-card/85 px-2.5 py-2 text-[10px] font-bold uppercase tracking-wider text-foreground shadow-xl backdrop-blur">
+        <Compass className="h-3.5 w-3.5 text-primary" />
+        <span>{ECO_ROUTING_TEXT.map.compassNorth}</span>
+        <span className="opacity-70">|</span>
+        <span>{ECO_ROUTING_TEXT.map.scaleTitle}</span>
+      </div>
+
+      <div className="absolute right-3 bottom-3 z-[450] rounded-xl border border-border/70 bg-card/85 px-2.5 py-2 text-[10px] font-bold uppercase tracking-wider text-foreground shadow-xl backdrop-blur">
+        {ECO_ROUTING_TEXT.map.dragHint}
+      </div>
     </div>
   );
 };

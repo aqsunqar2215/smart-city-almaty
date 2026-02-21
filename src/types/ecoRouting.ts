@@ -15,6 +15,14 @@ export interface EcoRouteStep {
   distanceText: string;
 }
 
+export interface AvoidArea {
+  id: string;
+  lat: number;
+  lng: number;
+  radiusM: number;
+  enabled: boolean;
+}
+
 export interface EcoRoute {
   id: string;
   type: 'recommended' | 'alternative';
@@ -40,6 +48,11 @@ export interface EcoRoutingRequestPayload {
   end: { lat: number; lng: number };
   profile: EcoRoutingProfile;
   departure_time: string;
+  avoid_areas?: Array<{
+    lat: number;
+    lng: number;
+    radius_m: number;
+  }>;
 }
 
 export interface EcoRoutingResponse {

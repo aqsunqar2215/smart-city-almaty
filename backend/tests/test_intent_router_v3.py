@@ -14,13 +14,14 @@ class IntentRouterV3Tests(unittest.TestCase):
         pred = router.predict("what is the air quality in almaty today")
         self.assertTrue(0.0 <= pred.confidence <= 1.0)
         self.assertGreaterEqual(len(pred.top2), 1)
-        self.assertIn(pred.routing_reason, {"high_confidence", "ambiguous", "router_unavailable"})
+        self.assertIn(pred.routing_reason, {"high_confidence", "ambiguous", "router_unavailable", "lexical_override"})
 
     def test_predict_core_intents(self) -> None:
         router = get_intent_router()
         samples = [
             ("call police now", "emergency"),
             ("metro schedule and bus route", "transport"),
+            ("i need to know about weather", "weather_eco"),
             ("hello there", "greeting"),
         ]
         for text, expected in samples:

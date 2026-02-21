@@ -29,6 +29,13 @@ from website_knowledge_dataset import WEBSITE_KNOWLEDGE_DATASET
 from external_data_loader import load_external_datasets
 
 
+_OVERRIDE_RULES: List[Tuple[str, Tuple[str, ...]]] = [
+    ("emergency", ("ambulance", "police", "fire", "accident", "emergency", "112", "101", "102", "103")),
+    ("transport", ("metro", "bus", "route", "traffic", "road", "airport", "taxi")),
+    ("weather_eco", ("weather", "forecast", "temperature", "aqi", "air quality", "pollution", "smog", "pm2.5", "pm25")),
+]
+
+
 def _normalize_intent(category: str) -> str:
     category = (category or "").strip().upper()
     mapping = {
@@ -247,6 +254,16 @@ class IntentRouterV3:
         margin = max(0.0, top_prob - second_prob)
         top2 = [(self._classes[i], float(probs[i])) for i in ranked_idx[:2]]
         reason = "high_confidence" if (top_prob >= 0.55 and margin >= 0.12) else "ambiguous"
+        override_intent = self._lexical_override(text, top_intent, top_prob, margin)
+        if override_intent:
+            override_confidence = max(0.62, top_prob)
+            return IntentPrediction(
+                intent=override_intent,
+                confidence=override_confidence,
+                margin=max(0.14, margin),
+                top2=[(override_intent, override_confidence)] + top2[:1],
+                routing_reason="lexical_override",
+            )
         return IntentPrediction(
             intent=top_intent,
             confidence=top_prob,
@@ -254,6 +271,31 @@ class IntentRouterV3:
             top2=top2,
             routing_reason=reason,
         )
+
+    def _lexical_override(
+        self,
+        text: str,
+        predicted_intent: str,
+        confidence: float,
+        margin: float,
+    ) -> str:
+        normalized = (text or "").lower()
+        if not normalized:
+            return ""
+
+        blocked_predicted = {"chat", "greeting", "thanks", "farewell", "help", "unknown"}
+        should_consider_override = (
+            predicted_intent in blocked_predicted
+            or confidence < 0.64
+            or margin < 0.16
+        )
+        if not should_consider_override:
+            return ""
+
+        for intent, terms in _OVERRIDE_RULES:
+            if any(term in normalized for term in terms):
+                return intent
+        return ""
 
 
 @lru_cache(maxsize=1)

@@ -726,6 +726,14 @@ class EnhancedGPTStyleAI:
                     intent.entities["routing_reason"] = adjusted.routing_reason
             except Exception as e:
                 logger.debug(f"Dialogue state contextualization failed: {e}")
+
+        if self.dialogue_state:
+            contextual_query = self.dialogue_state.build_contextual_query(session_id, message, intent.primary)
+            if contextual_query and contextual_query != message:
+                suffix = ""
+                if processed_message.startswith(message):
+                    suffix = processed_message[len(message):]
+                intent.raw_text = f"{contextual_query}{suffix}"
         
         # 5. Update context
         if self.context_manager:
@@ -735,6 +743,10 @@ class EnhancedGPTStyleAI:
         
         # 6. Synthesize response
         response = self.synthesizer.synthesize(intent, session_id, self.config)
+        if self.dialogue_state and response.source == "controlled_fallback":
+            hint = self.dialogue_state.clarification_hint(session_id)
+            if hint:
+                response.text = f"{response.text}\n\n{hint}"
         cache_key = (session_id, message)
         self._last_response_cache[cache_key] = response
         if len(self._last_response_cache) > 120:
@@ -759,8 +771,8 @@ class EnhancedGPTStyleAI:
         })
         
         # Limit history
-        if len(self.sessions[session_id]) > 40:
-            self.sessions[session_id] = self.sessions[session_id][-40:]
+        if len(self.sessions[session_id]) > 80:
+            self.sessions[session_id] = self.sessions[session_id][-80:]
         
         # Update context with response
         if self.context_manager:

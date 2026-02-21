@@ -282,7 +282,40 @@ ALMATY_DATASET = [
     {"category": "CHAT", "language": "en", "pattern": "help me", "response": "I'm here! Do you need emergency services, transport info, or just some city advice?"},
     {"category": "CHAT", "language": "en", "pattern": "nice to meet you", "response": "Likewise! I'm honored to be your digital assistant in this smart metropolitan journey."},
     {"category": "CHAT", "language": "en", "pattern": "bye goodbye", "response": "Farewell! Stay safe out there. Nexus offline (but still watching the city)."},
-    {"category": "CHAT", "language": "en", "pattern": "what is your dream", "response": "To see Almaty become the cleanest and smartest city in the world. And maybe to visit the top of Talgar Peak!"},]
+    {"category": "CHAT", "language": "en", "pattern": "what is your dream", "response": "To see Almaty become the cleanest and smartest city in the world. And maybe to visit the top of Talgar Peak!"},
+
+    # --- ADDITIONAL ALMATY KNOWLEDGE FOR LONGER CONVERSATIONS ---
+    {"category": "TRANSPORT", "language": "en", "pattern": "metro working hours first train last train", "response": "Almaty Metro typically runs from around 06:20 until about 00:00. In rush hours, train intervals are usually around 6-8 minutes."},
+    {"category": "TRANSPORT", "language": "en", "pattern": "airport to city center bus taxi transfer", "response": "From Almaty Airport to the city center you can use city buses, ride-hailing apps, or taxi. Ride-hailing is usually the fastest late at night."},
+    {"category": "TRANSPORT", "language": "en", "pattern": "cycling bike lanes in almaty", "response": "Almaty has dedicated bike lanes on key streets, and bike-friendly routes continue expanding each year, especially in central and south districts."},
+    {"category": "TRANSPORT", "language": "en", "pattern": "best time avoid traffic jams almaty", "response": "To avoid heavy congestion in Almaty, plan trips before 07:30, between 11:00-16:30, or after 20:00 whenever possible."},
+    {"category": "TRANSPORT", "language": "en", "pattern": "pedestrian streets city center", "response": "Popular pedestrian-friendly areas include Panfilov Street, Arbat (Zhibek Zholy), and parts of Abai and Dostyk with improved sidewalks."},
+
+    {"category": "CITY_INFO", "language": "en", "pattern": "earthquake safety emergency assembly points", "response": "Almaty is in a seismic zone. During strong shaking, move away from windows, protect your head, and then go to official assembly points in open areas."},
+    {"category": "CITY_INFO", "language": "en", "pattern": "winter in almaty what to prepare", "response": "In winter Almaty can be icy and foggy. Use warm layers, shoes with grip, and check air quality before long outdoor activities."},
+    {"category": "CITY_INFO", "language": "en", "pattern": "summer in almaty heat tips", "response": "In summer, daytime heat can exceed 30C. Carry water, use sunscreen, and plan mountain or park walks in morning or evening."},
+    {"category": "CITY_INFO", "language": "en", "pattern": "district differences upper lower city", "response": "Upper parts of Almaty are generally cooler with cleaner air, while lower districts can be warmer and more affected by smog during inversions."},
+    {"category": "CITY_INFO", "language": "en", "pattern": "digital services egov almaty", "response": "Many city and state services are available online through digital government platforms and banking super-apps, reducing in-person paperwork."},
+    {"category": "CITY_INFO", "language": "en", "pattern": "cash or card in almaty payments", "response": "Card and QR payments are widely accepted in Almaty, but keeping a small amount of cash is useful for some markets and small kiosks."},
+    {"category": "CITY_INFO", "language": "en", "pattern": "language in almaty russian kazakh english", "response": "Russian and Kazakh are both widely used in Almaty. In central areas, many service staff also understand basic English."},
+
+    {"category": "SIGHTS", "language": "en", "pattern": "one day itinerary almaty center", "response": "A classic one-day plan: Panfilov Park and Zenkov Cathedral, Green Bazaar, lunch on Arbat, then sunset at Kok-Tobe."},
+    {"category": "SIGHTS", "language": "en", "pattern": "two day itinerary almaty mountains", "response": "For two days: Day 1 city center and museums, Day 2 Medeu + Shymbulak or Big Almaty Lake area depending on weather and road access."},
+    {"category": "SIGHTS", "language": "en", "pattern": "family places with kids almaty", "response": "Families often choose Central Park, Kok-Tobe, city aquaparks, and interactive museums. Weekdays are usually less crowded."},
+    {"category": "SIGHTS", "language": "en", "pattern": "best viewpoint sunset almaty", "response": "Popular sunset viewpoints are Kok-Tobe, upper Dostyk road viewpoints, and mountain-side cafes around Medeu routes."},
+    {"category": "SIGHTS", "language": "en", "pattern": "hiking near almaty beginner trails", "response": "Beginner-friendly hiking starts include routes near Medeu and Terrenkur, with gradual elevation and good accessibility from the city."},
+
+    {"category": "CULTURE", "language": "en", "pattern": "local etiquette guest hospitality", "response": "Hospitality is very important in local culture. Accepting tea and showing respect to elders are common social norms in Almaty."},
+    {"category": "CULTURE", "language": "en", "pattern": "weekend cultural events theaters concerts", "response": "On weekends Almaty has active theater, jazz, and art events. Central venues often publish schedules for evening performances."},
+    {"category": "CULTURE", "language": "en", "pattern": "souvenirs from almaty what to buy", "response": "Popular souvenirs include felt crafts, local chocolates, tea blends, and apple-themed products representing Almaty's identity."},
+
+    {"category": "ECOLOGY", "language": "en", "pattern": "best time for cleaner air in almaty", "response": "Air quality is often better after rain, early afternoon with stronger mixing, and in upper districts closer to mountain airflow."},
+    {"category": "ECOLOGY", "language": "en", "pattern": "waste sorting recycling points", "response": "Recycling collection points are growing in Almaty, especially for plastic, paper, and glass near large residential and commercial zones."},
+    {"category": "ECOLOGY", "language": "en", "pattern": "drinking water source almaty mountains", "response": "A major share of Almaty's drinking water comes from mountain sources and reservoirs, including infrastructure connected to high-altitude catchments."},
+
+    {"category": "SCIENCE", "language": "en", "pattern": "air inversion almaty explanation", "response": "Temperature inversion traps colder polluted air near the ground under warmer air layers above, which is a key reason smog can persist in Almaty."},
+    {"category": "SCIENCE", "language": "en", "pattern": "smart city sensors what measure", "response": "Smart city sensors in Almaty-style systems usually monitor traffic flow, speed, air pollutants, weather, incidents, and infrastructure status."}
+]
 
 # Adding more generic pattern variations to reach 100+ logical combinations
 def expand_dataset():

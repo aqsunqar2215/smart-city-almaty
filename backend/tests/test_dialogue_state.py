@@ -27,6 +27,18 @@ class DialogueStateTests(unittest.TestCase):
         self.assertGreaterEqual(adjusted.confidence, pred.confidence)
         self.assertEqual(adjusted.routing_reason, "followup_context_boost")
 
+    def test_followup_query_is_augmented_with_previous_context(self) -> None:
+        mgr = DialogueStateManager(ttl_minutes=30)
+        session_id = "s-query"
+        mgr.update_intent(session_id, "weather_eco")
+        mgr.observe_user_turn(session_id, "Tell me air quality in Medeu district")
+        mgr.observe_assistant_turn(session_id, "AQI is moderate in Medeu district.")
+
+        augmented = mgr.build_contextual_query(session_id, "what about it tomorrow?", "weather_eco")
+        self.assertIn("Follow-up context", augmented)
+        self.assertIn("previous intent weather_eco", augmented)
+        self.assertIn("Medeu district", augmented)
+
     def test_ttl_expires_session_state(self) -> None:
         mgr = DialogueStateManager(ttl_minutes=30)
         session_id = "s-ttl"

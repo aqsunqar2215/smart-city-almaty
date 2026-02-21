@@ -135,17 +135,17 @@ const RouteResultsPanel: React.FC<RouteResultsPanelProps> = ({
                   </span>
                   {routeHighlights.fastestId === route.id && (
                     <Badge variant="outline" className="text-[9px] uppercase font-black tracking-widest bg-primary/10 text-primary border-primary/30">
-                      Fastest ETA
+                      {ECO_ROUTING_TEXT.labels.fastestEta}
                     </Badge>
                   )}
                   {routeHighlights.cleanestId === route.id && (
                     <Badge variant="outline" className="text-[9px] uppercase font-black tracking-widest bg-emerald-500/10 text-emerald-500 border-emerald-500/30">
-                      Lowest AQI
+                      {ECO_ROUTING_TEXT.labels.lowestAqi}
                     </Badge>
                   )}
                   {routeHighlights.lowestCo2Id === route.id && (
                     <Badge variant="outline" className="text-[9px] uppercase font-black tracking-widest bg-cyan-500/10 text-cyan-500 border-cyan-500/30">
-                      Lowest CO2
+                      {ECO_ROUTING_TEXT.labels.lowestCo2}
                     </Badge>
                   )}
                   <Badge

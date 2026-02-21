@@ -28,6 +28,7 @@ interface TransportMapProps {
   buses: TransportBus[];
   routes: TransportRouteShape[];
   selectedRoute: string | null;
+  selectedBusId?: number | null;
   onlySelectedRoute: boolean;
   showRoutes: boolean;
   showVehicles: boolean;
@@ -54,6 +55,7 @@ const TransportMap: React.FC<TransportMapProps> = ({
   buses,
   routes,
   selectedRoute,
+  selectedBusId,
   onlySelectedRoute,
   showRoutes,
   showVehicles,
@@ -152,6 +154,7 @@ const TransportMap: React.FC<TransportMapProps> = ({
 
     if (showVehicles) {
       busSource.forEach((bus) => {
+        const isSelectedVehicle = selectedBusId === bus.id;
         const vehicleColor = bus.vehicle_type === 'MINIBUS' ? '#f59e0b' : '#3b82f6';
         const occupancyColor = bus.occupancy > 80 ? '#ef4444' : bus.occupancy > 55 ? '#f59e0b' : '#22c55e';
         const heading = bus.heading ?? 0;
@@ -160,11 +163,11 @@ const TransportMap: React.FC<TransportMapProps> = ({
           className: 'transport-vehicle-marker',
           html: `
             <div style="display:flex; flex-direction:column; align-items:center; gap:2px;">
-              <div style="width:18px; height:18px; border-radius:${bus.vehicle_type === 'MINIBUS' ? '50%' : '5px'}; background:${vehicleColor}; border:2px solid #fff; color:#fff; font-size:8px; font-weight:900; font-family:monospace; display:flex; align-items:center; justify-content:center; box-shadow:0 0 10px ${vehicleColor}77;">
+              <div style="width:${isSelectedVehicle ? '21px' : '18px'}; height:${isSelectedVehicle ? '21px' : '18px'}; border-radius:${bus.vehicle_type === 'MINIBUS' ? '50%' : '5px'}; background:${vehicleColor}; border:${isSelectedVehicle ? '3px' : '2px'} solid #fff; color:#fff; font-size:8px; font-weight:900; font-family:monospace; display:flex; align-items:center; justify-content:center; box-shadow:0 0 ${isSelectedVehicle ? '16px' : '10px'} ${vehicleColor}cc;">
                 ${bus.route_number}
               </div>
               <div style="width:0; height:0; border-left:4px solid transparent; border-right:4px solid transparent; border-top:6px solid #ffffff; transform:rotate(${heading}deg); transform-origin:center;"></div>
-              <div style="width:6px; height:6px; border-radius:50%; background:${occupancyColor}; border:1px solid #fff;"></div>
+              <div style="width:${isSelectedVehicle ? '8px' : '6px'}; height:${isSelectedVehicle ? '8px' : '6px'}; border-radius:50%; background:${occupancyColor}; border:1px solid #fff;"></div>
             </div>
           `,
           iconSize: [22, 30],
@@ -189,7 +192,7 @@ const TransportMap: React.FC<TransportMapProps> = ({
           `);
       });
     }
-  }, [buses, routes, selectedRoute, onlySelectedRoute, showRoutes, showVehicles, ecoRoutes, activeRouteSet]);
+  }, [buses, routes, selectedRoute, selectedBusId, onlySelectedRoute, showRoutes, showVehicles, ecoRoutes, activeRouteSet]);
 
   useEffect(() => {
     if (!mapInstanceRef.current) return;
@@ -205,11 +208,33 @@ const TransportMap: React.FC<TransportMapProps> = ({
     mapInstanceRef.current.fitBounds(bounds, { padding: [30, 30], maxZoom: 14 });
   }, [selectedRoute, routes]);
 
+  useEffect(() => {
+    if (!mapInstanceRef.current || !selectedBusId) return;
+    const selectedBus = buses.find((bus) => bus.id === selectedBusId);
+    if (!selectedBus) return;
+    mapInstanceRef.current.panTo([selectedBus.lat, selectedBus.lng], { animate: true });
+  }, [selectedBusId, buses]);
+
   return (
     <div className="relative">
       <div ref={mapRef} className="h-[460px] w-full rounded-none overflow-hidden" />
       <div className="absolute bottom-3 left-3 px-3 py-1 rounded-full text-[10px] uppercase tracking-wider font-semibold bg-background/80 border border-border/60 backdrop-blur">
         Transport-only telemetry map
+      </div>
+      <div className="absolute top-3 left-3 text-[11px] rounded-lg bg-background/80 border border-border/70 px-3 py-2 backdrop-blur space-y-1">
+        <div className="font-semibold">Legend</div>
+        <div className="flex items-center gap-2 text-muted-foreground">
+          <span className="inline-block w-3 h-3 rounded-sm bg-blue-500" />
+          <span>Bus route / vehicle</span>
+        </div>
+        <div className="flex items-center gap-2 text-muted-foreground">
+          <span className="inline-block w-3 h-3 rounded-full bg-amber-500" />
+          <span>Minibus vehicle</span>
+        </div>
+        <div className="flex items-center gap-2 text-muted-foreground">
+          <span className="inline-block w-3 h-3 rounded-full bg-emerald-500" />
+          <span>Low occupancy</span>
+        </div>
       </div>
     </div>
   );

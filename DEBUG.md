@@ -1274,6 +1274,118 @@ Observed result:
 
 ---
 
+## 2026-02-21 Transport hardening audit (route quality + deterministic checks)
+
+### 1) Transport quality audit (before final route-shape densification)
+Command:
+```bat
+python temp_transport_audit.py
+```
+
+Observed result:
+- Exit code: `0`
+- Output:
+  - `routes_count=67`
+  - `route_length_min_m=411.1`
+  - `high_jump_routes_gt_700m=9`
+  - `jump_max_m=1085.2`
+  - `stable_geo_snapshot=True`
+- Findings:
+  - malformed/low-quality route refs (examples from output included non-ASCII variants)
+  - short fragmented routes (<1.2km) existed
+  - high-jump route segments existed
+
+Status: `AUDIT FOUND ISSUES`
+
+---
+
+### 2) Python syntax check after hardening patches
+Command:
+```bat
+python -m py_compile backend\live_transport_api.py backend\main.py
+```
+
+Observed result:
+- Exit code: `0`
+- No syntax errors.
+
+Status: `PASSED`
+
+---
+
+### 3) Transport quality audit (after hardening patches)
+Command:
+```bat
+python temp_transport_audit.py
+```
+
+Observed result:
+- Exit code: `0`
+- Output:
+  - `routes_count=54`
+  - `buses_count=57`
+  - `missing_shapes_for_active=0`
+  - `short_routes_lt_1_2km=0`
+  - `high_jump_routes_gt_700m=0`
+  - `jump_max_m=685.6`
+  - `stable_geo_snapshot=True`
+
+Status: `PASSED`
+
+---
+
+### 4) Frontend build
+Command:
+```bat
+npm run build
+```
+
+Observed result:
+- Exit code: `0`
+- Output:
+  - `✓ 3232 modules transformed.`
+  - `✓ built in 16.92s`
+- Warnings:
+  - Browserslist data is old (`caniuse-lite`)
+  - Large chunk warning (`Some chunks are larger than 500 kB`)
+
+Status: `PASSED (with warnings)`
+
+---
+
+### 5) E2E tests
+Command:
+```bat
+npm run e2e
+```
+
+Observed result:
+- Exit code: `0`
+- Output:
+  - `2 passed (15.7s)`
+  - `eco-routing.spec.ts` passed
+  - `chat-context.spec.ts` passed
+
+Status: `PASSED`
+
+---
+
+### 6) Frontend lint
+Command:
+```bat
+npm run lint
+```
+
+Observed result:
+- Exit code: `1`
+- ESLint summary:
+  - `✖ 85 problems (70 errors, 15 warnings)`
+- Remaining failures are project-wide existing lint issues outside transport-only hardening scope.
+
+Status: `FAILED`
+
+---
+
 ## 2026-02-21 No-LLM V4.1 implementation verification
 
 ### 1) Backend dependencies install
@@ -1400,3 +1512,517 @@ Observed result:
   - DB direct file check: `❌ Database file not found!` (path check inside script points to `./backend/smart_city.db` and is script-specific)
 
 Status: `PARTIAL PASS (core API checks pass, script-local DB path check fails)`
+
+---
+
+## 2026-02-21 Eco Routing UX + map functionality upgrade verification
+
+### 1) Frontend build
+Command:
+```bat
+npm run build
+```
+
+Observed result:
+- Exit code: `0`
+- Vite output:
+  - `✓ 3232 modules transformed.`
+  - `✓ built in 12.39s` (repeat build also passed in `12.39s`/`14.92s` range)
+- Warnings:
+  - Browserslist data is old (`caniuse-lite`)
+  - Large chunk warning (`Some chunks are larger than 500 kB`)
+
+Status: `PASSED (with warnings)`
+
+---
+
+### 2) E2E eco-routing scenario
+Command:
+```bat
+npm run e2e -- tests/e2e/eco-routing.spec.ts --reporter=line
+```
+
+Observed result:
+- Exit code: `0`
+- Output:
+  - `1 passed`
+  - Test: `eco routing renders 3+ routes with baseline comparison`
+
+Status: `PASSED`
+
+---
+
+### 3) Frontend lint
+Command:
+```bat
+npm run lint
+```
+
+Observed result:
+- Exit code: `1`
+- ESLint summary:
+  - `✖ 92 problems (78 errors, 14 warnings)` on latest run
+- Failures remain project-wide baseline issues (many `no-explicit-any`, some hook dependency warnings in unrelated modules).
+
+Status: `FAILED (existing baseline issues)`
+
+---
+
+### 4) Backend smoke script compatibility check
+Command:
+```bat
+cd backend && python test_integration.py
+```
+
+Observed result:
+- Exit code: `1`
+- Output: `UnicodeEncodeError` in cp1251 console due emoji print in script.
+
+Status: `FAILED (console encoding issue in script output, not API regression proof)`
+
+---
+
+### 5) Re-check after eco text centralization + map controls update
+Commands:
+```bat
+npm run build
+npm run e2e -- tests/e2e/eco-routing.spec.ts --reporter=line
+```
+
+Observed result:
+- Build:
+  - Exit code: `0`
+  - `✓ 3232 modules transformed.`
+  - `✓ built in 11.31s`
+- E2E:
+  - Exit code: `0`
+  - `1 passed`
+  - `eco routing renders 3+ routes with baseline comparison`
+
+Status: `PASSED`
+
+---
+
+## 2026-02-21 Eco map fullscreen + avoid area + draggable A/B verification
+
+### 1) Frontend build
+Command:
+```bat
+npm run build
+```
+
+Observed result:
+- Exit code: `0`
+- Output:
+  - `✓ 3233 modules transformed.`
+  - `✓ built in 14.18s`
+- Warnings:
+  - Browserslist data is old (`caniuse-lite`)
+  - Large chunk warning (`Some chunks are larger than 500 kB`)
+
+Status: `PASSED (with warnings)`
+
+---
+
+### 2) E2E eco routing flow
+Command:
+```bat
+npm run e2e -- tests/e2e/eco-routing.spec.ts --reporter=line
+```
+
+Observed result:
+- Exit code: `0`
+- Output:
+  - `1 passed`
+  - `eco routing renders 3+ routes with baseline comparison`
+
+Status: `PASSED`
+
+---
+
+### 3) Frontend lint
+Command:
+```bat
+npm run lint
+```
+
+Observed result:
+- Exit code: `1`
+- ESLint summary:
+  - `✖ 84 problems (70 errors, 14 warnings)`
+- Failures remain project-wide baseline issues (mainly `no-explicit-any` and unrelated modules).
+
+Status: `FAILED (existing baseline issues)`
+
+---
+
+## 2026-02-21 Chat UX redesign + long-context + Almaty knowledge expansion verification
+
+### 1) Backend tests
+Command:
+```bat
+cd backend && python -m unittest discover tests -v
+```
+
+Observed result:
+- Exit code: `0`
+- Output: `Ran 10 tests ... OK`
+- Includes:
+  - `test_intent_router_v3.py`
+  - `test_dialogue_state.py` (including new contextual query test)
+  - `test_local_retriever.py`
+  - `test_ai_analyze_contract.py`
+  - `test_no_llm_runtime.py`
+
+Status: `PASSED`
+
+---
+
+### 2) Eval pipeline gate
+Command:
+```bat
+cd backend && python eval\run_eval.py
+```
+
+Observed result:
+- Exit code: `0`
+- Output:
+  - `intent_acc: 1.0000`
+  - `context_pass_rate: 1.0000`
+  - `factual_pass_rate: 1.0000`
+  - `fallback_rate: 0.0000`
+  - `p95_latency_ms: 10.0570`
+  - `llm_calls: 0.0000`
+  - `Eval gate PASSED`
+
+Status: `PASSED`
+
+---
+
+### 3) Frontend build
+Command:
+```bat
+npm run build
+```
+
+Observed result:
+- Exit code: `0`
+- Output:
+  - `✓ 3232 modules transformed.`
+  - `✓ built in 12.15s`
+- Warnings:
+  - Browserslist data is old (`caniuse-lite`)
+  - Large chunk warning (`Some chunks are larger than 500 kB`)
+
+Status: `PASSED (with warnings)`
+
+---
+
+### 4) Frontend lint
+Command:
+```bat
+npm run lint
+```
+
+Observed result:
+- Exit code: `1`
+- ESLint summary:
+  - `✖ 92 problems (78 errors, 14 warnings)`
+- Failures remain project-wide baseline issues outside this task scope.
+
+Status: `FAILED (existing baseline issues)`
+
+---
+
+### 5) Backend integration smoke script
+Commands:
+```bat
+cd backend && python test_integration.py
+cd backend && set PYTHONIOENCODING=utf-8 && python test_integration.py
+```
+
+Observed result:
+- First run:
+  - Exit code: `1`
+  - `UnicodeEncodeError` in cp1251 console due emoji output.
+- UTF-8 run:
+  - Exit code: `0`
+  - Core checks passed: backend online, auth, sensors, AI response, report filing.
+  - Script output includes: `❌ Database file not found!`
+
+Status: `PARTIAL PASS (script encoding/path limitations; core API flow passed)`
+
+---
+
+### 6) E2E smoke
+Command:
+```bat
+npm run test:e2e
+```
+
+Observed result:
+- Exit code: `0`
+- Output:
+  - `2 passed (12.1s)`
+  - `tests/e2e/eco-routing.spec.ts` passed
+  - `tests/e2e/chat-context.spec.ts` passed
+
+Status: `PASSED`
+
+---
+
+### 7) Targeted lint check for redesigned chat widget
+Command:
+```bat
+npx eslint src/components/NeuralNexusWidget.tsx
+```
+
+Observed result:
+- Exit code: `0`
+- No lint errors reported for the redesigned widget file.
+
+Status: `PASSED`
+
+---
+
+### 8) Re-check after final widget typing cleanup
+Commands:
+```bat
+npm run build
+npm run test:e2e
+```
+
+Observed result:
+- Build:
+  - Exit code: `0`
+  - `✓ 3232 modules transformed.`
+  - `✓ built in 11.93s`
+  - same warnings: old Browserslist data, large chunk warning
+- E2E:
+  - Exit code: `0`
+  - `2 passed (12.3s)`
+  - `eco-routing.spec.ts` passed
+  - `chat-context.spec.ts` passed
+
+Status: `PASSED`
+
+---
+
+### 9) Python syntax check for updated no-LLM context modules
+Command:
+```bat
+python -m py_compile backend\dialogue_state.py backend\local_retriever.py backend\enhanced_gpt_ai.py backend\almaty_dataset.py
+```
+
+Observed result:
+- Exit code: `0`
+- No syntax errors.
+
+Status: `PASSED`
+
+---
+
+## 2026-02-21 Weather-intent misrouting fix verification (chat screenshot issue)
+
+### 1) Targeted backend tests (intent router and retriever)
+Commands:
+```bat
+cd backend && python -m unittest tests.test_intent_router_v3 -v
+cd backend && python -m unittest tests.test_local_retriever -v
+```
+
+Observed result:
+- First run:
+  - `test_intent_router_v3`: failed due new `routing_reason=lexical_override` not yet in assertion.
+  - `test_local_retriever`: failed (`CHAT` ranked top for weather query).
+- After code/test adjustments:
+  - `test_intent_router_v3`: `OK`
+  - `test_local_retriever`: `OK`
+
+Status: `PASSED after fixes`
+
+---
+
+### 2) Full backend unit suite
+Command:
+```bat
+cd backend && python -m unittest discover tests -v
+```
+
+Observed result:
+- Exit code: `0`
+- Output: `Ran 11 tests ... OK`
+
+Status: `PASSED`
+
+---
+
+### 3) Frontend lint
+Command:
+```bat
+npm run lint
+```
+
+Observed result:
+- Exit code: `1`
+- ESLint summary: `✖ 84 problems (70 errors, 14 warnings)`
+- Project-wide baseline issues remain (many `no-explicit-any` and related rules).
+
+Status: `FAILED (existing baseline issues)`
+
+---
+
+### 4) Frontend build
+Command:
+```bat
+npm run build
+```
+
+Observed result:
+- Exit code: `0`
+- Output:
+  - `✓ 3232 modules transformed.`
+  - `✓ built in 12.24s`
+- Warnings:
+  - old Browserslist data
+  - large chunk warning
+
+Status: `PASSED (with warnings)`
+
+---
+
+### 5) API smoke
+Commands:
+```bat
+curl http://localhost:8000/api/reports
+cd backend && set PYTHONIOENCODING=utf-8 && python test_integration.py
+```
+
+Observed result:
+- `curl` command unavailable in this environment (`"curl" не является ...`).
+- Integration smoke script exit code: `0`
+- Core checks passed: backend online, registration, login, sensors, AI response, report write.
+- Script output includes: `❌ Database file not found!` (script-local DB file path check).
+
+Status: `PARTIAL PASS (core flow passed; script-local DB path warning)`
+
+---
+
+### 6) E2E tests
+Command:
+```bat
+npm run test:e2e
+```
+
+Observed result:
+- Exit code: `1`
+- Playwright output: `2 failed`
+  - `chat-context.spec.ts` timeout waiting `Sign Up` tab
+  - `eco-routing.spec.ts` timeout waiting `Demo Analysis` button
+
+Status: `FAILED`
+
+---
+
+## 2026-02-21 Transport UI convenience hardening verification
+
+### 1) Frontend lint
+Command:
+```bat
+npm run lint
+```
+
+Observed result:
+- Exit code: `1`
+- ESLint summary:
+  - `✖ 84 problems (70 errors, 14 warnings)`
+- Failures are existing project-wide issues outside this transport UI scope.
+
+Status: `FAILED (existing baseline issues)`
+
+---
+
+### 2) Frontend build
+Command:
+```bat
+npm run build
+```
+
+Observed result:
+- Exit code: `0`
+- Output:
+  - `✓ 3232 modules transformed.`
+  - `✓ built in 14.29s`
+- Warnings:
+  - old Browserslist data
+  - large chunk warning
+
+Status: `PASSED (with warnings)`
+
+---
+
+### 3) API smoke (`/api/reports`)
+Commands:
+```bat
+echo import urllib.request > temp_api_smoke.py
+echo print^(urllib.request.urlopen^('http://localhost:8000/api/reports',timeout=10^).status^) >> temp_api_smoke.py
+python temp_api_smoke.py
+del temp_api_smoke.py
+```
+
+Observed result:
+- `python temp_api_smoke.py` exit code: `0`
+- Output:
+  - `200`
+- Temporary file removal exit code: `0`
+
+Status: `PASSED`
+
+---
+
+### 4) E2E tests
+Command:
+```bat
+npm run e2e
+```
+
+Observed result:
+- Exit code: `0`
+- Output:
+  - `2 passed (12.1s)`
+  - `eco-routing.spec.ts` passed
+  - `chat-context.spec.ts` passed
+
+Status: `PASSED`
+
+---
+
+### 7) Direct chatbot smoke for reported phrase
+Command:
+```bat
+cd backend && del _tmp_weather_chat.py 2>nul && echo from enhanced_gpt_ai import get_enhanced_ai>_tmp_weather_chat.py && echo ai = get_enhanced_ai()>>_tmp_weather_chat.py && echo print(ai.chat('i need to know about weather', session_id='smoke-weather'))>>_tmp_weather_chat.py && python _tmp_weather_chat.py && del _tmp_weather_chat.py
+```
+
+Observed result:
+- Exit code: `0`
+- Response was domain-specific weather/ecology content (UHI explanation), not generic `I know a lot about Almaty...` chat fallback.
+
+Status: `PASSED`
+
+---
+
+### 8) `/api/ai/analyze` contract smoke for reported phrase
+Command:
+```bat
+cd backend && del _tmp_ai_api_smoke.py 2>nul && echo from fastapi.testclient import TestClient>_tmp_ai_api_smoke.py && echo from main import app>>_tmp_ai_api_smoke.py && echo c = TestClient(app)>>_tmp_ai_api_smoke.py && echo r = c.post('/api/ai/analyze', json={'query':'i need to know about weather', 'session_id':'smoke-weather-api'})>>_tmp_ai_api_smoke.py && echo print('STATUS', r.status_code)>>_tmp_ai_api_smoke.py && echo d = r.json()>>_tmp_ai_api_smoke.py && echo print('INTENT', d.get('intent_detected'))>>_tmp_ai_api_smoke.py && echo print('SOURCE', d.get('source'))>>_tmp_ai_api_smoke.py && echo print('RESPONSE', str(d.get('response', ''))[:200])>>_tmp_ai_api_smoke.py && python _tmp_ai_api_smoke.py && del _tmp_ai_api_smoke.py
+```
+
+Observed result:
+- Exit code: `0`
+- Output:
+  - `STATUS 200`
+  - `INTENT WEATHER_ECO`
+  - `SOURCE retrieval_factual`
+  - Response starts with weather/ecology factual content (not generic chat fallback).
+
+Status: `PASSED`
