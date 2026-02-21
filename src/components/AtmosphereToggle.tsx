@@ -50,7 +50,7 @@ export const AtmosphereToggle = () => {
                 <Button
                     variant="ghost"
                     size="icon"
-                    className="text-muted-foreground hover:text-primary hover:bg-muted rounded-xl relative overflow-hidden"
+                    className="h-9 w-9 rounded-lg border border-border bg-muted/45 text-foreground/80 hover:text-foreground hover:bg-primary/8 hover:border-primary/20 relative overflow-hidden transition-all duration-200"
                     onMouseEnter={playHover}
                 >
                     {icons[atmosphere]}

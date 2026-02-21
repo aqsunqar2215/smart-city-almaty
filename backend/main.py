@@ -5,6 +5,7 @@ from pydantic import BaseModel
 import random
 import time
 import httpx
+import hashlib
 from sqlalchemy import func
 import datetime
 from database import SessionLocal, init_db, User, ActivityLog, CitizenReport, SensorReading, EmergencyIncident, BusLocation, AIKnowledge, EmergencyUnit, Petition, UserProfile, Chat, ChatMember, Message, Contact
@@ -15,13 +16,14 @@ import asyncio
 import shutil
 import uuid
 from fastapi.staticfiles import StaticFiles
+from routing_api import routing_router
 
 # Create uploads directory
 os.makedirs("uploads/messenger", exist_ok=True)
 
 # Import Live Transport API for real OSM data
 try:
-    from live_transport_api import get_live_bus_data
+    from live_transport_api import get_live_bus_data, get_live_route_shapes
     LIVE_TRANSPORT_AVAILABLE = True
     print("[Main] Live Transport API loaded")
 except ImportError as e:
@@ -56,6 +58,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Modular routing API (eco routing v2)
+app.include_router(routing_router)
 
 # Dependency
 def get_db():
@@ -96,29 +101,33 @@ def startup_event():
             all_vehicles = []
             bus_routes = ["92", "32", "12", "201", "79", "45", "18", "118", "2", "34", "38", "56", "59", "63", "65", "85", "121", "120", "128", "25", "11", "95", "98", "99", "106", "112", "119", "124", "126", "127", "137", "4", "7", "29", "8", "67"]
             minibus_routes = ["401", "407", "409", "415", "421", "422", "425", "431", "441", "448"]
+
+            def stable_int(key: str, modulo: int) -> int:
+                digest = hashlib.sha256(key.encode("utf-8")).hexdigest()
+                return int(digest[:12], 16) % modulo
             
             # Seed Buses
             for route in bus_routes:
-                num_vehicles = random.randint(1, 4)
-                for _ in range(num_vehicles):
+                num_vehicles = 1 + stable_int(f"BUS:{route}:count", 4)  # 1..4
+                for idx in range(num_vehicles):
                     all_vehicles.append(BusLocation(
                         route_number=route, 
                         vehicle_type="BUS",
-                        lat=43.20 + (random.random() * 0.1), 
-                        lng=76.80 + (random.random() * 0.2), 
-                        speed=random.randint(15, 55)
+                        lat=43.18 + (stable_int(f"BUS:{route}:{idx}:lat", 1200) / 10000.0),
+                        lng=76.78 + (stable_int(f"BUS:{route}:{idx}:lng", 3200) / 10000.0),
+                        speed=18 + stable_int(f"BUS:{route}:{idx}:speed", 38)
                     ))
 
             # Seed Marshrutkas (Minibuses)
             for route in minibus_routes:
-                num_vehicles = random.randint(2, 5) # Usually more frequent
-                for _ in range(num_vehicles):
+                num_vehicles = 2 + stable_int(f"MINIBUS:{route}:count", 4)  # 2..5
+                for idx in range(num_vehicles):
                     all_vehicles.append(BusLocation(
                         route_number=route, 
                         vehicle_type="MINIBUS",
-                        lat=43.19 + (random.random() * 0.12), 
-                        lng=76.78 + (random.random() * 0.25), 
-                        speed=random.randint(20, 65) # Fast driving marshrutkas
+                        lat=43.17 + (stable_int(f"MINIBUS:{route}:{idx}:lat", 1300) / 10000.0),
+                        lng=76.76 + (stable_int(f"MINIBUS:{route}:{idx}:lng", 3600) / 10000.0),
+                        speed=22 + stable_int(f"MINIBUS:{route}:{idx}:speed", 40)
                     ))
             
             db.add_all(all_vehicles)
@@ -247,6 +256,7 @@ class AIQuery(BaseModel):
     user_id: int | None = None
     session_id: str | None = None
     context: dict | None = None
+    enable_internet_fallback: bool = False
 
 @app.post("/api/ai/analyze")
 def analyze_data(ai_query: AIQuery, db: Session = Depends(get_db)):
@@ -258,6 +268,8 @@ def analyze_data(ai_query: AIQuery, db: Session = Depends(get_db)):
         
     ai = get_enhanced_ai()
     proactive = get_proactive_engine()
+    # V4.1 policy: no web/LLM runtime fallback in production responses.
+    ai.config.enable_web_fallback = False
     
     # 1. Prepare context from frontend (primary) or sensors DB (fallback)
     context = ai_query.context or {}
@@ -313,15 +325,21 @@ def analyze_data(ai_query: AIQuery, db: Session = Depends(get_db)):
         db.add(log)
         db.commit()
 
-    return {
+    payload = {
         "response": response_text,
         "intent_detected": analysis.intent.upper(),
         "intent_confidence": round(analysis.confidence * 100, 1),
         "engine": "SmartCityAlmaty-Neural-V3",
         "source": analysis.source,
+        "web_sources": getattr(analysis, "sources", []),
+        "language": analysis.language,
         "proactive_suggestions": proactive_tips,
         "processing_time_ms": round(analysis.processing_time_ms, 2)
     }
+    if os.getenv("AI_DEBUG", "0") == "1":
+        payload["routing_reason"] = getattr(analysis, "routing_reason", "")
+        payload["debug_trace_id"] = getattr(analysis, "debug_trace_id", "")
+    return payload
 
 @app.post("/api/ai/voice/tts")
 def text_to_speech_endpoint(data: dict):
@@ -430,21 +448,6 @@ def analyze_vision(query: VisionQuery):
     # For simulation, we assume image_path is valid
     response = ai.chat(query.query or "", image_path=query.image_path)
     return {"response": response, "status": "processed"}
-
-class VoiceTTSQuery(BaseModel):
-    text: str
-    lang: str = "en"
-
-@app.post("/api/ai/voice/tts")
-def text_to_speech(query: VoiceTTSQuery):
-    """Synthesize speech from text"""
-    if not HAS_MULTIMODAL:
-        raise HTTPException(status_code=500, detail="Voice engine not available")
-    engine = get_voice_engine()
-    audio_path = engine.text_to_speech(query.text, query.lang)
-    if audio_path:
-        return {"audio_url": f"/audio/{os.path.basename(audio_path)}", "status": "success"}
-    return {"status": "failed"}
 
 class VoiceSTTQuery(BaseModel):
     audio_path: str
@@ -568,27 +571,49 @@ async def get_bus_locations(db: Session = Depends(get_db)):
         except Exception as e:
             print(f"[Transport] Live API error, falling back: {e}")
     
-    # Fallback to database simulation
-    buses = db.query(BusLocation).all()
+    # Fallback to deterministic database snapshot (no random drift)
+    buses = db.query(BusLocation).order_by(BusLocation.id.asc()).all()
     results = []
+    now = datetime.datetime.now()
+    hour = now.hour
+    minute_bucket = now.minute // 5
+    is_rush = (7 <= hour <= 9) or (17 <= hour <= 19)
+
     for bus in buses:
-        bus.lat += (random.random() - 0.5) * 0.001
-        bus.lng += (random.random() - 0.5) * 0.001
-        occupancy = random.randint(20, 95) if bus.route_number in ["92", "32", "121"] else random.randint(5, 60)
+        route_seed = sum(ord(ch) for ch in bus.route_number)
+        base_occupancy = 58 if bus.route_number in ["92", "32", "121"] else 34
+        rush_boost = 14 if is_rush else -6
+        wave = ((route_seed + bus.id + minute_bucket * 3) % 21) - 10
+        occupancy = max(5, min(95, base_occupancy + rush_boost + wave))
+        has_ac = bus.vehicle_type == "BUS" and ((bus.id + route_seed) % 10 >= 2)
+        has_wifi = bus.vehicle_type == "BUS" and ((bus.id + route_seed * 3) % 10 >= 4)
+
         results.append({
             "id": bus.id,
             "route_number": bus.route_number,
             "vehicle_type": bus.vehicle_type,
             "lat": bus.lat,
             "lng": bus.lng,
-            "last_updated": datetime.datetime.now().isoformat(),
+            "last_updated": now.isoformat(),
             "occupancy": occupancy,
-            "has_ac": random.random() > 0.3 if bus.vehicle_type == "BUS" else random.random() > 0.7, # Marshrutkas rarely have AC
-            "has_wifi": random.random() > 0.5 if bus.vehicle_type == "BUS" else False, # No wifi in marshrutka
+            "has_ac": has_ac,
+            "has_wifi": has_wifi,
             "is_eco": bus.route_number in ["92", "12"]
         })
-    db.commit()
     return results
+
+
+@app.get("/api/transport/routes")
+async def get_transport_routes():
+    """Return transport route geometries for map (transport-only layer)."""
+    if not LIVE_TRANSPORT_AVAILABLE:
+        return []
+
+    try:
+        return await get_live_route_shapes()
+    except Exception as e:
+        print(f"[Transport] Routes API error: {e}")
+        return []
 
 @app.get("/api/transport/eco-stats")
 async def get_transport_eco_stats(db: Session = Depends(get_db)):
@@ -1317,4 +1342,3 @@ def list_stickers():
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
-

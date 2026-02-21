@@ -291,6 +291,16 @@ export const transportApi = {
       console.warn("Transport API offline");
       return [];
     }
+  },
+  getRoutes: async () => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/transport/routes`);
+      if (!response.ok) throw new Error("Transport routes API failed");
+      return await response.json();
+    } catch (e) {
+      console.warn("Transport routes API offline");
+      return [];
+    }
   }
 };
 

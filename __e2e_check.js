@@ -1,0 +1,15 @@
+const p = require('./package.json'); 
+const d1 = p.dependencies ? p.dependencies : {}; 
+const d2 = p.devDependencies ? p.devDependencies : {}; 
+let hasPlaywright = false; 
+if (d1['playwright']) hasPlaywright = true; 
+if (d2['playwright']) hasPlaywright = true; 
+if (d1['@playwright/test']) hasPlaywright = true; 
+if (d2['@playwright/test']) hasPlaywright = true; 
+let hasCypress = false; 
+if (d1['cypress']) hasCypress = true; 
+if (d2['cypress']) hasCypress = true; 
+const scripts = p.scripts ? Object.keys(p.scripts).join(',') : ''; 
+console.log('SCRIPTS', scripts); 
+console.log('PLAYWRIGHT', hasPlaywright); 
+console.log('CYPRESS', hasCypress); 

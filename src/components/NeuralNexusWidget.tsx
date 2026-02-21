@@ -213,6 +213,7 @@ export const NeuralNexusWidget: React.FC = () => {
                     >
                         <Button
                             onClick={() => setIsOpen(true)}
+                            data-testid="neural-widget-open"
                             className="h-16 w-16 rounded-full shadow-glow-primary border-2 border-primary/50 bg-slate-950 p-0 group overflow-hidden relative"
                         >
                             <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-transparent to-secondary/30 animate-pulse" />
@@ -286,6 +287,7 @@ export const NeuralNexusWidget: React.FC = () => {
                                         {messages.map((message) => (
                                             <motion.div
                                                 key={message.id}
+                                                data-testid={`neural-message-${message.role}`}
                                                 initial={{ opacity: 0, x: message.role === 'user' ? 20 : -20 }}
                                                 animate={{ opacity: 1, x: 0 }}
                                                 className={cn(
@@ -425,6 +427,7 @@ export const NeuralNexusWidget: React.FC = () => {
                                             <Input
                                                 value={input}
                                                 onChange={(e) => setInput(e.target.value)}
+                                                data-testid="neural-widget-input"
                                                 placeholder={isListening ? "Listening to Almaty..." : "Link with Neural Nexus..."}
                                                 className="h-12 bg-white/5 border-white/10 focus:border-primary/50 focus:ring-1 focus:ring-primary/50 rounded-xl pl-4 pr-12 transition-all group-hover:bg-white/10"
                                                 disabled={isTyping || isThinking}
@@ -447,6 +450,7 @@ export const NeuralNexusWidget: React.FC = () => {
                                         <Button
                                             type="submit"
                                             size="icon"
+                                            data-testid="neural-widget-send"
                                             className="h-12 w-12 rounded-xl bg-primary hover:bg-primary/80 shadow-glow-primary active:scale-95 transition-all shrink-0"
                                             disabled={!input.trim() || isTyping || isThinking}
                                         >

@@ -24,11 +24,26 @@ export interface Route {
   avgTraffic: number;
   avgAirQuality: number;
   score: number;
+  ecoScore: number;
+  source: 'road' | 'fallback';
   type: 'recommended' | 'alternative';
   explanation: string;
 }
 
 export type RoutePreference = 'traffic' | 'air' | 'balanced';
+
+interface OsrmRouteGeometry {
+  coordinates: [number, number][];
+}
+
+interface OsrmRouteItem {
+  geometry: OsrmRouteGeometry;
+}
+
+interface OsrmRouteResponse {
+  code: string;
+  routes: OsrmRouteItem[];
+}
 
 // Almaty landmarks and popular locations
 export const ALMATY_LOCATIONS: Record<string, RoutePoint> = {
@@ -93,6 +108,16 @@ const isPeakHour = (): boolean => {
   return (hour >= 7 && hour <= 9) || (hour >= 17 && hour <= 19);
 };
 
+// Deterministic jitter so identical input points produce stable route scores.
+const getDeterministicJitter = (point: RoutePoint, amplitude: number, salt: number): number => {
+  const now = new Date();
+  const daySeed = now.getFullYear() * 1000 + (now.getMonth() + 1) * 31 + now.getDate();
+  const seed = point.lat * 9283.17 + point.lng * 3643.11 + salt + daySeed;
+  const unit = Math.sin(seed * 12.9898 + 78.233) * 43758.5453;
+  const normalized = unit - Math.floor(unit); // 0..1
+  return (normalized * 2 - 1) * amplitude; // -amplitude..+amplitude
+};
+
 // Get traffic level at a point
 export const getTrafficAtPoint = (point: RoutePoint): number => {
   let maxCongestion = 20; // Base congestion
@@ -107,8 +132,8 @@ export const getTrafficAtPoint = (point: RoutePoint): number => {
     }
   }
 
-  // Add some randomness for realism
-  return Math.min(100, maxCongestion + (Math.random() * 10 - 5));
+  const jitter = getDeterministicJitter(point, 4, 11);
+  return Math.round(Math.min(100, Math.max(0, maxCongestion + jitter)));
 };
 
 // Get air quality at a point
@@ -124,7 +149,8 @@ export const getAirQualityAtPoint = (point: RoutePoint, trafficLevel: number): n
     }
   }
 
-  return Math.round(Math.min(200, baseAQI + (Math.random() * 10 - 5)));
+  const jitter = getDeterministicJitter(point, 4, 29 + Math.round(trafficLevel));
+  return Math.round(Math.min(200, Math.max(0, baseAQI + jitter)));
 };
 
 // Generate waypoints for a route (Simulating road follow-up)
@@ -236,14 +262,14 @@ const calculateRouteScore = (
 
 // Generate route explanation using AI logic
 const generateRouteExplanation = (
-  route: { avgTraffic: number; avgAirQuality: number; totalDistance: number; totalTime: number },
+  route: { avgTraffic: number; avgAirQuality: number; totalDistance: number; totalTime: number; source: 'road' | 'fallback' },
   preference: RoutePreference,
   isRecommended: boolean
 ): string => {
   const parts: string[] = [];
 
   if (isRecommended) {
-    parts.push('Recommended route');
+    parts.push(route.source === 'road' ? 'Road-verified recommended route' : 'Estimated recommended route');
 
     if (preference === 'air') {
       if (route.avgAirQuality < 50) {
@@ -280,41 +306,162 @@ const generateRouteExplanation = (
   return parts.join(' - ');
 };
 
+const OSRM_BASE_URL = 'https://router.project-osrm.org/route/v1/driving';
+
+const clamp = (value: number, min: number, max: number): number => Math.min(max, Math.max(min, value));
+
+const coordinatesHash = (points: RoutePoint[]): string => {
+  if (points.length < 2) return '';
+  const first = points[0];
+  const mid = points[Math.floor(points.length / 2)];
+  const last = points[points.length - 1];
+  return [
+    first.lat.toFixed(4), first.lng.toFixed(4),
+    mid.lat.toFixed(4), mid.lng.toFixed(4),
+    last.lat.toFixed(4), last.lng.toFixed(4),
+    String(points.length),
+  ].join('|');
+};
+
+const createPerpendicularWaypoint = (start: RoutePoint, end: RoutePoint, offsetMeters: number): RoutePoint => {
+  const midLat = (start.lat + end.lat) / 2;
+  const midLng = (start.lng + end.lng) / 2;
+  const cosLat = Math.cos((midLat * Math.PI) / 180);
+
+  const vectorXMeters = (end.lng - start.lng) * 111320 * cosLat;
+  const vectorYMeters = (end.lat - start.lat) * 111320;
+  const norm = Math.hypot(vectorXMeters, vectorYMeters);
+  if (norm < 1) return { lat: midLat, lng: midLng };
+
+  const perpX = -vectorYMeters / norm;
+  const perpY = vectorXMeters / norm;
+  const offsetX = perpX * offsetMeters;
+  const offsetY = perpY * offsetMeters;
+
+  return {
+    lat: midLat + offsetY / 111320,
+    lng: midLng + offsetX / (111320 * cosLat),
+  };
+};
+
+const fetchRoadRouteByPoints = async (points: RoutePoint[], signal: AbortSignal): Promise<RouteSegment[] | null> => {
+  const coordinateString = points.map((p) => `${p.lng},${p.lat}`).join(';');
+  const url = `${OSRM_BASE_URL}/${coordinateString}?overview=full&geometries=geojson&alternatives=false&steps=false`;
+  const response = await fetch(url, { signal });
+  if (!response.ok) return null;
+
+  const data = await response.json() as OsrmRouteResponse;
+  if (data.code !== 'Ok' || !Array.isArray(data.routes) || !data.routes[0]) {
+    return null;
+  }
+
+  const geometryPoints: RoutePoint[] = data.routes[0].geometry.coordinates.map(([lng, lat]) => ({ lat, lng }));
+  if (geometryPoints.length < 2) return null;
+  return calculateRouteFromWaypoints(geometryPoints);
+};
+
+const calculateEcoScore = (score: number): number => {
+  const normalized = clamp(score, 0, 100);
+  return Math.round(100 - normalized);
+};
+
+const buildRoute = (
+  id: string,
+  segments: RouteSegment[],
+  preference: RoutePreference,
+  source: 'road' | 'fallback'
+): Route => {
+  const totalDistance = segments.reduce((sum, s) => sum + s.distance, 0);
+  const totalTime = segments.reduce((sum, s) => sum + s.estimatedTime, 0);
+  const avgTraffic = Math.round(segments.reduce((sum, s) => sum + s.trafficLevel, 0) / segments.length);
+  const avgAirQuality = Math.round(segments.reduce((sum, s) => sum + s.airQuality, 0) / segments.length);
+  const score = calculateRouteScore(segments, preference);
+
+  return {
+    id,
+    segments,
+    totalDistance,
+    totalTime,
+    avgTraffic,
+    avgAirQuality,
+    score,
+    ecoScore: calculateEcoScore(score),
+    source,
+    type: 'alternative',
+    explanation: '',
+  };
+};
+
+const fetchRoadNetworkRoutes = async (
+  start: RoutePoint,
+  end: RoutePoint
+): Promise<RouteSegment[][]> => {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 6000);
+
+  try {
+    const distance = calculateDistance(start, end);
+    const offset = clamp(distance * 0.14, 350, 1400);
+    const viaLeft = createPerpendicularWaypoint(start, end, offset);
+    const viaRight = createPerpendicularWaypoint(start, end, -offset);
+
+    const routeCandidates: RoutePoint[][] = [
+      [start, end],
+      [start, viaLeft, end],
+      [start, viaRight, end],
+    ];
+
+    const fetched = await Promise.all(
+      routeCandidates.map((candidate) => fetchRoadRouteByPoints(candidate, controller.signal))
+    );
+
+    const seen = new Set<string>();
+    const routes: RouteSegment[][] = [];
+    for (const segments of fetched) {
+      if (!segments || segments.length === 0) continue;
+      const points: RoutePoint[] = [segments[0].start, ...segments.map((s) => s.end)];
+      const hash = coordinatesHash(points);
+      if (!hash || seen.has(hash)) continue;
+      seen.add(hash);
+      routes.push(segments);
+    }
+
+    return routes.slice(0, 3);
+  } catch {
+    return [];
+  } finally {
+    clearTimeout(timeoutId);
+  }
+};
+
 // Main routing function
-export const calculateRoutes = (
+export const calculateRoutes = async (
   start: RoutePoint,
   end: RoutePoint,
   preference: RoutePreference = 'balanced'
-): Route[] => {
+): Promise<Route[]> => {
   const routes: Route[] = [];
 
-  // Generate 3 route variants
-  for (let variant = 0; variant < 3; variant++) {
-    const waypoints = generateWaypoints(start, end, variant);
-    const segments = calculateRouteFromWaypoints(waypoints);
+  // First try real road network routes from OSRM
+  const roadRoutes = await fetchRoadNetworkRoutes(start, end);
+  roadRoutes.forEach((segments, idx) => {
+    routes.push(buildRoute(`route-road-${idx}`, segments, preference, 'road'));
+  });
 
-    const totalDistance = segments.reduce((sum, s) => sum + s.distance, 0);
-    const totalTime = segments.reduce((sum, s) => sum + s.estimatedTime, 0);
-    const avgTraffic = Math.round(segments.reduce((sum, s) => sum + s.trafficLevel, 0) / segments.length);
-    const avgAirQuality = Math.round(segments.reduce((sum, s) => sum + s.airQuality, 0) / segments.length);
-    const score = calculateRouteScore(segments, preference);
-
-    routes.push({
-      id: `route-${variant}`,
-      segments,
-      totalDistance,
-      totalTime,
-      avgTraffic,
-      avgAirQuality,
-      score,
-      type: 'alternative',
-      explanation: '',
-    });
+  // Fallback synthetic variants only when road API is unavailable
+  if (routes.length === 0) {
+    for (let variant = 0; variant < 3; variant++) {
+      const waypoints = generateWaypoints(start, end, variant);
+      const segments = calculateRouteFromWaypoints(waypoints);
+      routes.push(buildRoute(`route-fallback-${variant}`, segments, preference, 'fallback'));
+    }
   }
 
   // Sort by score (lower is better) and mark best as recommended
   routes.sort((a, b) => a.score - b.score);
-  routes[0].type = 'recommended';
+  if (routes[0]) {
+    routes[0].type = 'recommended';
+  }
 
   // Generate explanations
   routes.forEach((route, index) => {

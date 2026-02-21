@@ -1,23 +1,36 @@
-import React, { useEffect, useRef, useState, useCallback } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import {
-  Route,
-  RoutePoint,
-  getTrafficHeatmapData,
-  getAirQualityHeatmapData,
-  calculateDistance
-} from '@/lib/routingEngine';
+import { Crosshair, Layers, MapPinned, MoonStar, Sun } from 'lucide-react';
+import { EcoRoute } from '@/types/ecoRouting';
+
+interface RoutePoint {
+  lat: number;
+  lng: number;
+  name?: string;
+}
 
 interface EcoRoutingMapProps {
-  routes: Route[];
+  routes: EcoRoute[];
   startPoint: RoutePoint | null;
   endPoint: RoutePoint | null;
   showTraffic: boolean;
   showAirQuality: boolean;
   onMapClick?: (point: RoutePoint) => void;
   selectedRouteId?: string;
+  onRouteSelect?: (routeId: string) => void;
 }
+
+const getAqiColor = (aqi: number): string => {
+  if (aqi < 50) return '#22c55e';
+  if (aqi < 100) return '#f59e0b';
+  return '#ef4444';
+};
+
+const TILESETS = {
+  dark: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
+  light: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
+} as const;
 
 const EcoRoutingMap: React.FC<EcoRoutingMapProps> = ({
   routes,
@@ -27,17 +40,48 @@ const EcoRoutingMap: React.FC<EcoRoutingMapProps> = ({
   showAirQuality,
   onMapClick,
   selectedRouteId,
+  onRouteSelect,
 }) => {
   const mapRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<L.Map | null>(null);
+  const tileLayerRef = useRef<L.TileLayer | null>(null);
+  const onMapClickRef = useRef<EcoRoutingMapProps['onMapClick']>(onMapClick);
+  const [mapTheme, setMapTheme] = useState<'dark' | 'light'>('dark');
   const layersRef = useRef<{
-    traffic: L.LayerGroup;
-    airQuality: L.LayerGroup;
     routes: L.LayerGroup;
     markers: L.LayerGroup;
   } | null>(null);
 
-  // Initialize map
+  useEffect(() => {
+    onMapClickRef.current = onMapClick;
+  }, [onMapClick]);
+
+  const getSelectedOrRecommendedRoute = useCallback(() => {
+    return routes.find((route) => route.id === selectedRouteId) ?? routes.find((route) => route.type === 'recommended');
+  }, [routes, selectedRouteId]);
+
+  const fitToSelectedRoute = useCallback(() => {
+    const map = mapInstanceRef.current;
+    const route = getSelectedOrRecommendedRoute();
+    if (!map || !route || route.polyline.length < 2) return;
+    const bounds = L.latLngBounds(route.polyline.map((point) => [point[0], point[1]] as [number, number]));
+    map.fitBounds(bounds, { padding: [70, 70], maxZoom: 15 });
+  }, [getSelectedOrRecommendedRoute]);
+
+  const fitToAllRoutes = useCallback(() => {
+    const map = mapInstanceRef.current;
+    const allPoints = routes.flatMap((route) => route.polyline);
+    if (!map || allPoints.length < 2) return;
+    const bounds = L.latLngBounds(allPoints.map((point) => [point[0], point[1]] as [number, number]));
+    map.fitBounds(bounds, { padding: [65, 65], maxZoom: 14 });
+  }, [routes]);
+
+  const fitToPoints = useCallback(() => {
+    if (!mapInstanceRef.current || !startPoint || !endPoint) return;
+    const bounds = L.latLngBounds([startPoint.lat, startPoint.lng], [endPoint.lat, endPoint.lng]);
+    mapInstanceRef.current.fitBounds(bounds, { padding: [55, 55], maxZoom: 15 });
+  }, [startPoint, endPoint]);
+
   useEffect(() => {
     if (!mapRef.current || mapInstanceRef.current) return;
 
@@ -48,24 +92,19 @@ const EcoRoutingMap: React.FC<EcoRoutingMapProps> = ({
     });
     mapInstanceRef.current = map;
 
-    // Add dark theme tile layer
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    tileLayerRef.current = L.tileLayer(TILESETS[mapTheme], {
       attribution: '&copy; CARTO',
       maxZoom: 20,
     }).addTo(map);
 
-    // Initialize layer groups
     layersRef.current = {
-      traffic: L.layerGroup().addTo(map),
-      airQuality: L.layerGroup().addTo(map),
       routes: L.layerGroup().addTo(map),
       markers: L.layerGroup().addTo(map),
     };
 
-    // Click handler
     map.on('click', (e) => {
-      if (onMapClick) {
-        onMapClick({ lat: e.latlng.lat, lng: e.latlng.lng });
+      if (onMapClickRef.current) {
+        onMapClickRef.current({ lat: e.latlng.lat, lng: e.latlng.lng });
       }
     });
 
@@ -75,93 +114,116 @@ const EcoRoutingMap: React.FC<EcoRoutingMapProps> = ({
         mapInstanceRef.current = null;
       }
     };
-  }, []);
+  }, [mapTheme]);
 
-  // Update traffic heatmap
+  useEffect(() => {
+    if (!tileLayerRef.current) return;
+    tileLayerRef.current.setUrl(TILESETS[mapTheme]);
+  }, [mapTheme]);
+
   useEffect(() => {
     if (!layersRef.current) return;
-    layersRef.current.traffic.clearLayers();
-  }, [showTraffic]);
-
-  // Update air quality overlay
-  useEffect(() => {
-    if (!layersRef.current) return;
-    layersRef.current.airQuality.clearLayers();
-  }, [showAirQuality]);
-
-  // Update routes
-  useEffect(() => {
-    if (!layersRef.current) return;
-
     layersRef.current.routes.clearLayers();
 
-    routes.forEach((route, index) => {
+    const orderedRoutes = [...routes].sort((a, b) => {
+      const aSelected = a.id === selectedRouteId || (!selectedRouteId && a.type === 'recommended');
+      const bSelected = b.id === selectedRouteId || (!selectedRouteId && b.type === 'recommended');
+      if (aSelected === bSelected) return 0;
+      return aSelected ? 1 : -1;
+    });
+
+    orderedRoutes.forEach((route) => {
       const isSelected = route.id === selectedRouteId || (!selectedRouteId && route.type === 'recommended');
       const isRecommended = route.type === 'recommended';
 
-      // Build path from segments
-      const path: L.LatLngExpression[] = [];
-      route.segments.forEach((segment, segIndex) => {
-        if (segIndex === 0) {
-          path.push([segment.start.lat, segment.start.lng]);
-        }
-        path.push([segment.end.lat, segment.end.lng]);
-      });
+      const rawPath = route.polyline.map((point) => [point[0], point[1]] as L.LatLngExpression);
+      const path = rawPath;
+      if (path.length < 2) return;
 
-      // Route line styling - shadow/glow
+      const defaultColor = isRecommended ? '#00e5ff' : '#64748b';
+      const defaultOpacity = isRecommended ? 0.9 : 0.26;
+      const defaultWeight = isRecommended ? 5 : 3;
+      const tooltipText = `${Math.round(route.etaS / 60)} min • ${(route.distanceM / 1000).toFixed(1)} km`;
+
       if (isSelected) {
         L.polyline(path, {
-          color: isRecommended ? '#00e5ff' : '#94a3b8',
-          weight: 15,
-          opacity: 0.2,
+          color: isRecommended ? '#22d3ee' : '#94a3b8',
+          weight: isRecommended ? 13 : 10,
+          opacity: 0.14,
           lineCap: 'round',
           lineJoin: 'round',
         }).addTo(layersRef.current!.routes);
       }
 
-      const polyline = L.polyline(path, {
-        color: isRecommended ? '#00e5ff' : '#64748b',
-        weight: isSelected ? 6 : 4,
-        opacity: isSelected ? 1 : 0.4,
-        dashArray: isRecommended ? undefined : '10, 10',
-        lineCap: 'round',
-        lineJoin: 'round',
-      });
+      const attachRouteEvents = (line: L.Polyline) => {
+        line.on('click', () => onRouteSelect?.(route.id));
+        line.bindTooltip(tooltipText, { sticky: true });
+      };
 
-      // Add tooltip with segment info
-      const timeMin = Math.round(route.totalTime / 60);
-      const distKm = (route.totalDistance / 1000).toFixed(1);
+      if (showAirQuality && isRecommended && isSelected && route.aqiProfile.length > 0) {
+        const segments = path.length - 1;
+        const baseLine = L.polyline(path, {
+          color: defaultColor,
+          weight: 4,
+          opacity: 0.35,
+          lineCap: 'round',
+          lineJoin: 'round',
+        }).addTo(layersRef.current!.routes);
+        attachRouteEvents(baseLine);
 
-      polyline.bindTooltip(`
-        <div style="padding: 10px; min-width: 160px; color: #1e293b; background: white; border-radius: 12px; font-family: sans-serif;">
-          <div style="font-weight: 800; margin-bottom: 6px; color: #0f172a; border-bottom: 1px solid #f1f5f9; padding-bottom: 4px;">
-            ${isRecommended ? '✨ OPTIMAL' : 'ALTERNATIVE'} PATH
-          </div>
-          <div style="font-size: 11px; display: flex; flex-direction: column; gap: 4px;">
-            <div style="display: flex; justify-content: space-between;"><span>📍 Distance:</span> <b>${distKm} km</b></div>
-            <div style="display: flex; justify-content: space-between;"><span>⏱️ Est. Time:</span> <b>~${timeMin} min</b></div>
-            <div style="display: flex; justify-content: space-between;"><span>🚗 Traffic:</span> <b>${route.avgTraffic}%</b></div>
-            <div style="display: flex; justify-content: space-between;"><span>💨 AQI Index:</span> <b>${route.avgAirQuality}</b></div>
-          </div>
-        </div>
-      `, {
-        sticky: true,
-        className: 'route-tooltip',
-      });
+        for (let idx = 0; idx < segments; idx++) {
+          const profileIdx = Math.min(
+            route.aqiProfile.length - 1,
+            Math.floor((idx / Math.max(1, segments)) * route.aqiProfile.length)
+          );
+          const segmentPath = [path[idx], path[idx + 1]];
+          L.polyline(segmentPath, {
+            color: getAqiColor(route.aqiProfile[profileIdx]),
+            weight: 6,
+            opacity: 0.95,
+            lineCap: 'round',
+            lineJoin: 'round',
+          }).addTo(layersRef.current!.routes);
+        }
+        baseLine.bringToBack();
+      } else {
+        const line = L.polyline(path, {
+          color: defaultColor,
+          weight: defaultWeight,
+          opacity: defaultOpacity,
+          dashArray: isRecommended ? undefined : '9, 9',
+          lineCap: 'round',
+          lineJoin: 'round',
+        }).addTo(layersRef.current!.routes);
+        attachRouteEvents(line);
+        if (isSelected) {
+          line.bringToFront();
+        }
+      }
 
-      polyline.addTo(layersRef.current!.routes);
-
-      // Segment indicators removed for cleanliness as requested
+      if (showTraffic && isSelected && !showAirQuality) {
+        const trafficTint = route.avgTraffic > 75 ? '#ef4444' : route.avgTraffic > 50 ? '#f59e0b' : '#22c55e';
+        const halo = L.polyline(path, {
+          color: trafficTint,
+          weight: 8,
+          opacity: 0.15,
+          lineCap: 'round',
+          lineJoin: 'round',
+        }).addTo(layersRef.current!.routes);
+        halo.bringToBack();
+      }
     });
-  }, [routes, selectedRouteId]);
+  }, [routes, selectedRouteId, showAirQuality, showTraffic]);
 
-  // Update markers
+  useEffect(() => {
+    if (routes.length === 0) return;
+    fitToSelectedRoute();
+  }, [routes, selectedRouteId, fitToSelectedRoute]);
+
   useEffect(() => {
     if (!layersRef.current) return;
-
     layersRef.current.markers.clearLayers();
 
-    // Start marker
     if (startPoint) {
       const startIcon = L.divIcon({
         className: 'custom-marker',
@@ -185,10 +247,10 @@ const EcoRoutingMap: React.FC<EcoRoutingMapProps> = ({
 
       L.marker([startPoint.lat, startPoint.lng], { icon: startIcon })
         .bindPopup(`<b>Start:</b> ${startPoint.name || 'Selected location'}`)
+        .on('click', () => fitToPoints())
         .addTo(layersRef.current!.markers);
     }
 
-    // End marker
     if (endPoint) {
       const endIcon = L.divIcon({
         className: 'custom-marker',
@@ -212,25 +274,55 @@ const EcoRoutingMap: React.FC<EcoRoutingMapProps> = ({
 
       L.marker([endPoint.lat, endPoint.lng], { icon: endIcon })
         .bindPopup(`<b>Destination:</b> ${endPoint.name || 'Selected location'}`)
+        .on('click', () => fitToPoints())
         .addTo(layersRef.current!.markers);
     }
 
-    // Fit bounds if both points exist
-    if (startPoint && endPoint && mapInstanceRef.current) {
-      const bounds = L.latLngBounds(
-        [startPoint.lat, startPoint.lng],
-        [endPoint.lat, endPoint.lng]
-      );
-      mapInstanceRef.current.fitBounds(bounds, { padding: [50, 50] });
+    if (startPoint && endPoint && mapInstanceRef.current && routes.length === 0) {
+      fitToPoints();
     }
-  }, [startPoint, endPoint]);
+  }, [startPoint, endPoint, routes.length, fitToPoints]);
 
   return (
-    <div
-      ref={mapRef}
-      className="h-full w-full rounded-lg overflow-hidden"
-      style={{ minHeight: '400px', zIndex: 0 }}
-    />
+    <div className="relative h-full w-full rounded-lg overflow-hidden" style={{ minHeight: '400px', zIndex: 0 }}>
+      <div ref={mapRef} className="h-full w-full" />
+
+      <div className="absolute right-3 top-3 z-[450] flex flex-col gap-2">
+        <button
+          onClick={fitToSelectedRoute}
+          className="inline-flex items-center gap-1.5 rounded-xl border border-border/70 bg-card/85 px-2.5 py-2 text-[10px] font-bold uppercase tracking-wider text-foreground shadow-xl backdrop-blur hover:bg-card"
+          title="Focus selected route"
+        >
+          <Crosshair className="h-3.5 w-3.5" />
+          Route
+        </button>
+        <button
+          onClick={fitToAllRoutes}
+          className="inline-flex items-center gap-1.5 rounded-xl border border-border/70 bg-card/85 px-2.5 py-2 text-[10px] font-bold uppercase tracking-wider text-foreground shadow-xl backdrop-blur hover:bg-card"
+          title="Fit all alternatives"
+        >
+          <Layers className="h-3.5 w-3.5" />
+          All
+        </button>
+        <button
+          onClick={fitToPoints}
+          className="inline-flex items-center gap-1.5 rounded-xl border border-border/70 bg-card/85 px-2.5 py-2 text-[10px] font-bold uppercase tracking-wider text-foreground shadow-xl backdrop-blur hover:bg-card"
+          title="Fit start and destination"
+        >
+          <MapPinned className="h-3.5 w-3.5" />
+          A-B
+        </button>
+      </div>
+
+      <button
+        onClick={() => setMapTheme((prev) => (prev === 'dark' ? 'light' : 'dark'))}
+        className="absolute left-3 top-3 z-[450] inline-flex items-center gap-1.5 rounded-xl border border-border/70 bg-card/85 px-2.5 py-2 text-[10px] font-bold uppercase tracking-wider text-foreground shadow-xl backdrop-blur hover:bg-card"
+        title="Toggle map theme"
+      >
+        {mapTheme === 'dark' ? <Sun className="h-3.5 w-3.5" /> : <MoonStar className="h-3.5 w-3.5" />}
+        {mapTheme === 'dark' ? 'Light' : 'Dark'}
+      </button>
+    </div>
   );
 };
 

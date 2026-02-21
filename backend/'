@@ -1,0 +1,1 @@
+import json; from enhanced_gpt_ai import get_enhanced_ai; rows=[json.loads(l) for l in open('eval/dialog_context_eval_en.jsonl',encoding='utf-8') if l.strip()]; ai=get_enhanced_ai(); r=rows[0]; sid=r['session_id']; print('expected',r['expected_intent']); [print('turn',t,'=,ai.get_full_response(t, session_id=sid).intent) for t in r['turns']] 

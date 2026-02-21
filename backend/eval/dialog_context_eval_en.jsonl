@@ -1,0 +1,130 @@
+{"session_id": "ctx-1", "turns": ["Give me key facts about Cloud computing.", "what about this?", "and what about that?"], "expected_intent": "city"}
+{"session_id": "ctx-2", "turns": ["What is the practical meaning of Inflation?", "and what about that?", "and it?"], "expected_intent": "city"}
+{"session_id": "ctx-4", "turns": ["institute of nuclear physics alatau", "and what about that?", "and it?"], "expected_intent": "city"}
+{"session_id": "ctx-13", "turns": ["How does Internet of things affect everyday life?", "and what about that?", "and it?"], "expected_intent": "city"}
+{"session_id": "ctx-18", "turns": ["Give me key facts about Gross domestic product.", "and what about that?", "and it?"], "expected_intent": "city"}
+{"session_id": "ctx-19", "turns": ["traffic congestion monitoring", "what about this?", "and what about that?"], "expected_intent": "transport"}
+{"session_id": "ctx-22", "turns": ["Give me key facts about Hydroelectricity.", "what about it?", "and it?"], "expected_intent": "weather_eco"}
+{"session_id": "ctx-25", "turns": ["first president park oryx fountain", "what about this?", "what about this?"], "expected_intent": "city"}
+{"session_id": "ctx-32", "turns": ["evacuation of scientists ww2 almaty", "and what about that?", "what about it?"], "expected_intent": "city"}
+{"session_id": "ctx-33", "turns": ["Explain Shymbulak in simple words.", "and what about that?", "what about it?"], "expected_intent": "city"}
+{"session_id": "ctx-34", "turns": ["fountains almaty season may", "and what about that?", "what about this?"], "expected_intent": "city"}
+{"session_id": "ctx-35", "turns": ["aport apple where buy green bazaar", "and it?", "what about this?"], "expected_intent": "city"}
+{"session_id": "ctx-36", "turns": ["Why is Ascension Cathedral, Almaty important for a modern city?", "what about this?", "and it?"], "expected_intent": "city"}
+{"session_id": "ctx-45", "turns": ["neural networks explained", "and it?", "and it?"], "expected_intent": "city"}
+{"session_id": "ctx-49", "turns": ["Explain Neural network (machine learning) in simple words.", "what about this?", "and it?"], "expected_intent": "city"}
+{"session_id": "ctx-53", "turns": ["Explain Bus in simple words.", "and what about that?", "and what about that?"], "expected_intent": "transport"}
+{"session_id": "ctx-56", "turns": ["sos button feature", "and what about that?", "and what about that?"], "expected_intent": "city"}
+{"session_id": "ctx-57", "turns": ["current smog level", "what about it?", "what about it?"], "expected_intent": "weather_eco"}
+{"session_id": "ctx-59", "turns": ["Explain Waste management in simple words.", "what about this?", "what about this?"], "expected_intent": "weather_eco"}
+{"session_id": "ctx-65", "turns": ["Give me key facts about Electric vehicle.", "and it?", "what about this?"], "expected_intent": "transport"}
+{"session_id": "ctx-68", "turns": ["How does Waste management affect everyday life?", "and it?", "and it?"], "expected_intent": "weather_eco"}
+{"session_id": "ctx-74", "turns": ["What is the practical meaning of Gross domestic product?", "what about this?", "what about it?"], "expected_intent": "city"}
+{"session_id": "ctx-79", "turns": ["Why is Almaty Metro important for a modern city?", "and it?", "what about it?"], "expected_intent": "transport"}
+{"session_id": "ctx-82", "turns": ["kanysh satbayev founder academy geologist", "what about this?", "and what about that?"], "expected_intent": "city"}
+{"session_id": "ctx-83", "turns": ["gorky park dinopark waterpark", "what about this?", "what about it?"], "expected_intent": "city"}
+{"session_id": "ctx-84", "turns": ["Explain Almaty in simple words.", "and it?", "what about it?"], "expected_intent": "city"}
+{"session_id": "ctx-85", "turns": ["iot internet of things", "what about this?", "what about it?"], "expected_intent": "city"}
+{"session_id": "ctx-90", "turns": ["What should I know about Neural network (machine learning)?", "and it?", "what about it?"], "expected_intent": "city"}
+{"session_id": "ctx-92", "turns": ["What is the practical meaning of Urban heat island?", "and it?", "what about this?"], "expected_intent": "weather_eco"}
+{"session_id": "ctx-93", "turns": ["Why is Gross domestic product important for a modern city?", "what about this?", "and what about that?"], "expected_intent": "city"}
+{"session_id": "ctx-99", "turns": ["Give me key facts about Inflation.", "and it?", "what about this?"], "expected_intent": "city"}
+{"session_id": "ctx-102", "turns": ["Explain Machine learning in simple words.", "and it?", "and what about that?"], "expected_intent": "city"}
+{"session_id": "ctx-104", "turns": ["Why is Solar power important for a modern city?", "what about it?", "and what about that?"], "expected_intent": "weather_eco"}
+{"session_id": "ctx-106", "turns": ["medeu ice rink", "and what about that?", "what about it?"], "expected_intent": "city"}
+{"session_id": "ctx-108", "turns": ["How does Renewable energy affect everyday life?", "what about it?", "what about it?"], "expected_intent": "weather_eco"}
+{"session_id": "ctx-113", "turns": ["Can you summarize Cloud computing for me?", "and what about that?", "what about this?"], "expected_intent": "city"}
+{"session_id": "ctx-114", "turns": ["How does Shymbulak affect everyday life?", "what about this?", "what about this?"], "expected_intent": "city"}
+{"session_id": "ctx-115", "turns": ["seismic activity earthquakes safety", "what about this?", "and what about that?"], "expected_intent": "city"}
+{"session_id": "ctx-123", "turns": ["verny earthquake 1887 wooden city", "what about this?", "and it?"], "expected_intent": "city"}
+{"session_id": "ctx-124", "turns": ["website pages", "and it?", "what about it?"], "expected_intent": "city"}
+{"session_id": "ctx-126", "turns": ["data privacy smart city", "and it?", "what about it?"], "expected_intent": "city"}
+{"session_id": "ctx-128", "turns": ["best places today", "and what about that?", "what about this?"], "expected_intent": "city"}
+{"session_id": "ctx-135", "turns": ["theaters list best almaty", "what about this?", "and what about that?"], "expected_intent": "city"}
+{"session_id": "ctx-137", "turns": ["city health score", "what about this?", "and it?"], "expected_intent": "city"}
+{"session_id": "ctx-138", "turns": ["medeu district high mountains elite", "and what about that?", "what about it?"], "expected_intent": "city"}
+{"session_id": "ctx-143", "turns": ["Give me key facts about Kok Tobe.", "and it?", "and what about that?"], "expected_intent": "city"}
+{"session_id": "ctx-146", "turns": ["Why is Open data important for a modern city?", "what about this?", "and what about that?"], "expected_intent": "city"}
+{"session_id": "ctx-153", "turns": ["Explain Sustainable city in simple words.", "what about it?", "what about this?"], "expected_intent": "weather_eco"}
+{"session_id": "ctx-156", "turns": ["Give me key facts about Urban planning.", "and what about that?", "and what about that?"], "expected_intent": "city"}
+{"session_id": "ctx-157", "turns": ["Why is Air quality index important for a modern city?", "what about this?", "and what about that?"], "expected_intent": "weather_eco"}
+{"session_id": "ctx-158", "turns": ["Explain Medeu in simple words.", "and it?", "and it?"], "expected_intent": "city"}
+{"session_id": "ctx-160", "turns": ["incident tracking", "what about it?", "and it?"], "expected_intent": "city"}
+{"session_id": "ctx-161", "turns": ["Give me key facts about Telemedicine.", "what about this?", "and what about that?"], "expected_intent": "city"}
+{"session_id": "ctx-163", "turns": ["Can you summarize Cybersecurity for me?", "and what about that?", "what about it?"], "expected_intent": "city"}
+{"session_id": "ctx-164", "turns": ["predictive analytics", "and what about that?", "and what about that?"], "expected_intent": "city"}
+{"session_id": "ctx-165", "turns": ["What is the practical meaning of Air pollution?", "and it?", "what about it?"], "expected_intent": "weather_eco"}
+{"session_id": "ctx-166", "turns": ["What is the practical meaning of Air quality index?", "and what about that?", "and what about that?"], "expected_intent": "weather_eco"}
+{"session_id": "ctx-173", "turns": ["Explain Open data in simple words.", "what about this?", "what about this?"], "expected_intent": "city"}
+{"session_id": "ctx-178", "turns": ["almaty coordinates", "and it?", "and it?"], "expected_intent": "city"}
+{"session_id": "ctx-179", "turns": ["What should I know about Inflation?", "and what about that?", "and what about that?"], "expected_intent": "city"}
+{"session_id": "ctx-183", "turns": ["Explain Digital transformation in simple words.", "what about it?", "and it?"], "expected_intent": "city"}
+{"session_id": "ctx-185", "turns": ["Explain Hydroelectricity in simple words.", "and what about that?", "and it?"], "expected_intent": "weather_eco"}
+{"session_id": "ctx-187", "turns": ["What should I know about Urban planning?", "what about it?", "and it?"], "expected_intent": "city"}
+{"session_id": "ctx-188", "turns": ["charyn canyon", "and it?", "what about it?"], "expected_intent": "city"}
+{"session_id": "ctx-192", "turns": ["why is almaty smoggy causes air trap", "what about it?", "and it?"], "expected_intent": "weather_eco"}
+{"session_id": "ctx-194", "turns": ["cinema arman sarvarkina movies", "what about it?", "what about this?"], "expected_intent": "city"}
+{"session_id": "ctx-195", "turns": ["What is the practical meaning of Open data?", "what about it?", "and what about that?"], "expected_intent": "city"}
+{"session_id": "ctx-196", "turns": ["Can you summarize Medeu for me?", "and it?", "and what about that?"], "expected_intent": "city"}
+{"session_id": "ctx-197", "turns": ["What is the practical meaning of Emergency management?", "what about this?", "what about this?"], "expected_intent": "emergency"}
+{"session_id": "ctx-199", "turns": ["Can you summarize Air quality index for me?", "and it?", "what about this?"], "expected_intent": "weather_eco"}
+{"session_id": "ctx-205", "turns": ["Give me key facts about Digital transformation.", "and what about that?", "what about it?"], "expected_intent": "city"}
+{"session_id": "ctx-206", "turns": ["Can you summarize Almaty for me?", "what about it?", "what about this?"], "expected_intent": "city"}
+{"session_id": "ctx-207", "turns": ["How does Kazakhstan affect everyday life?", "what about this?", "what about this?"], "expected_intent": "city"}
+{"session_id": "ctx-214", "turns": ["Can you summarize Telemedicine for me?", "and what about that?", "what about it?"], "expected_intent": "city"}
+{"session_id": "ctx-216", "turns": ["What should I know about Kazakhstan?", "and it?", "and what about that?"], "expected_intent": "city"}
+{"session_id": "ctx-217", "turns": ["What should I know about Shymbulak?", "what about it?", "and what about that?"], "expected_intent": "city"}
+{"session_id": "ctx-218", "turns": ["tech garden astana hub almaty hub", "what about it?", "and it?"], "expected_intent": "city"}
+{"session_id": "ctx-219", "turns": ["green initiatives", "what about it?", "and what about that?"], "expected_intent": "weather_eco"}
+{"session_id": "ctx-223", "turns": ["What should I know about Medeu?", "and it?", "and what about that?"], "expected_intent": "city"}
+{"session_id": "ctx-225", "turns": ["panfilov park", "and what about that?", "what about this?"], "expected_intent": "city"}
+{"session_id": "ctx-227", "turns": ["emergency response time", "what about it?", "and what about that?"], "expected_intent": "city"}
+{"session_id": "ctx-229", "turns": ["Why is Traffic congestion important for a modern city?", "what about it?", "what about this?"], "expected_intent": "transport"}
+{"session_id": "ctx-232", "turns": ["Give me key facts about Machine learning.", "what about it?", "and what about that?"], "expected_intent": "city"}
+{"session_id": "ctx-233", "turns": ["dostyk plaza mega mall shopping", "and it?", "what about it?"], "expected_intent": "city"}
+{"session_id": "ctx-238", "turns": ["How does Green Bazaar affect everyday life?", "what about it?", "and it?"], "expected_intent": "city"}
+{"session_id": "ctx-240", "turns": ["botanical garden plants nature", "and it?", "what about this?"], "expected_intent": "city"}
+{"session_id": "ctx-241", "turns": ["waste management iot", "and it?", "and it?"], "expected_intent": "city"}
+{"session_id": "ctx-243", "turns": ["bauyrsak recipe secret hospitality", "and what about that?", "what about this?"], "expected_intent": "city"}
+{"session_id": "ctx-245", "turns": ["What is the practical meaning of Road safety?", "and it?", "what about this?"], "expected_intent": "emergency"}
+{"session_id": "ctx-247", "turns": ["Can you summarize Electric vehicle for me?", "and it?", "what about this?"], "expected_intent": "transport"}
+{"session_id": "ctx-248", "turns": ["What is the practical meaning of Sustainable city?", "and what about that?", "and it?"], "expected_intent": "weather_eco"}
+{"session_id": "ctx-252", "turns": ["Can you summarize Sanitation for me?", "and it?", "what about it?"], "expected_intent": "city"}
+{"session_id": "ctx-253", "turns": ["almaty climate features microclimate difference", "and it?", "what about it?"], "expected_intent": "weather_eco"}
+{"session_id": "ctx-255", "turns": ["alma-ata name meaning apple", "what about this?", "what about it?"], "expected_intent": "city"}
+{"session_id": "ctx-257", "turns": ["What is the practical meaning of Cloud computing?", "what about this?", "and it?"], "expected_intent": "city"}
+{"session_id": "ctx-258", "turns": ["opera and ballet theatre history", "and it?", "what about it?"], "expected_intent": "city"}
+{"session_id": "ctx-260", "turns": ["national museum central state masks gold", "what about this?", "and what about that?"], "expected_intent": "city"}
+{"session_id": "ctx-262", "turns": ["Give me key facts about Wind power.", "what about this?", "and it?"], "expected_intent": "weather_eco"}
+{"session_id": "ctx-263", "turns": ["How does Wind power affect everyday life?", "and what about that?", "what about this?"], "expected_intent": "weather_eco"}
+{"session_id": "ctx-266", "turns": ["What should I know about Sustainable city?", "and it?", "and what about that?"], "expected_intent": "weather_eco"}
+{"session_id": "ctx-267", "turns": ["almaty arts scene", "and it?", "and what about that?"], "expected_intent": "city"}
+{"session_id": "ctx-268", "turns": ["Why is Medeu important for a modern city?", "what about this?", "what about this?"], "expected_intent": "city"}
+{"session_id": "ctx-269", "turns": ["real time data", "what about this?", "and what about that?"], "expected_intent": "city"}
+{"session_id": "ctx-270", "turns": ["Can you summarize Smart city for me?", "what about this?", "and what about that?"], "expected_intent": "city"}
+{"session_id": "ctx-274", "turns": ["republic square monument independence", "what about it?", "and it?"], "expected_intent": "city"}
+{"session_id": "ctx-275", "turns": ["Why is Bus important for a modern city?", "what about it?", "and what about that?"], "expected_intent": "transport"}
+{"session_id": "ctx-276", "turns": ["circus building yurt architecture", "what about this?", "what about this?"], "expected_intent": "city"}
+{"session_id": "ctx-279", "turns": ["economic loss traffic jams almaty cost", "and what about that?", "and it?"], "expected_intent": "transport"}
+{"session_id": "ctx-282", "turns": ["What is the practical meaning of Internet of things?", "what about this?", "what about it?"], "expected_intent": "city"}
+{"session_id": "ctx-283", "turns": ["Explain Telemedicine in simple words.", "and it?", "what about this?"], "expected_intent": "city"}
+{"session_id": "ctx-284", "turns": ["What should I know about Kok Tobe?", "and what about that?", "what about it?"], "expected_intent": "city"}
+{"session_id": "ctx-287", "turns": ["aqi index meaning", "and what about that?", "what about this?"], "expected_intent": "weather_eco"}
+{"session_id": "ctx-288", "turns": ["How does Air pollution affect everyday life?", "and it?", "what about this?"], "expected_intent": "weather_eco"}
+{"session_id": "ctx-290", "turns": ["emergency services page", "what about this?", "what about this?"], "expected_intent": "city"}
+{"session_id": "ctx-291", "turns": ["Can you summarize Emergency management for me?", "and it?", "what about it?"], "expected_intent": "emergency"}
+{"session_id": "ctx-292", "turns": ["big almaty lake", "and what about that?", "and what about that?"], "expected_intent": "city"}
+{"session_id": "ctx-295", "turns": ["How does Open data affect everyday life?", "and it?", "what about this?"], "expected_intent": "city"}
+{"session_id": "ctx-296", "turns": ["What is the practical meaning of Digital transformation?", "what about it?", "and what about that?"], "expected_intent": "city"}
+{"session_id": "ctx-298", "turns": ["What should I know about Almaty?", "and what about that?", "and what about that?"], "expected_intent": "city"}
+{"session_id": "ctx-299", "turns": ["How does Bicycle-sharing system affect everyday life?", "what about this?", "what about this?"], "expected_intent": "transport"}
+{"session_id": "ctx-300", "turns": ["Can you summarize Bus for me?", "what about this?", "what about this?"], "expected_intent": "transport"}
+{"session_id": "ctx-303", "turns": ["Can you summarize Ascension Cathedral, Almaty for me?", "what about this?", "and what about that?"], "expected_intent": "city"}
+{"session_id": "ctx-305", "turns": ["Can you summarize Solar power for me?", "what about it?", "and what about that?"], "expected_intent": "weather_eco"}
+{"session_id": "ctx-310", "turns": ["What should I know about Water supply network?", "what about this?", "and it?"], "expected_intent": "city"}
+{"session_id": "ctx-311", "turns": ["atent tower 371 meters", "and what about that?", "what about it?"], "expected_intent": "city"}
+{"session_id": "ctx-312", "turns": ["mountain wind fresh air medeu night", "and what about that?", "what about this?"], "expected_intent": "weather_eco"}
+{"session_id": "ctx-315", "turns": ["Why is Sustainable city important for a modern city?", "what about this?", "and it?"], "expected_intent": "weather_eco"}
+{"session_id": "ctx-316", "turns": ["big data analytics", "and it?", "and it?"], "expected_intent": "city"}
+{"session_id": "ctx-318", "turns": ["Can you summarize Hydroelectricity for me?", "what about it?", "and what about that?"], "expected_intent": "weather_eco"}
+{"session_id": "ctx-319", "turns": ["Explain Kazakhstan in simple words.", "and it?", "what about it?"], "expected_intent": "city"}

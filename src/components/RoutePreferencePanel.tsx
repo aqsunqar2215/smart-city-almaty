@@ -3,11 +3,13 @@ import { Car, Wind, Scale, Clock, AlertTriangle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
-import { RoutePreference, predictConditions } from '@/lib/routingEngine';
+import { predictConditions } from '@/lib/routingEngine';
+import { EcoRoutingProfile } from '@/types/ecoRouting';
+import { ECO_ROUTING_TEXT } from '@/lib/ecoRoutingTexts';
 
 interface RoutePreferencePanelProps {
-  preference: RoutePreference;
-  onPreferenceChange: (pref: RoutePreference) => void;
+  preference: EcoRoutingProfile;
+  onPreferenceChange: (pref: EcoRoutingProfile) => void;
   showTraffic: boolean;
   showAirQuality: boolean;
   onShowTrafficChange: (show: boolean) => void;
@@ -24,24 +26,24 @@ const RoutePreferencePanel: React.FC<RoutePreferencePanelProps> = ({
 }) => {
   const prediction = predictConditions(new Date());
 
-  const preferences: Array<{ id: RoutePreference; label: string; icon: React.ReactNode; description: string }> = [
+  const preferences: Array<{ id: EcoRoutingProfile; label: string; icon: React.ReactNode; description: string }> = [
     {
       id: 'traffic',
-      label: 'Less Traffic',
+      label: ECO_ROUTING_TEXT.labels.fastest,
       icon: <Car className="h-4 w-4" />,
-      description: '70% traffic, 30% air quality'
+      description: 'Prioritizes travel time and smooth flow'
     },
     {
       id: 'air',
-      label: 'Cleaner Air',
+      label: ECO_ROUTING_TEXT.labels.cleanest,
       icon: <Wind className="h-4 w-4" />,
-      description: '70% air quality, 30% traffic'
+      description: 'Prioritizes lowest AQI exposure'
     },
     {
       id: 'balanced',
-      label: 'Balanced',
+      label: ECO_ROUTING_TEXT.labels.balanced,
       icon: <Scale className="h-4 w-4" />,
-      description: '50% traffic, 50% air quality'
+      description: 'Balances time, AQI, and emissions'
     },
   ];
 

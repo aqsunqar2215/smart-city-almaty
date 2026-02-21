@@ -1,0 +1,40 @@
+export const ECO_ROUTING_TEXT = {
+  status: {
+    selectPoints: 'Select start and destination',
+    roadReady: 'Road Verified',
+    estimated: 'Estimated mode',
+    degraded: 'AQI data degraded',
+  },
+  buttons: {
+    optimize: 'Optimize Eco Route',
+    optimizing: 'Optimizing...',
+    demo: 'Demo Analysis',
+  },
+  labels: {
+    fastest: 'Fastest',
+    balanced: 'Balanced',
+    cleanest: 'Cleanest',
+    fastestEta: 'Fastest ETA',
+    lowestAqi: 'Lowest AQI',
+    lowestCo2: 'Lowest CO2',
+    routeVerified: 'Road Verified',
+    routeEstimated: 'Estimated',
+    ecoScore: 'Eco Score',
+    aqiExposure: 'AQI Exposure',
+    co2: 'CO2',
+  },
+  map: {
+    focusRoute: 'Route',
+    focusAll: 'All',
+    focusPoints: 'A-B',
+    lightMode: 'Light',
+    darkMode: 'Dark',
+    focusRouteTitle: 'Focus selected route',
+    focusAllTitle: 'Fit all alternatives',
+    focusPointsTitle: 'Fit start and destination',
+    toggleThemeTitle: 'Toggle map theme',
+  },
+  tooltips: {
+    invalidPoints: 'Select both start and destination first',
+  },
+} as const;

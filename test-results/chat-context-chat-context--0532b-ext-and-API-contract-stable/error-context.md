@@ -1,0 +1,716 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - region "Notifications (F8)":
+      - list
+    - region "Notifications alt+T"
+    - generic [ref=e3]:
+      - banner [ref=e4]:
+        - navigation [ref=e5]:
+          - generic [ref=e6]:
+            - link "Smart Almaty City_OS_v4" [ref=e7] [cursor=pointer]:
+              - /url: /
+              - img [ref=e9]
+              - generic [ref=e11]:
+                - generic [ref=e12]: Smart Almaty
+                - generic [ref=e13]: City_OS_v4
+            - generic [ref=e14]:
+              - link "City OS" [ref=e15] [cursor=pointer]:
+                - /url: /
+                - generic [ref=e16]:
+                  - img [ref=e17]
+                  - generic [ref=e19]: City OS
+              - link "Eco Routing" [ref=e21] [cursor=pointer]:
+                - /url: /eco-routing
+                - generic [ref=e22]:
+                  - img [ref=e23]
+                  - generic [ref=e26]: Eco Routing
+              - link "Analytics" [ref=e27] [cursor=pointer]:
+                - /url: /analytics
+                - generic [ref=e28]:
+                  - img [ref=e29]
+                  - generic [ref=e31]: Analytics
+              - link "Citizen ID" [ref=e32] [cursor=pointer]:
+                - /url: /profile
+                - generic [ref=e33]:
+                  - img [ref=e34]
+                  - generic [ref=e37]: Citizen ID
+              - link "Emergency" [ref=e38] [cursor=pointer]:
+                - /url: /emergency
+                - generic [ref=e39]:
+                  - img [ref=e40]
+                  - generic [ref=e42]: Emergency
+              - link "Transport" [ref=e43] [cursor=pointer]:
+                - /url: /transport
+                - generic [ref=e44]:
+                  - img [ref=e45]
+                  - generic [ref=e49]: Transport
+              - link "Safety" [ref=e50] [cursor=pointer]:
+                - /url: /infrastructure
+                - generic [ref=e51]:
+                  - img [ref=e52]
+                  - generic [ref=e54]: Safety
+              - link "Community" [ref=e55] [cursor=pointer]:
+                - /url: /community
+                - generic [ref=e56]:
+                  - img [ref=e57]
+                  - generic [ref=e62]: Community
+              - link "Ecosystem" [ref=e63] [cursor=pointer]:
+                - /url: /ecosystem
+                - generic [ref=e64]:
+                  - img [ref=e65]
+                  - generic [ref=e75]: Ecosystem
+              - link "Admin" [ref=e76] [cursor=pointer]:
+                - /url: /admin
+                - generic [ref=e77]:
+                  - img [ref=e78]
+                  - generic [ref=e80]: Admin
+          - generic [ref=e81]:
+            - generic [ref=e82]:
+              - generic [ref=e83]:
+                - generic [ref=e84]: Trust Index
+                - generic [ref=e85]: 742_UX
+              - generic [ref=e89]: GRID_SYNCED
+            - button "Search CTRL K" [ref=e90] [cursor=pointer]:
+              - img [ref=e91]
+              - generic [ref=e94]: Search
+              - generic [ref=e96]: CTRL K
+            - generic [ref=e98]:
+              - button "Toggle atmosphere" [ref=e99] [cursor=pointer]:
+                - img
+                - generic [ref=e100]: Toggle atmosphere
+              - button "Toggle theme" [ref=e101] [cursor=pointer]:
+                - img
+                - img
+                - generic [ref=e102]: Toggle theme
+              - button [ref=e103] [cursor=pointer]:
+                - img
+      - main [ref=e104]:
+        - generic [ref=e107]:
+          - generic [ref=e110]:
+            - generic:
+              - img "City Background"
+            - generic [ref=e115]:
+              - img [ref=e117]
+              - generic [ref=e121]:
+                - generic [ref=e122]: City Health Index
+                - generic [ref=e123]: 87/100
+            - generic [ref=e125]:
+              - heading "Smart Almaty OS v5.0-ULTRA" [level=1] [ref=e126]:
+                - generic [ref=e127]: Smart Almaty OS
+                - generic [ref=e128]: v5.0-ULTRA
+              - paragraph [ref=e129]: Neural_Kernel_Integrated_Active
+            - generic [ref=e130]:
+              - link "Eco Routing" [ref=e131] [cursor=pointer]:
+                - /url: /eco-routing
+                - button "Eco Routing" [ref=e132]:
+                  - img
+                  - text: Eco Routing
+              - button "Report Issue (AI)" [ref=e133] [cursor=pointer]:
+                - img
+                - text: Report Issue (AI)
+              - button "SOS" [ref=e134] [cursor=pointer]:
+                - img
+                - generic [ref=e135]: SOS
+              - button "Refresh" [ref=e136] [cursor=pointer]:
+                - img
+                - text: Refresh
+          - generic [ref=e138]:
+            - img [ref=e139]
+            - generic [ref=e142]: Almaty, Kazakhstan
+            - generic [ref=e143]: "|"
+            - generic [ref=e144]:
+              - text: "Status:"
+              - generic [ref=e145]: Active
+            - generic [ref=e147]: "|"
+            - generic [ref=e148]: "Last sync: 4:43:20 PM"
+            - generic [ref=e149]: "|"
+            - generic [ref=e150]: "Nodes: 1,242 Online"
+          - generic [ref=e153]:
+            - img [ref=e155]
+            - generic [ref=e166]:
+              - generic [ref=e167]:
+                - img [ref=e169]
+                - generic [ref=e172]:
+                  - heading "Neural Forecast" [level=3] [ref=e173]
+                  - paragraph [ref=e174]: Almaty Predictive Engine V5
+              - generic [ref=e175]: 98.4% PRECISION
+            - generic [ref=e177]:
+              - generic [ref=e178]:
+                - generic [ref=e179]:
+                  - generic [ref=e180]:
+                    - img [ref=e181]
+                    - generic [ref=e184]: 17:00
+                  - generic [ref=e185]:
+                    - generic [ref=e186]: Confidence
+                    - generic [ref=e187]: 87%
+                - generic [ref=e188]:
+                  - generic [ref=e189]:
+                    - generic [ref=e190]:
+                      - generic [ref=e191]:
+                        - generic [ref=e192]: Expected Traffic
+                        - generic [ref=e193]: 7/10
+                      - progressbar [ref=e194]
+                    - generic [ref=e196]:
+                      - generic [ref=e197]:
+                        - generic [ref=e198]: AQI Forecast
+                        - generic [ref=e199]: "106"
+                      - progressbar [ref=e200]
+                  - generic [ref=e202]:
+                    - img [ref=e203]
+                    - generic [ref=e206]: Normal traffic patterns predicted
+              - generic [ref=e207]:
+                - generic [ref=e208]:
+                  - generic [ref=e209]:
+                    - img [ref=e210]
+                    - generic [ref=e213]: 18:00
+                  - generic [ref=e214]:
+                    - generic [ref=e215]: Confidence
+                    - generic [ref=e216]: 82%
+                - generic [ref=e217]:
+                  - generic [ref=e218]:
+                    - generic [ref=e219]:
+                      - generic [ref=e220]:
+                        - generic [ref=e221]: Expected Traffic
+                        - generic [ref=e222]: 8/10
+                      - progressbar [ref=e223]
+                    - generic [ref=e225]:
+                      - generic [ref=e226]:
+                        - generic [ref=e227]: AQI Forecast
+                        - generic [ref=e228]: "114"
+                      - progressbar [ref=e229]
+                  - generic [ref=e231]:
+                    - img [ref=e232]
+                    - generic [ref=e234]: Air quality improving due to mountain breeze
+              - generic [ref=e235]:
+                - generic [ref=e236]:
+                  - generic [ref=e237]:
+                    - img [ref=e238]
+                    - generic [ref=e241]: 19:00
+                  - generic [ref=e242]:
+                    - generic [ref=e243]: Confidence
+                    - generic [ref=e244]: 77%
+                - generic [ref=e245]:
+                  - generic [ref=e246]:
+                    - generic [ref=e247]:
+                      - generic [ref=e248]:
+                        - generic [ref=e249]: Expected Traffic
+                        - generic [ref=e250]: 4/10
+                      - progressbar [ref=e251]
+                    - generic [ref=e253]:
+                      - generic [ref=e254]:
+                        - generic [ref=e255]: AQI Forecast
+                        - generic [ref=e256]: "71"
+                      - progressbar [ref=e257]
+                  - generic [ref=e259]:
+                    - img [ref=e260]
+                    - generic [ref=e263]: Expected congestion increase on Al-Farabi Ave
+          - generic [ref=e264]:
+            - generic [ref=e265]:
+              - generic [ref=e267]:
+                - generic [ref=e268]:
+                  - generic [ref=e269]:
+                    - generic [ref=e270]:
+                      - img [ref=e272]
+                      - heading "Weather" [level=3] [ref=e274]
+                    - generic [ref=e275]: Live
+                  - generic [ref=e277]:
+                    - generic [ref=e278]:
+                      - generic [ref=e279]:
+                        - generic [ref=e280]:
+                          - generic [ref=e281]: "6.5"
+                          - generic [ref=e282]: °C
+                        - generic [ref=e283]:
+                          - generic [ref=e284]: Rainy
+                          - generic [ref=e285]: Almaty
+                      - generic [ref=e286]:
+                        - generic [ref=e287]: Feels Like
+                        - generic [ref=e288]: 4.5°C
+                    - generic [ref=e289]:
+                      - generic [ref=e290]:
+                        - img [ref=e291]
+                        - generic [ref=e294]:
+                          - generic [ref=e295]: Humidity
+                          - generic [ref=e296]: 79%
+                      - generic [ref=e297]:
+                        - img [ref=e298]
+                        - generic [ref=e302]:
+                          - generic [ref=e303]: Wind
+                          - generic [ref=e304]: 7.7 km/h
+                - generic [ref=e305]:
+                  - generic [ref=e306]:
+                    - generic [ref=e307]:
+                      - img [ref=e309]
+                      - heading "Air Quality" [level=3] [ref=e312]
+                    - generic [ref=e313]: Sensor
+                  - generic [ref=e315]:
+                    - generic [ref=e316]:
+                      - generic [ref=e317]:
+                        - generic [ref=e318]: "78"
+                        - generic [ref=e319]:
+                          - generic [ref=e320]: Moderate
+                          - generic [ref=e321]: AQI Index (EU)
+                      - progressbar [ref=e323]
+                    - generic [ref=e325]:
+                      - generic [ref=e326]:
+                        - generic [ref=e327]: PM2.5
+                        - generic [ref=e328]: "26.0"
+                      - generic [ref=e329]:
+                        - generic [ref=e330]: PM10
+                        - generic [ref=e331]: "40.0"
+                      - generic [ref=e332]:
+                        - generic [ref=e333]: O₃
+                        - generic [ref=e334]: "21.0"
+                      - generic [ref=e335]:
+                        - generic [ref=e336]: NO₂
+                        - generic [ref=e337]: "14.0"
+                - generic [ref=e338]:
+                  - generic [ref=e339]:
+                    - generic [ref=e340]:
+                      - img [ref=e342]
+                      - heading "Traffic" [level=3] [ref=e346]
+                    - generic [ref=e347]: Flow
+                  - generic [ref=e349]:
+                    - generic [ref=e350]:
+                      - generic [ref=e351]:
+                        - generic [ref=e352]: 60%
+                        - generic [ref=e353]:
+                          - generic [ref=e354]: Heavy
+                          - generic [ref=e355]: Congestion
+                      - progressbar [ref=e357]
+                    - generic [ref=e359]:
+                      - generic [ref=e360]:
+                        - img [ref=e362]
+                        - generic [ref=e365]:
+                          - generic [ref=e366]: Avg Speed
+                          - generic [ref=e367]: 31 km/h
+                      - generic [ref=e368]:
+                        - img [ref=e370]
+                        - generic [ref=e372]:
+                          - generic [ref=e373]: Incidents
+                          - generic [ref=e374]: "2"
+              - generic [ref=e376]:
+                - generic [ref=e377]:
+                  - heading "Interactive Map — District Overview" [level=2] [ref=e378]:
+                    - img [ref=e379]
+                    - text: Interactive Map — District Overview
+                  - generic [ref=e382]: Live Data
+                - generic [ref=e383]:
+                  - generic [ref=e384]:
+                    - generic:
+                      - generic:
+                        - img
+                      - generic [ref=e393]:
+                        - button "Almaly":
+                          - generic: Almaly
+                        - button "Bostandyk":
+                          - generic: Bostandyk
+                        - button "Medeu":
+                          - generic: Medeu
+                        - button "Auezov":
+                          - generic: Auezov
+                        - button "Turksib":
+                          - generic: Turksib
+                        - button "Zhetysu":
+                          - generic: Zhetysu
+                        - button "Alatau":
+                          - generic: Alatau
+                        - button "Nauryzbay":
+                          - generic: Nauryzbay
+                        - button [ref=e394] [cursor=pointer]
+                        - button [ref=e396] [cursor=pointer]
+                        - button [ref=e398] [cursor=pointer]
+                        - button [ref=e400] [cursor=pointer]
+                        - button [ref=e402] [cursor=pointer]
+                        - button [ref=e404] [cursor=pointer]
+                        - button "P" [ref=e406] [cursor=pointer]:
+                          - generic [ref=e407]: P
+                        - button "P" [ref=e408] [cursor=pointer]:
+                          - generic [ref=e409]: P
+                        - button "F" [ref=e410] [cursor=pointer]:
+                          - generic [ref=e411]: F
+                        - button "P" [ref=e412] [cursor=pointer]:
+                          - generic [ref=e413]: P
+                        - button "A" [ref=e414] [cursor=pointer]:
+                          - generic [ref=e415]: A
+                        - button "P" [ref=e416] [cursor=pointer]:
+                          - generic [ref=e417]: P
+                        - button "P" [ref=e418] [cursor=pointer]:
+                          - generic [ref=e419]: P
+                        - button "A" [ref=e420] [cursor=pointer]:
+                          - generic [ref=e421]: A
+                        - button "F" [ref=e422] [cursor=pointer]:
+                          - generic [ref=e423]: F
+                        - button "A" [ref=e424] [cursor=pointer]:
+                          - generic [ref=e425]: A
+                        - button "P" [ref=e426] [cursor=pointer]:
+                          - generic [ref=e427]: P
+                        - button "A" [ref=e428] [cursor=pointer]:
+                          - generic [ref=e429]: A
+                        - button "P" [ref=e430] [cursor=pointer]:
+                          - generic [ref=e431]: P
+                        - button "A" [ref=e432] [cursor=pointer]:
+                          - generic [ref=e433]: A
+                        - button "F" [ref=e434] [cursor=pointer]:
+                          - generic [ref=e435]: F
+                        - button "420" [ref=e436] [cursor=pointer]:
+                          - generic [ref=e438]: "420"
+                        - button "212" [ref=e441] [cursor=pointer]:
+                          - generic [ref=e443]: "212"
+                        - button "117" [ref=e446] [cursor=pointer]:
+                          - generic [ref=e448]: "117"
+                        - button "34" [ref=e451] [cursor=pointer]:
+                          - generic [ref=e453]: "34"
+                        - button "104" [ref=e456] [cursor=pointer]:
+                          - generic [ref=e458]: "104"
+                        - button "100" [ref=e461] [cursor=pointer]:
+                          - generic [ref=e463]: "100"
+                        - button "102" [ref=e466] [cursor=pointer]:
+                          - generic [ref=e468]: "102"
+                        - button "92" [ref=e471] [cursor=pointer]:
+                          - generic [ref=e473]: "92"
+                        - button "92" [ref=e476] [cursor=pointer]:
+                          - generic [ref=e478]: "92"
+                        - button "4" [ref=e481] [cursor=pointer]:
+                          - generic [ref=e483]: "4"
+                        - button "32" [ref=e486] [cursor=pointer]:
+                          - generic [ref=e488]: "32"
+                        - button "32" [ref=e491] [cursor=pointer]:
+                          - generic [ref=e493]: "32"
+                        - button "105" [ref=e496] [cursor=pointer]:
+                          - generic [ref=e498]: "105"
+                        - button "2" [ref=e501] [cursor=pointer]:
+                          - generic [ref=e503]: "2"
+                        - button "86" [ref=e506] [cursor=pointer]:
+                          - generic [ref=e508]: "86"
+                        - button "119" [ref=e511] [cursor=pointer]:
+                          - generic [ref=e513]: "119"
+                        - button "351" [ref=e516] [cursor=pointer]:
+                          - generic [ref=e518]: "351"
+                        - button "1" [ref=e521] [cursor=pointer]:
+                          - generic [ref=e523]: "1"
+                        - button "79" [ref=e526] [cursor=pointer]:
+                          - generic [ref=e528]: "79"
+                        - button "55" [ref=e531] [cursor=pointer]:
+                          - generic [ref=e533]: "55"
+                        - button "120" [ref=e536] [cursor=pointer]:
+                          - generic [ref=e538]: "120"
+                        - button "17" [ref=e541] [cursor=pointer]:
+                          - generic [ref=e543]: "17"
+                        - button "66" [ref=e546] [cursor=pointer]:
+                          - generic [ref=e548]: "66"
+                        - button "44" [ref=e551] [cursor=pointer]:
+                          - generic [ref=e553]: "44"
+                        - button "428" [ref=e556] [cursor=pointer]:
+                          - generic [ref=e558]: "428"
+                        - button "429" [ref=e561] [cursor=pointer]:
+                          - generic [ref=e563]: "429"
+                        - button "131" [ref=e566] [cursor=pointer]:
+                          - generic [ref=e568]: "131"
+                        - button "202" [ref=e571] [cursor=pointer]:
+                          - generic [ref=e573]: "202"
+                        - button "25" [ref=e576] [cursor=pointer]:
+                          - generic [ref=e578]: "25"
+                        - button "19" [ref=e581] [cursor=pointer]:
+                          - generic [ref=e583]: "19"
+                        - button "28" [ref=e586] [cursor=pointer]:
+                          - generic [ref=e588]: "28"
+                        - button "18" [ref=e591] [cursor=pointer]:
+                          - generic [ref=e593]: "18"
+                        - button "5" [ref=e596] [cursor=pointer]:
+                          - generic [ref=e598]: "5"
+                        - button "6" [ref=e601] [cursor=pointer]:
+                          - generic [ref=e603]: "6"
+                        - button "20" [ref=e606] [cursor=pointer]:
+                          - generic [ref=e608]: "20"
+                        - button "12" [ref=e611] [cursor=pointer]:
+                          - generic [ref=e613]: "12"
+                        - button "12" [ref=e616] [cursor=pointer]:
+                          - generic [ref=e618]: "12"
+                        - button "128" [ref=e621] [cursor=pointer]:
+                          - generic [ref=e623]: "128"
+                        - button "48" [ref=e626] [cursor=pointer]:
+                          - generic [ref=e628]: "48"
+                        - button "45" [ref=e631] [cursor=pointer]:
+                          - generic [ref=e633]: "45"
+                        - button "7" [ref=e636] [cursor=pointer]:
+                          - generic [ref=e638]: "7"
+                        - button "31" [ref=e641] [cursor=pointer]:
+                          - generic [ref=e643]: "31"
+                        - button "114" [ref=e646] [cursor=pointer]:
+                          - generic [ref=e648]: "114"
+                        - button "5А" [ref=e651] [cursor=pointer]:
+                          - generic [ref=e653]: 5А
+                        - button "5Б" [ref=e656] [cursor=pointer]:
+                          - generic [ref=e658]: 5Б
+                        - button "29" [ref=e661] [cursor=pointer]:
+                          - generic [ref=e663]: "29"
+                        - button "29Р" [ref=e666] [cursor=pointer]:
+                          - generic [ref=e668]: 29Р
+                        - button "95" [ref=e671] [cursor=pointer]:
+                          - generic [ref=e673]: "95"
+                        - button "99" [ref=e676] [cursor=pointer]:
+                          - generic [ref=e678]: "99"
+                        - button "107" [ref=e681] [cursor=pointer]:
+                          - generic [ref=e683]: "107"
+                        - button "141" [ref=e686] [cursor=pointer]:
+                          - generic [ref=e688]: "141"
+                        - button "38А" [ref=e691] [cursor=pointer]:
+                          - generic [ref=e693]: 38А
+                        - button "62" [ref=e696] [cursor=pointer]:
+                          - generic [ref=e698]: "62"
+                        - button "9" [ref=e701] [cursor=pointer]:
+                          - generic [ref=e703]: "9"
+                        - button "11" [ref=e706] [cursor=pointer]:
+                          - generic [ref=e708]: "11"
+                        - button "142" [ref=e711] [cursor=pointer]:
+                          - generic [ref=e713]: "142"
+                        - button "115" [ref=e716] [cursor=pointer]:
+                          - generic [ref=e718]: "115"
+                        - button "47" [ref=e721] [cursor=pointer]:
+                          - generic [ref=e723]: "47"
+                        - button "22" [ref=e726] [cursor=pointer]:
+                          - generic [ref=e728]: "22"
+                        - button "40" [ref=e731] [cursor=pointer]:
+                          - generic [ref=e733]: "40"
+                        - button "3" [ref=e736] [cursor=pointer]:
+                          - generic [ref=e738]: "3"
+                        - button "41" [ref=e741] [cursor=pointer]:
+                          - generic [ref=e743]: "41"
+                        - button "91" [ref=e746] [cursor=pointer]:
+                          - generic [ref=e748]: "91"
+                        - button "120А" [ref=e751] [cursor=pointer]:
+                          - generic [ref=e753]: 120А
+                        - button "8" [ref=e756] [cursor=pointer]:
+                          - generic [ref=e758]: "8"
+                        - button "73" [ref=e761] [cursor=pointer]:
+                          - generic [ref=e763]: "73"
+                        - button "113" [ref=e766] [cursor=pointer]:
+                          - generic [ref=e768]: "113"
+                        - button "204" [ref=e771] [cursor=pointer]:
+                          - generic [ref=e773]: "204"
+                        - button "111" [ref=e776] [cursor=pointer]:
+                          - generic [ref=e778]: "111"
+                        - button "29P" [ref=e781] [cursor=pointer]:
+                          - generic [ref=e783]: 29P
+                    - generic:
+                      - generic:
+                        - generic [ref=e786]:
+                          - button "Zoom in" [ref=e787] [cursor=pointer]: +
+                          - button "Zoom out" [ref=e788] [cursor=pointer]: −
+                        - generic [ref=e789]:
+                          - link "Leaflet" [ref=e790] [cursor=pointer]:
+                            - /url: https://leafletjs.com
+                            - img [ref=e791]
+                            - text: Leaflet
+                          - text: "| © CARTO"
+                  - generic [ref=e796]:
+                    - button "Toggle Districts" [ref=e797] [cursor=pointer]:
+                      - img
+                    - button "Toggle Reports" [ref=e798] [cursor=pointer]:
+                      - img
+                    - button "Toggle Transport Fleet" [ref=e799] [cursor=pointer]:
+                      - img
+                    - button "Toggle Emergency Units" [ref=e800] [cursor=pointer]:
+                      - img
+                    - button "Predictive Risk Heatmap" [ref=e801] [cursor=pointer]:
+                      - img
+                  - generic: Live Almaty Sensor Network V5.0
+              - generic [ref=e803]:
+                - heading "Historical Data Analysis" [level=3] [ref=e805]
+                - generic [ref=e807]:
+                  - tablist [ref=e808]:
+                    - tab "Hourly Patterns" [selected] [ref=e809] [cursor=pointer]
+                    - tab "Daily Trends" [ref=e810] [cursor=pointer]
+                    - tab "Comparison" [ref=e811] [cursor=pointer]
+                  - tabpanel "Hourly Patterns" [ref=e812]:
+                    - generic [ref=e813]:
+                      - heading "Air Quality Index by Hour" [level=4] [ref=e814]
+                      - img [ref=e818]:
+                        - generic [ref=e823]:
+                          - generic [ref=e825]: 10:00
+                          - generic [ref=e827]: 12:00
+                          - generic [ref=e829]: 14:00
+                          - generic [ref=e831]: 16:00
+                          - generic [ref=e833]: 18:00
+                          - generic [ref=e835]: 20:00
+                          - generic [ref=e837]: 22:00
+                          - generic [ref=e839]: 0:00
+                          - generic [ref=e841]: 1:00
+                          - generic [ref=e843]: 2:00
+                          - generic [ref=e845]: 3:00
+                          - generic [ref=e847]: 4:00
+                          - generic [ref=e849]: 5:00
+                          - generic [ref=e851]: 6:00
+                          - generic [ref=e853]: 7:00
+                          - generic [ref=e855]: 9:00
+                        - generic [ref=e857]:
+                          - generic [ref=e859]: "0"
+                          - generic [ref=e861]: "40"
+                          - generic [ref=e863]: "80"
+                          - generic [ref=e865]: "120"
+                          - generic [ref=e867]: "160"
+                    - generic [ref=e872]:
+                      - heading "Traffic Congestion by Hour" [level=4] [ref=e873]
+                      - generic [ref=e876]:
+                        - img [ref=e877]:
+                          - generic [ref=e882]:
+                            - generic [ref=e884]: 10:00
+                            - generic [ref=e886]: 12:00
+                            - generic [ref=e888]: 14:00
+                            - generic [ref=e890]: 16:00
+                            - generic [ref=e892]: 18:00
+                            - generic [ref=e894]: 20:00
+                            - generic [ref=e896]: 22:00
+                            - generic [ref=e898]: 0:00
+                            - generic [ref=e900]: 1:00
+                            - generic [ref=e902]: 2:00
+                            - generic [ref=e904]: 3:00
+                            - generic [ref=e906]: 4:00
+                            - generic [ref=e908]: 5:00
+                            - generic [ref=e910]: 6:00
+                            - generic [ref=e912]: 7:00
+                            - generic [ref=e914]: 9:00
+                          - generic [ref=e916]:
+                            - generic [ref=e918]: "0"
+                            - generic [ref=e920]: "15"
+                            - generic [ref=e922]: "30"
+                            - generic [ref=e924]: "45"
+                            - generic [ref=e926]: "60"
+                        - list [ref=e932]:
+                          - listitem [ref=e933]:
+                            - img [ref=e934]
+                            - text: Congestion %
+                          - listitem [ref=e936]:
+                            - img [ref=e937]
+                            - text: Avg Speed km/h
+            - generic [ref=e939]:
+              - generic [ref=e941]:
+                - img [ref=e943]
+                - heading "City News" [level=3] [ref=e948]:
+                  - img [ref=e949]
+                  - text: City News
+                - generic [ref=e953]:
+                  - generic [ref=e954]:
+                    - paragraph [ref=e955]: 50 new smart traffic lights installed in Almaly District.
+                    - generic [ref=e956]:
+                      - generic [ref=e957]: INFRASTRUCTURE
+                      - text: •
+                      - generic [ref=e958]: 2 hrs ago
+                  - generic [ref=e959]:
+                    - paragraph [ref=e960]: AI detected 15% PM2.5 reduction in foothill districts.
+                    - generic [ref=e961]:
+                      - generic [ref=e962]: ENV
+                      - text: •
+                      - generic [ref=e963]: 5 hrs ago
+                  - generic [ref=e964]:
+                    - paragraph [ref=e965]: Scheduled maintenance of Metro Line 1 tonight at 02:00.
+                    - generic [ref=e966]:
+                      - generic [ref=e967]: SYSTEM
+                      - text: •
+                      - generic [ref=e968]: Just now
+                  - button "View All Activity" [ref=e969] [cursor=pointer]
+              - generic [ref=e971]:
+                - generic [ref=e972]:
+                  - heading "City Health Index" [level=3] [ref=e974]:
+                    - img [ref=e975]
+                    - text: City Health Index
+                  - generic [ref=e978]:
+                    - generic [ref=e979]: "83"
+                    - generic [ref=e980]:
+                      - generic [ref=e981]:
+                        - generic [ref=e982]: Overall Efficiency
+                        - generic [ref=e983]: "Goal: 100"
+                      - progressbar [ref=e984]
+                      - generic [ref=e986]:
+                        - generic [ref=e987]:
+                          - generic [ref=e988]: "Traffic:"
+                          - generic [ref=e989]: Moderate
+                        - generic [ref=e990]:
+                          - generic [ref=e991]: "Air:"
+                          - generic [ref=e992]: Moderate
+                        - generic [ref=e993]:
+                          - generic [ref=e994]: "Weather:"
+                          - generic [ref=e995]: Rainy
+                - generic [ref=e996]:
+                  - heading "AI Predictions" [level=3] [ref=e998]:
+                    - img [ref=e999]
+                    - text: AI Predictions
+                  - list [ref=e1003]:
+                    - listitem [ref=e1004]:
+                      - generic [ref=e1006]: Traffic expected to normalize after 8 PM
+                - generic [ref=e1007]:
+                  - generic [ref=e1008]:
+                    - heading "Real-time Insights" [level=3] [ref=e1009]:
+                      - img [ref=e1010]
+                      - text: Real-time Insights
+                    - generic [ref=e1012]: "1"
+                  - generic [ref=e1016]:
+                    - img [ref=e1018]
+                    - generic [ref=e1021]:
+                      - heading "Rush Hour Traffic Increase" [level=4] [ref=e1023]
+                      - paragraph [ref=e1024]: Traffic is expected to remain elevated for the next 2 hours based on historical patterns.
+                      - generic [ref=e1025]:
+                        - generic [ref=e1026]: "Accuracy: 78%"
+                        - generic [ref=e1027]: traffic
+      - generic [ref=e1030]:
+        - generic [ref=e1032]:
+          - generic [ref=e1033]:
+            - img [ref=e1035]
+            - generic [ref=e1047]:
+              - heading "Neural Nexus AI CORE v5.2" [level=3] [ref=e1048]:
+                - text: Neural Nexus
+                - generic [ref=e1049]: AI CORE v5.2
+              - paragraph [ref=e1050]: Global City OS Liaison
+          - generic [ref=e1051]:
+            - button "Clear Neural Memory" [ref=e1052] [cursor=pointer]:
+              - img
+            - button [ref=e1053] [cursor=pointer]:
+              - img
+        - generic [ref=e1054]:
+          - generic [ref=e1059]:
+            - img [ref=e1061]
+            - generic [ref=e1064]:
+              - paragraph [ref=e1065]:
+                - text: 👋 Welcome to
+                - strong [ref=e1066]: Neural Nexus
+                - text: . I am your Almaty City AI Assistant.
+              - paragraph [ref=e1067]:
+                - text: "I can help you with: •"
+                - strong [ref=e1068]: Emergency services
+                - text: (101, 102, 103) •
+                - strong [ref=e1069]: Live Traffic
+                - text: "& optimal routes •"
+                - strong [ref=e1070]: Air Quality
+                - text: "& detailed weather •"
+                - strong [ref=e1071]: City Search
+                - text: "& infrastructure info"
+              - paragraph [ref=e1072]: How can I assist you today?
+          - generic [ref=e1074]:
+            - button "Services" [ref=e1075] [cursor=pointer]:
+              - img
+              - text: Services
+            - button "Traffic" [ref=e1076] [cursor=pointer]:
+              - img
+              - text: Traffic
+            - button "SOS" [ref=e1077] [cursor=pointer]:
+              - img
+              - text: SOS
+            - button "Eco" [ref=e1078] [cursor=pointer]:
+              - img
+              - text: Eco
+          - generic [ref=e1079]:
+            - generic [ref=e1081]:
+              - generic [ref=e1082]:
+                - textbox "Link with Neural Nexus..." [ref=e1083]: And what about it?
+                - button [ref=e1084] [cursor=pointer]:
+                  - img
+              - button [active] [ref=e1085] [cursor=pointer]:
+                - img
+            - generic [ref=e1086]:
+              - generic [ref=e1089]: Neural_Sync_OK
+              - generic [ref=e1090]: V5.2_ACTIVE_GRID
+  - generic [ref=e1091]: "15"
+```

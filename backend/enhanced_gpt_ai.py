@@ -120,17 +120,39 @@ try:
 except ImportError:
     HAS_GRAPH = False
 
-try:
-    from llm_engine import get_llm
-    HAS_LLM = True
-except ImportError:
-    HAS_LLM = False
+# LLM and internet fallback are intentionally disabled in V4.1 runtime.
+HAS_LLM = False
+HAS_WEB_SEARCH = False
+
+def get_llm():
+    raise RuntimeError("LLM runtime is disabled in V4.1")
+
+def get_internet_engine():
+    raise RuntimeError("Internet fallback is disabled in V4.1")
 
 try:
     from neural_engine import NeuralClassifierV2
     HAS_NEURAL_BRAIN = True
 except ImportError:
     HAS_NEURAL_BRAIN = False
+
+try:
+    from intent_router_v3 import get_intent_router
+    HAS_INTENT_ROUTER = True
+except ImportError:
+    HAS_INTENT_ROUTER = False
+
+try:
+    from dialogue_state import DialogueStateManager
+    HAS_DIALOGUE_STATE = True
+except ImportError:
+    HAS_DIALOGUE_STATE = False
+
+try:
+    from local_retriever import get_local_retriever
+    HAS_LOCAL_RETRIEVER = True
+except ImportError:
+    HAS_LOCAL_RETRIEVER = False
 
 # ============================================
 # CONFIGURATION
@@ -155,7 +177,10 @@ class GPTConfig:
     
     # Quality
     min_confidence: float = 0.3  # Minimum confidence for response
-    use_fallback_llm: bool = True  # Use Ollama as fallback
+    use_fallback_llm: bool = False  # V4.1: runtime LLM disabled
+    enable_web_fallback: bool = False  # V4.1: web fallback disabled
+    web_search_min_confidence: float = 0.45
+    max_web_sources: int = 3
     
     # Debug
     debug_mode: bool = False
@@ -186,11 +211,14 @@ class AIResponse:
     text: str
     intent: str
     confidence: float
-    source: str  # "pattern", "nlp", "llm", "fallback"
+    source: str  # "pattern", "nlp", "llm_rag", "web_search", "fallback"
     language: str
+    sources: List[str] = field(default_factory=list)
     sentiment_adjustment: float = 0.0
     entities_found: List[str] = field(default_factory=list)
     processing_time_ms: float = 0.0
+    routing_reason: str = ""
+    debug_trace_id: str = ""
 
 # ============================================
 # INTENT CLASSIFIER
@@ -287,41 +315,53 @@ class EnhancedIntentClassifier:
         self.sentiment_analyzer = SentimentAnalyzer() if HAS_NLP_ENGINE else None
         self.entity_extractor = EntityExtractor() if HAS_NLP_ENGINE else None
         self.neural_brain = NeuralClassifierV2() if HAS_NEURAL_BRAIN else None
+        self.intent_router = get_intent_router() if HAS_INTENT_ROUTER else None
     
     def classify(self, text: str) -> UserIntent:
         """Classify user input into intent with confidence"""
+        lang = "en"
+        text_lower = text.lower().strip()
+        is_question = text.endswith("?") or any(
+            text_lower.startswith(w) for w in ["how", "what", "where", "when", "why"]
+        )
+        is_command = text.endswith("!")
+
+        # 0) Primary local intent router (SVC + calibration)
+        if self.intent_router:
+            try:
+                pred = self.intent_router.predict(text)
+                if pred.intent != "unknown":
+                    return UserIntent(
+                        primary=pred.intent,
+                        secondary=pred.top2[1][0] if len(pred.top2) > 1 else None,
+                        confidence=pred.confidence,
+                        entities={},
+                        language=lang,
+                        sentiment=0.0,
+                        is_question=is_question,
+                        is_command=is_command,
+                        raw_text=text,
+                    )
+            except Exception as e:
+                logger.debug(f"Intent router failed: {e}")
+
         # 1. Try Neural Brain first (LSTM V2)
         if self.neural_brain:
             try:
                 intent_tag, confidence = self.neural_brain.predict(text)
                 if confidence > 0.6:
-                    lang = "en" # Neural Brain is primarily English for now
                     return UserIntent(
                         primary=intent_tag.lower(),
                         confidence=confidence,
                         language=lang,
+                        is_question=is_question,
+                        is_command=is_command,
                         raw_text=text
                     )
             except Exception as e:
                 logger.debug(f"Neural brain failed: {e}")
 
         # 2. Fallback to Regex and NLP
-        # Detect language
-        if HAS_NLP_ENGINE:
-            lang = "en" # Force English for now
-        else:
-            lang = "en" # Force English default
-        
-        text_lower = text.lower().strip()
-        
-        # Check for question
-        is_question = text.endswith("?") or any(
-            text_lower.startswith(w) for w in ["как", "что", "где", "когда", "почему", "зачем", "how", "what", "where", "when", "why"]
-        )
-        
-        # Check for command
-        is_command = text.endswith("!")
-        
         # Match intents
         intent_scores = {}
         
@@ -381,6 +421,8 @@ class ResponseSynthesizer:
         self.pattern_matcher = get_pattern_matcher() if HAS_GPT_KB else None
         self.response_generator = get_response_generator() if HAS_GPT_KB else None
         self.nlp_processor = get_nlp_processor() if HAS_NLP_ENGINE else None
+        self.internet_engine = None
+        self.local_retriever = get_local_retriever() if HAS_LOCAL_RETRIEVER else None
         self._initialized = False
     
     def initialize(self):
@@ -423,296 +465,118 @@ class ResponseSynthesizer:
     def synthesize(self, intent: UserIntent, session_id: str = "default",
                    config: GPTConfig = DEFAULT_CONFIG) -> AIResponse:
         """
-        Synthesize best response for given intent
-        Uses multiple sources and picks best one
+        V4.1 local-only synthesis pipeline.
         """
-        start_time = datetime.now()
-        
-        # Initialize if needed
         if not self._initialized:
             self.initialize()
-        
-        responses = []  # (response, source, confidence)
-        
-        # 0. HIGHEST PRIORITY: Check for injected LIVE_DATA context
-        if "[LIVE_DATA:" in intent.raw_text:
-            try:
-                # Extract live data from prefix
-                live_data_match = re.search(r'\[LIVE_DATA:\s*([^\]]+)\]', intent.raw_text)
-                if live_data_match:
-                    live_info = live_data_match.group(1).strip()
-                    # Clean the query (remove the prefix)
-                    clean_query = re.sub(r'\[LIVE_DATA:[^\]]+\]\s*', '', intent.raw_text).strip()
-                    
-                    # Generate response based on live data
-                    if "traffic" in clean_query.lower() or "congestion" in clean_query.lower():
-                        responses.append((
-                            f"🚗 **Current Traffic Status**: {live_info}. " +
-                            "This is real-time data from city sensors. " +
-                            "Consider using EcoRouting for optimal routes.",
-                            "live_data", 1.0
-                        ))
-                    elif "aqi" in clean_query.lower() or "air" in clean_query.lower() or "quality" in clean_query.lower():
-                        responses.append((
-                            f"🌬️ **Current Air Quality**: {live_info}. " +
-                            "This is real-time data from environmental sensors. " +
-                            "Check the dashboard for detailed PM2.5, PM10, and O3 levels.",
-                            "live_data", 1.0
-                        ))
-                    else:
-                        # Generic live data response
-                        responses.append((f"📊 **Live City Data**: {live_info}.", "live_data", 1.0))
-            except Exception as e:
-                logger.debug(f"Live data parsing error: {e}")
+        return self._synthesize_v3(intent, session_id, config)
 
-        # Initialize text_lower for pattern matching
-        text_lower = intent.raw_text.lower().strip()
-        
-        # PRIORITY: Check for actual questions first (skip conversational if query has real content)
-        question_indicators = ["what", "how", "where", "when", "why", "tell", "show", "number", "service", "sos", "emergency", "help", "traffic", "air", "bus", "transport", "weather"]
-        is_real_question = any(q in text_lower for q in question_indicators) and len(text_lower) > 10
-        
-        # BUS ROUTE HANDLER - Provide specific bus info with streets (CHECK FIRST before elif chain)
-        bus_match = re.search(r'\b(\d{1,3})\s*(?:bus|автобус|маршрут)', text_lower) or re.search(r'(?:bus|автобус|маршрут)\s*(\d{1,3})', text_lower)
-        has_bus_keyword = "bus" in text_lower or "автобус" in text_lower or "маршрут" in text_lower
-        
-        if bus_match or has_bus_keyword:
-            # Bus route data with street info
-            bus_routes = {
-                "92": {"street": "Abay Avenue", "start": "Sairan", "end": "Medeu District", "type": "Electric 🔋", "popular": True},
-                "32": {"street": "Tole Bi Street", "start": "Zhibek Zholy", "end": "Turksib District", "type": "Standard", "popular": True},
-                "12": {"street": "Seifullin Avenue", "start": "Train Station 2", "end": "Almaly District", "type": "Electric 🔋", "popular": True},
-                "121": {"street": "Zhandosov Street", "start": "Mega Center", "end": "Green Bazaar", "type": "Standard", "popular": True},
-                "201": {"street": "Al-Farabi Avenue", "start": "Airport", "end": "Center", "type": "Express", "popular": False},
-                "79": {"street": "Raiymbek Avenue", "start": "Airport", "end": "Sayakhat Station", "type": "Standard", "popular": True},
-                "45": {"street": "Nauryzbay Batyr", "start": "Orbita", "end": "Zhibek Zholy", "type": "Standard", "popular": False},
-                "18": {"street": "Dostyk Avenue", "start": "Almaly", "end": "Bostandyk", "type": "Standard", "popular": False},
-                "63": {"street": "Zheltoksan Street", "start": "Train Station 1", "end": "Koktem", "type": "Standard", "popular": False},
-                "37": {"street": "Kabanbay Batyr", "start": "Raiymbek", "end": "Taugul", "type": "Standard", "popular": False},
-            }
-            
-            # Try to extract bus number
-            bus_num = None
-            if bus_match:
-                bus_num = bus_match.group(1)
-            else:
-                # Try alternative extraction
-                num_match = re.search(r'\b(\d{1,3})\b', text_lower)
-                if num_match:
-                    bus_num = num_match.group(1)
-            
-            if bus_num and bus_num in bus_routes:
-                route = bus_routes[bus_num]
-                response = f"🚌 **Bus #{bus_num}** ({route['type']})\n\n"
-                response += f"📍 **Main Street:** {route['street']}\n"
-                response += f"🚏 **Route:** {route['start']} → {route['end']}\n"
-                response += f"⭐ **Popular route:** {'Yes' if route['popular'] else 'No'}\n\n"
-                response += "Check the **Transport** page for real-time location!"
-                responses.append((response, "transport", 1.0))
-            elif bus_num:
-                # Unknown bus number
-                response = f"🚌 **Bus #{bus_num}** — I don't have specific data for this route.\n\n"
-                response += "**Popular routes I know:**\n"
-                response += "• **92** — Abay Avenue (Electric 🔋)\n"
-                response += "• **32** — Tole Bi Street\n"
-                response += "• **79** — Raiymbek Avenue (Airport)\n"
-                response += "• **121** — Zhandosov Street\n\n"
-                response += "Check the **Transport** page for live tracking!"
-                responses.append((response, "transport", 1.0))
-            else:
-                # General bus inquiry
-                response = "🚌 **Almaty Public Transport:**\n\n"
-                response += "**Popular Bus Routes:**\n"
-                response += "• **92** — Abay Avenue (Sairan → Medeu) 🔋\n"
-                response += "• **32** — Tole Bi Street (Zhibek Zholy → Turksib)\n"
-                response += "• **79** — Raiymbek Avenue (Airport → Sayakhat)\n"
-                response += "• **121** — Zhandosov Street (Mega → Green Bazaar)\n"
-                response += "• **12** — Seifullin Avenue (Electric) 🔋\n\n"
-                response += "Ask about any specific bus number for details!"
-                responses.append((response, "transport", 1.0))
-        
-        # Emergency/SOS handler - HIGHEST priority for safety
-        elif any(sos in text_lower for sos in ["sos", "emergency", "emergency number", "101", "102", "103", "112"]):
-            import random
-            sos_responses = [
-                "🚨 **Emergency Numbers in Almaty:**\n\n🔥 **101** — Fire Department\n👮 **102** — Police\n🚑 **103** — Ambulance\n⛽ **104** — Gas Emergency\n📞 **112** — Universal Emergency\n\nAll numbers are free and available 24/7.",
-            ]
-            responses.append((random.choice(sos_responses), "emergency", 1.0))
-        
-        # City services handler
-        elif any(svc in text_lower for svc in ["city service", "services available", "what can", "what do you"]):
-            import random
-            services_responses = [
-                "🏙️ **Smart City Almaty Services:**\n\n📊 **Dashboard** — Real-time city health metrics\n🚌 **Transport** — Live bus tracking, metro info\n🌫️ **Air Quality** — AQI, PM2.5 monitoring\n🚨 **Emergency** — SOS alerts, incident tracking\n🗺️ **Eco Routing** — Green route planning\n📝 **Reports** — File citizen reports\n🗳️ **Petitions** — Vote on city initiatives\n\nAsk about any of these!",
-            ]
-            responses.append((random.choice(services_responses), "city_info", 1.0))
-        
-        # Only match pure conversational patterns if NOT a real question
-        elif not is_real_question:
-            # Greeting responses - match only at start or as whole message
-            greeting_patterns = ["hello", "hi", "hey", "howdy", "greetings", "good morning", "good afternoon", "good evening", "yo", "sup", "whats up", "what's up", "hiya", "heya"]
-            greeting_responses = [
-                "👋 Hey there! I'm Neural Nexus, your Almaty city assistant. What can I help you with today?",
-                "Hello! Great to see you. I'm here to help with traffic, weather, transport, or anything about Almaty!",
-                "Hi! Welcome to Smart City Almaty. Ask me anything about the city!",
-            ]
-            
-            # How are you responses
-            how_are_you_patterns = ["how are you", "how's it going", "how is it going", "how are you doing", "how have you been"]
-            how_are_you_responses = [
-                "I'm doing fantastic, thanks for asking! 🌟 All my systems are running smoothly. How about you?",
-                "Running at peak efficiency! The city data is flowing beautifully. What can I do for you?",
-            ]
-            
-            # Bye/Farewell responses
-            bye_patterns = ["bye", "goodbye", "see you", "see ya", "later", "take care", "farewell"]
-            bye_responses = [
-                "Goodbye! Come back anytime you need help with Almaty! 👋",
-                "See you later! Stay safe and enjoy the city!",
-            ]
-            
-            # Thanks responses - must be EXACT or very short
-            thanks_patterns = ["thank you", "thanks", "thx", "ty"]
-            thanks_responses = [
-                "You're welcome! Happy to help! 😊",
-                "Anytime! That's what I'm here for.",
-            ]
-            
-            # Only match if text starts with pattern or is very short (pure greeting)
-            if len(text_lower) < 20:
-                if any(text_lower.startswith(p) or text_lower == p for p in greeting_patterns):
-                    import random
-                    responses.append((random.choice(greeting_responses), "chat", 0.98))
-                elif any(p in text_lower for p in how_are_you_patterns):
-                    import random
-                    responses.append((random.choice(how_are_you_responses), "chat", 0.98))
-                elif any(text_lower.startswith(p) or text_lower == p for p in bye_patterns):
-                    import random
-                    responses.append((random.choice(bye_responses), "chat", 0.98))
-                elif any(text_lower == p for p in thanks_patterns):  # Exact match only for thanks
-                    import random
-                    responses.append((random.choice(thanks_responses), "chat", 0.98))
-        
-        # 1. Try Urban Science (Environment/Transport precision)
-        if HAS_SCIENCE:
-            try:
-                science = get_urban_science_engine()
-                science_res = science.get_scientific_explanation(intent.raw_text, intent.language)
-                if science_res:
-                    responses.append((science_res, "science", 0.95))
-            except Exception as e:
-                logger.debug(f"Science engine error: {e}")
+    def _synthesize_v3(
+        self, intent: UserIntent, session_id: str, config: GPTConfig
+    ) -> AIResponse:
+        start_time = datetime.now()
+        raw_query = re.sub(r"\[[^\]]+\]", " ", intent.raw_text or "").strip()
+        raw_query = re.sub(r"\s+", " ", raw_query).strip()
+        query_lower = raw_query.lower()
 
-        # 1.5 Try Logic Engine (intelligence first)
-        if HAS_LOGIC:
-            try:
-                logic = get_logic_engine()
-                logic_res = logic.reason(intent.raw_text, intent.language)
-                if logic_res:
-                    responses.append((logic_res, "logic", 0.95))
-            except Exception as e:
-                logger.debug(f"Logic engine error: {e}")
+        live_data_match = re.search(r"\[LIVE_DATA:\s*([^\]]+)\]", intent.raw_text or "")
+        if live_data_match:
+            live_info = live_data_match.group(1).strip()
+            txt = f"Current city data: {live_info}."
+            if "traffic" in query_lower or "congestion" in query_lower:
+                txt = f"Current traffic data: {live_info}. Consider route alternatives if congestion is high."
+            elif "aqi" in query_lower or "air" in query_lower or "pollution" in query_lower:
+                txt = f"Current air quality data: {live_info}. Sensitive groups should limit long outdoor exposure."
+            return AIResponse(
+                text=self._apply_personality(txt, intent, config),
+                intent=intent.primary,
+                confidence=1.0,
+                source="live_data",
+                language=intent.language,
+                sources=[],
+                sentiment_adjustment=intent.sentiment,
+                entities_found=list(intent.entities.keys()),
+                processing_time_ms=(datetime.now() - start_time).total_seconds() * 1000,
+                routing_reason="live_data_priority",
+                debug_trace_id=f"{session_id}:{int(start_time.timestamp()*1000)}",
+            )
 
-        # 2. Try Culture Engine (Almaty depth)
-        if HAS_CULTURE:
-            try:
-                culture = get_culture_engine()
-                culture_res = culture.get_info(intent.raw_text, intent.language)
-                if culture_res:
-                    responses.append((culture_res, "culture", 0.9))
-            except Exception as e:
-                logger.debug(f"Culture engine error: {e}")
+        if self.local_retriever and raw_query:
+            context_topic = ""
+            if intent.primary == "transport":
+                context_topic = "transport"
+            elif intent.primary == "weather_eco":
+                context_topic = "weather"
+            elif intent.primary == "city":
+                context_topic = "city"
+            elif intent.primary == "emergency":
+                context_topic = "emergency"
 
-        # 2.5 Try Knowledge Graph (Semantic links)
-        if HAS_GRAPH:
-            try:
-                graph = get_knowledge_graph()
-                related_facts = graph.find_related(intent.raw_text, intent.language)
-                if related_facts:
-                    graph_response = "Кстати, еще связанные факты: " + "; ".join(related_facts[:3])
-                    responses.append((graph_response, "graph", 0.85))
-            except Exception as e:
-                logger.debug(f"Knowledge Graph error: {e}")
-
-        # 3. Try GPT-style pattern matching (classic)
-        if HAS_GPT_KB and self.pattern_matcher:
-            result = self.pattern_matcher.find_response(intent.raw_text, intent.language)
-            if result:
-                response, category, conf = result
-                responses.append((response, "pattern", conf * 1.1))  # Slight boost
-        
-        # 4. Try NLP processor
-        if HAS_NLP_ENGINE and self.nlp_processor and self._initialized:
-            try:
-                analysis = self.nlp_processor.process_query(
-                    intent.raw_text, session_id, "en", intent.primary
+            candidates = self.local_retriever.retrieve(raw_query, context_topic=context_topic, top_k=3)
+            if candidates:
+                top = candidates[0]
+                confidence = min(0.98, max(0.35, top.score))
+                return AIResponse(
+                    text=self._apply_personality(top.text, intent, config),
+                    intent=intent.primary,
+                    confidence=confidence,
+                    source="retrieval_factual",
+                    language=intent.language,
+                    sources=[c.source for c in candidates],
+                    sentiment_adjustment=intent.sentiment,
+                    entities_found=list(intent.entities.keys()),
+                    processing_time_ms=(datetime.now() - start_time).total_seconds() * 1000,
+                    routing_reason="retriever_top1",
+                    debug_trace_id=f"{session_id}:{int(start_time.timestamp()*1000)}",
                 )
-                if analysis["search_results"]:
-                    best_text, score = analysis["search_results"][0]
-                    if score > config.min_confidence:
-                        responses.append((best_text, "nlp", score))
-            except Exception as e:
-                logger.debug(f"NLP processing error: {e}")
-        
-        # 5. Generate dynamic response
-        if HAS_GPT_KB and self.response_generator:
-            try:
-                gen_response = self.response_generator.generate(
-                    intent.raw_text, session_id, intent.language
-                )
-                if gen_response and len(gen_response) > 10:
-                    responses.append((gen_response, "generated", 0.7))
-            except Exception as e:
-                logger.debug(f"Generation error: {e}")
-        
-        # 6. Try Ollama LLM as fallback OR as final synthesizer (RAG)
-        if config.use_fallback_llm and HAS_LLM:
-            try:
-                llm = get_llm()
-                if llm.is_enabled():
-                    # Gather context from other sources
-                    context_facts = [r[0] for r in responses if r[2] > 0.4]
-                    context_str = "\n".join(context_facts)
-                    
-                    if context_str:
-                        rag_prompt = f"Use these facts to answer the question: {context_str}\n\nQuestion: {intent.raw_text}"
-                        llm_response = llm.ask(rag_prompt)
-                    else:
-                        llm_response = llm.ask(intent.raw_text)
-                        
-                    if llm_response and len(llm_response) > 10:
-                        # If we have RAG context, this is high confidence
-                        responses.append((llm_response, "llm_rag", 0.9 if context_str else 0.6))
-            except Exception as e:
-                logger.debug(f"LLM synthesis error: {e}")
-        
-        # Pick best response
-        if responses:
-            responses.sort(key=lambda x: x[2], reverse=True)
-            best_text, source, confidence = responses[0]
-        else:
-            # Ultimate fallback
-            best_text = "Interesting question! Try asking about transport, weather, or places to visit in Almaty."
-            source = "fallback"
-            confidence = 0.1
-        
-        # Apply personality adjustments
-        best_text = self._apply_personality(best_text, intent, config)
-        
-        # Calculate processing time
-        processing_time = (datetime.now() - start_time).total_seconds() * 1000
-        
+
+        template = self._domain_template(intent.primary)
+        if template:
+            return AIResponse(
+                text=self._apply_personality(template, intent, config),
+                intent=intent.primary,
+                confidence=0.62,
+                source="domain_template",
+                language=intent.language,
+                sources=[],
+                sentiment_adjustment=intent.sentiment,
+                entities_found=list(intent.entities.keys()),
+                processing_time_ms=(datetime.now() - start_time).total_seconds() * 1000,
+                routing_reason="template_fallback",
+                debug_trace_id=f"{session_id}:{int(start_time.timestamp()*1000)}",
+            )
+
+        clarification = (
+            "I need a bit more detail to answer precisely. "
+            "Please specify if your question is about transport, air quality, weather, emergency, or city info."
+        )
         return AIResponse(
-            text=best_text,
+            text=clarification,
             intent=intent.primary,
-            confidence=confidence,
-            source=source,
+            confidence=0.25,
+            source="controlled_fallback",
             language=intent.language,
+            sources=[],
             sentiment_adjustment=intent.sentiment,
             entities_found=list(intent.entities.keys()),
-            processing_time_ms=processing_time
+            processing_time_ms=(datetime.now() - start_time).total_seconds() * 1000,
+            routing_reason="low_confidence_clarification",
+            debug_trace_id=f"{session_id}:{int(start_time.timestamp()*1000)}",
         )
-    
+
+    def _domain_template(self, intent_name: str) -> str:
+        templates = {
+            "greeting": "Hello! I can help with transport, weather, air quality, emergency contacts, and city information.",
+            "thanks": "You're welcome. Ask anytime if you need city assistance.",
+            "farewell": "Goodbye. Stay safe and have a good day in Almaty.",
+            "help": "I can answer questions about transport, air quality, weather, emergency numbers, and city services.",
+            "emergency": "Emergency numbers in Almaty: 101 Fire, 102 Police, 103 Ambulance, 104 Gas, 112 Universal.",
+            "transport": "For transport requests, share route number, origin, and destination to get a precise answer.",
+            "weather_eco": "For air and weather, ask AQI, PM2.5, temperature, humidity, or forecast by area.",
+            "city": "You can ask about districts, landmarks, services, and infrastructure in Almaty.",
+        }
+        return templates.get(intent_name, "")
+
     def _apply_personality(self, text: str, intent: UserIntent, 
                            config: GPTConfig) -> str:
         """Apply personality adjustments and personalization to response"""
@@ -776,6 +640,7 @@ class EnhancedGPTStyleAI:
         self.config = config or DEFAULT_CONFIG
         self.classifier = EnhancedIntentClassifier()
         self.synthesizer = ResponseSynthesizer()
+        self.dialogue_state = DialogueStateManager(ttl_minutes=30) if HAS_DIALOGUE_STATE else None
         
         # Context management
         if HAS_NLP_ENGINE:
@@ -785,8 +650,12 @@ class EnhancedGPTStyleAI:
         
         # Session-based conversation history
         self.sessions: Dict[str, List[Dict]] = {}
+        self._last_response_cache: Dict[Tuple[str, str], AIResponse] = {}
         
-        logger.info(f"Enhanced GPT-Style AI initialized. Components: NLP={HAS_NLP_ENGINE}, GPT_KB={HAS_GPT_KB}, LLM={HAS_LLM}")
+        logger.info(
+            f"Enhanced GPT-Style AI initialized. Components: "
+            f"NLP={HAS_NLP_ENGINE}, GPT_KB={HAS_GPT_KB}, LLM={HAS_LLM}, WEB={HAS_WEB_SEARCH}"
+        )
     
     def chat(self, message: str, session_id: str = "default",
              context: Optional[Dict] = None, image_path: Optional[str] = None) -> str:
@@ -820,6 +689,9 @@ class EnhancedGPTStyleAI:
         message = message.strip()
         if not message:
             return "I'm listening. What would you like to know?"
+
+        if self.dialogue_state:
+            self.dialogue_state.observe_user_turn(session_id, message)
         
         # 3. RAG: Inject Live Context and Memory Context if available
         processed_message = message
@@ -838,6 +710,22 @@ class EnhancedGPTStyleAI:
 
         # 4. Classify intent
         intent = self.classifier.classify(processed_message)
+        if self.dialogue_state and HAS_INTENT_ROUTER:
+            try:
+                router = get_intent_router()
+                base_pred = router.predict(processed_message)
+                adjusted = self.dialogue_state.contextualize_prediction(session_id, message, base_pred)
+                should_override = adjusted.intent != intent.primary and (
+                    adjusted.routing_reason == "followup_context_boost"
+                    or adjusted.confidence >= intent.confidence
+                )
+                if should_override:
+                    intent.primary = adjusted.intent
+                    intent.secondary = adjusted.top2[1][0] if len(adjusted.top2) > 1 else intent.secondary
+                    intent.confidence = adjusted.confidence
+                    intent.entities["routing_reason"] = adjusted.routing_reason
+            except Exception as e:
+                logger.debug(f"Dialogue state contextualization failed: {e}")
         
         # 5. Update context
         if self.context_manager:
@@ -847,6 +735,10 @@ class EnhancedGPTStyleAI:
         
         # 6. Synthesize response
         response = self.synthesizer.synthesize(intent, session_id, self.config)
+        cache_key = (session_id, message)
+        self._last_response_cache[cache_key] = response
+        if len(self._last_response_cache) > 120:
+            self._last_response_cache.pop(next(iter(self._last_response_cache)))
         
         # 7. Store in session history
         if session_id not in self.sessions:
@@ -875,6 +767,10 @@ class EnhancedGPTStyleAI:
             self.context_manager.update_context(
                 session_id, "assistant", response.text, intent.language
             )
+
+        if self.dialogue_state:
+            self.dialogue_state.update_intent(session_id, intent.primary)
+            self.dialogue_state.observe_assistant_turn(session_id, response.text)
         
         # Log if debug mode
         if self.config.debug_mode:
@@ -887,8 +783,24 @@ class EnhancedGPTStyleAI:
         """
         Get full response object with metadata
         """
+        cache_key = (session_id, message)
+        cached_response = self._last_response_cache.get(cache_key)
+        if cached_response is not None:
+            return cached_response
+
+        # Run through main chat pipeline to keep intent routing and dialogue state consistent.
+        self.chat(message, session_id=session_id)
+        cached_response = self._last_response_cache.get(cache_key)
+        if cached_response is not None:
+            return cached_response
+
+        # Defensive fallback if cache was not populated for any reason.
         intent = self.classifier.classify(message)
-        return self.synthesizer.synthesize(intent, session_id, self.config)
+        response = self.synthesizer.synthesize(intent, session_id, self.config)
+        self._last_response_cache[cache_key] = response
+        if len(self._last_response_cache) > 120:
+            self._last_response_cache.pop(next(iter(self._last_response_cache)))
+        return response
     
     def _detect_lang(self, text: str) -> str:
         """Quick language detection"""

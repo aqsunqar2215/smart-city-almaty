@@ -29,8 +29,11 @@ export interface ChatAssistantResponse {
   intent?: string;
   confidence?: number;
   source?: string;
+  web_sources?: string[];
   processingTime?: number;
   proactive_suggestions?: string[];
+  routing_reason?: string;
+  debug_trace_id?: string;
 }
 
 // Pattern recognition for traffic
@@ -335,6 +338,7 @@ export const generateChatResponse = async (
       body: JSON.stringify({
         query,
         user_id: userId,
+        enable_internet_fallback: false,
         context: {
           ...cityData,
           history: history.slice(-5) // Pass last 5 messages for context
@@ -349,8 +353,11 @@ export const generateChatResponse = async (
         intent: data.intent_detected,
         confidence: data.intent_confidence,
         source: data.source,
+        web_sources: data.web_sources,
         processingTime: data.processing_time_ms,
-        proactive_suggestions: data.proactive_suggestions
+        proactive_suggestions: data.proactive_suggestions,
+        routing_reason: import.meta.env.DEV ? data.routing_reason : undefined,
+        debug_trace_id: import.meta.env.DEV ? data.debug_trace_id : undefined
       };
     }
   } catch (e) {

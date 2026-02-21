@@ -1,0 +1,1402 @@
+[
+  {
+    "category": "education",
+    "instruction": "Give me key facts about Cybersecurity.",
+    "output": "Computer security is a subdiscipline within the field of information security. It focuses on protecting computer software, systems, and networks from threats that can lead to unauthorized information disclosure, theft or damage to hardware, software, or data, as well as to the disruption or misdirection of the services they provide."
+  },
+  {
+    "category": "tourism",
+    "instruction": "Why is Medeu important for a modern city?",
+    "output": "The Medeu is an outdoor speed skating and bandy rink. It is located in Medeu Valley on the southeastern outskirts of Almaty, Kazakhstan. Medeu sits 1,691 m (5,548 ft) above sea level. It consists of 10,500 m2 of ice and utilizes a sophisticated freezing and watering system to ensure the quality of the ice."
+  },
+  {
+    "category": "traffic",
+    "instruction": "What is the practical meaning of Public transport?",
+    "output": "Public transport refers to forms of transport made available for use by the general public. Public transport systems typically operate on fixed routes and schedules and charge a standardized fare intended to cover operating costs, often supplemented by public funding where required."
+  },
+  {
+    "category": "housing",
+    "instruction": "Explain Water supply network in simple words.",
+    "output": "A water supply network or water supply system is a system of engineered hydrologic and hydraulic components that provide water supply. A water supply system typically includes the following:A drainage basin \nA raw water collection point where the water accumulates, such as a lake, a river, or groundwater from an underground aquifer. Raw water may be transferred using uncovered ground-level aqueducts, covered tunnels, or underground pipes to water purification facilities..\nWater purification facilities. Treated water is transferred using water pipes.\nWater storage facilities such as reservoirs, water tanks, or water towers. Smaller water systems may store the water in cisterns or pressure vessels. Tall buildings may also need to store water locally in pressure vessels in order for the water to reach the upper floors.\nAdditional water pressurizing components such as pumping stations may need to be situated at the outlet of underground or aboveground reservoirs or cisterns.\nA pipe network for distribution of water to consumers and other usage points \nConnections to the sewers are generally found downstream of the water consumers, but the sewer system is considered to be a separate system, rather than part of the water supply system."
+  },
+  {
+    "category": "ecology",
+    "instruction": "Why is Hydroelectricity important for a modern city?",
+    "output": "Hydroelectricity, or hydroelectric power, is electricity generated from hydropower. Hydropower supplies 15% of the world's electricity, almost 4,210 TWh in 2023, which is more than all other renewable sources combined and also more than nuclear power. Hydropower can provide large amounts of low-carbon electricity on demand, making it a key element for creating secure and clean electricity supply systems. A hydroelectric power station that has a dam and reservoir is a flexible source, since the amount of electricity produced can be increased or decreased in seconds or minutes in response to varying electricity demand. Once a hydroelectric complex is constructed, it produces no direct waste, and almost always emits considerably less greenhouse gas than fossil fuel-powered energy plants. However, when constructed in lowland rainforest areas, where part of the forest is inundated, substantial amounts of greenhouse gases may be emitted."
+  },
+  {
+    "category": "ecology",
+    "instruction": "What should I know about Air quality index?",
+    "output": "An air quality index (AQI) is an approximation of how polluted the air currently is or how polluted it is forecast to become. As air pollution levels rise, so does the AQI, along with the associated public health risks."
+  },
+  {
+    "category": "finance",
+    "instruction": "Can you summarize Gross domestic product for me?",
+    "output": "Gross domestic product (GDP) is a monetary measure of the total market value of all of the final goods and services which are produced and rendered during a specific period of time by a country or countries. GDP is often used to measure the economic activity of a country or region. The major components of GDP are consumption, government spending, net exports, and investment. Changing any of these factors can increase the size of the economy. For example, population growth through mass immigration can raise consumption and demand for public services, thereby contributing to GDP growth. However, GDP is not a measure of overall standard of living or well-being, as it does not account for how income is distributed among the population. A country may rank high in GDP but still experience jobless growth depending on its planned economic structure and strategies. Dividing total GDP by the population gives an idealized rough measure of GDP per capita. Several national and international economic organizations, such as the OECD and the International Monetary Fund, maintain their own definitions of GDP."
+  },
+  {
+    "category": "ecology",
+    "instruction": "What is the practical meaning of Air pollution?",
+    "output": "Air pollution is the presence of substances in the air that are harmful to humans, other living beings or the environment. Pollutants can be gases, like ozone or nitrogen oxides, or small particles like soot and dust. Both outdoor and indoor air can be polluted."
+  },
+  {
+    "category": "traffic",
+    "instruction": "Why is Bus important for a modern city?",
+    "output": "A bus is a motor vehicle that carries significantly more passengers than an average car or van, but fewer than the average rail transport. It is most commonly used in public transport, but is also in use for charter purposes, or through private ownership. Although the average bus carries between 30 and 100 passengers, some buses have a capacity of up to 300 passengers. The most common type is the single-deck rigid bus, with double-decker and articulated buses carrying larger loads, and midibuses and minibuses carrying smaller loads. Coaches are used for longer-distance services. Many types of buses, such as city transit buses and inter-city coaches, charge a fare. Other types, such as elementary or secondary school buses or shuttle buses within a post-secondary education campus, are free. In many jurisdictions, bus drivers require a special large vehicle licence above and beyond a regular driving license."
+  },
+  {
+    "category": "ecology",
+    "instruction": "Explain Sustainable city in simple words.",
+    "output": "A sustainable city, eco-city, or green city is a city designed with consideration for the social, economic, and environmental impact, as well as a resilient habitat for existing populations. The UN Sustainable Development Goal 11 defines as one that is dedicated to achieving green, social, and economic sustainability, facilitating opportunities that prioritize inclusivity as well as maintaining a sustainable economic growth. Furthermore, the objective is to minimize the inputs of energy, water, and food, and to drastically reduce waste, as well as the outputs of heat, air pollution."
+  },
+  {
+    "category": "ecology",
+    "instruction": "Give me key facts about Wind power.",
+    "output": "Wind power is the use of wind energy to generate useful work. Historically, wind power was used by sails, windmills and windpumps, but today it is mostly used to generate electricity. This article deals only with wind power for electricity generation.\nToday, wind power is generated almost completely using wind turbines, generally grouped into wind farms and connected to the electrical grid."
+  },
+  {
+    "category": "emergency",
+    "instruction": "Give me key facts about Emergency management.",
+    "output": "Emergency management refers to the systematic reduction of a community's vulnerability to natural and man-made hazards as well as the coordinated response to disasters after they occur. Emergency management focuses on destructive events that overwhelm a community's ability to handle on its own, such as hurricanes, pandemics, and terrorism. Professional emergency management activities include search and rescue, providing for the basic needs of affected individuals, and issuing evacuation alerts. The management of disasters requires collaboration between individuals, households, non-governmental organizations, and local, provincial, and federal governments."
+  },
+  {
+    "category": "tourism",
+    "instruction": "Can you summarize Shymbulak for me?",
+    "output": "Shymbulak, also known as Chimbulak and Chymbulak, is a ski resort near Almaty, Kazakhstan. It is the largest ski resort in Central Asia. It is located in the upper part of the Medeu Valley in the Zailiisky Alatau mountain range, at an elevation of 2,200 metres (7,200 ft) above sea level. The resort area is about 25 kilometres (16 mi) south of Almaty city centre in the Medeo district."
+  },
+  {
+    "category": "finance",
+    "instruction": "Give me key facts about Inflation.",
+    "output": "In economics, inflation is an increase in the average price of goods and services in terms of money. This increase is measured using a price index, typically a consumer price index (CPI). When the general price level rises, each unit of currency buys fewer goods and services; consequently, inflation corresponds to a reduction in the purchasing power of money. The opposite of inflation is deflation, a decrease in the general price level of goods and services. The common measure of inflation is the inflation rate, the annualized percentage change in a general price index."
+  },
+  {
+    "category": "tourism",
+    "instruction": "Why is Shymbulak important for a modern city?",
+    "output": "Shymbulak, also known as Chimbulak and Chymbulak, is a ski resort near Almaty, Kazakhstan. It is the largest ski resort in Central Asia. It is located in the upper part of the Medeu Valley in the Zailiisky Alatau mountain range, at an elevation of 2,200 metres (7,200 ft) above sea level. The resort area is about 25 kilometres (16 mi) south of Almaty city centre in the Medeo district."
+  },
+  {
+    "category": "traffic",
+    "instruction": "Give me key facts about Electric vehicle.",
+    "output": "An electric vehicle (EV) is a motorized vehicle whose propulsion is provided fully or mostly by electric power, via grid electricity or from onboard rechargeable batteries. EVs encompass a wide range of transportation modes, including road and rail vehicles, electric boats and submersibles, electric aircraft and electric spacecraft."
+  },
+  {
+    "category": "ecology",
+    "instruction": "How does Waste management affect everyday life?",
+    "output": "Waste management or waste disposal includes the processes and actions required to manage waste from its inception to its final disposal. This includes the collection, transport, treatment, and disposal of waste, together with monitoring and regulation of the waste management process and waste-related laws, technologies, and economic mechanisms."
+  },
+  {
+    "category": "ecology",
+    "instruction": "How does Hydroelectricity affect everyday life?",
+    "output": "Hydroelectricity, or hydroelectric power, is electricity generated from hydropower. Hydropower supplies 15% of the world's electricity, almost 4,210 TWh in 2023, which is more than all other renewable sources combined and also more than nuclear power. Hydropower can provide large amounts of low-carbon electricity on demand, making it a key element for creating secure and clean electricity supply systems. A hydroelectric power station that has a dam and reservoir is a flexible source, since the amount of electricity produced can be increased or decreased in seconds or minutes in response to varying electricity demand. Once a hydroelectric complex is constructed, it produces no direct waste, and almost always emits considerably less greenhouse gas than fossil fuel-powered energy plants. However, when constructed in lowland rainforest areas, where part of the forest is inundated, substantial amounts of greenhouse gases may be emitted."
+  },
+  {
+    "category": "housing",
+    "instruction": "Can you summarize Water supply network for me?",
+    "output": "A water supply network or water supply system is a system of engineered hydrologic and hydraulic components that provide water supply. A water supply system typically includes the following:A drainage basin \nA raw water collection point where the water accumulates, such as a lake, a river, or groundwater from an underground aquifer. Raw water may be transferred using uncovered ground-level aqueducts, covered tunnels, or underground pipes to water purification facilities..\nWater purification facilities. Treated water is transferred using water pipes.\nWater storage facilities such as reservoirs, water tanks, or water towers. Smaller water systems may store the water in cisterns or pressure vessels. Tall buildings may also need to store water locally in pressure vessels in order for the water to reach the upper floors.\nAdditional water pressurizing components such as pumping stations may need to be situated at the outlet of underground or aboveground reservoirs or cisterns.\nA pipe network for distribution of water to consumers and other usage points \nConnections to the sewers are generally found downstream of the water consumers, but the sewer system is considered to be a separate system, rather than part of the water supply system."
+  },
+  {
+    "category": "ecology",
+    "instruction": "Explain Renewable energy in simple words.",
+    "output": "Renewable energy is energy made from renewable natural resources that are replenished on a human timescale. The most widely used renewable energy types are solar energy, wind power, and hydropower. Bioenergy and geothermal power are also significant in some countries. Renewable energy installations can be large or small and are suited for both urban and rural areas. Renewable energy is often deployed together with further electrification. This has several benefits: electricity can move heat and vehicles efficiently and is clean at the point of consumption. Variable renewable energy sources are those that have a fluctuating nature, such as wind power and solar power. In contrast, controllable renewable energy sources include dammed hydroelectricity, bioenergy, or geothermal power."
+  },
+  {
+    "category": "education",
+    "instruction": "Explain Geographic information system in simple words.",
+    "output": "A geographic information system (GIS) consists of integrated computer hardware and software that store, manage, analyze, edit, output, and visualize geographic data. Much of this often happens within a spatial database; however, this is not essential to meet the definition of a GIS. In a broader sense, one may consider such a system also to include human users and support staff, procedures and workflows, the body of knowledge of relevant concepts and methods, and institutional organizations."
+  },
+  {
+    "category": "traffic",
+    "instruction": "What is the practical meaning of Bus?",
+    "output": "A bus is a motor vehicle that carries significantly more passengers than an average car or van, but fewer than the average rail transport. It is most commonly used in public transport, but is also in use for charter purposes, or through private ownership. Although the average bus carries between 30 and 100 passengers, some buses have a capacity of up to 300 passengers. The most common type is the single-deck rigid bus, with double-decker and articulated buses carrying larger loads, and midibuses and minibuses carrying smaller loads. Coaches are used for longer-distance services. Many types of buses, such as city transit buses and inter-city coaches, charge a fare. Other types, such as elementary or secondary school buses or shuttle buses within a post-secondary education campus, are free. In many jurisdictions, bus drivers require a special large vehicle licence above and beyond a regular driving license."
+  },
+  {
+    "category": "food",
+    "instruction": "Explain Green Bazaar in simple words.",
+    "output": "The Green Bazar is a public market in Almaty, Kazakhstan. Since its inauguration in 1875, the market has been an important trading point in Almaty. The market currently sells spices, prepared foods, produce, textile, furniture, and a wide variety of different objects, including antiques."
+  },
+  {
+    "category": "housing",
+    "instruction": "Give me key facts about Urban planning.",
+    "output": "Urban planning is the process of developing and designing land use and the built environment, including air, water, and the infrastructure passing into and out of urban areas, such as transportation, communications, and distribution networks, and their accessibility. Traditionally, urban planning followed a top-down approach in master planning the physical layout of human settlements. The primary concern was the public welfare, which included considerations of efficiency, sanitation, protection and use of the environment, as well as taking account of effects of the master plans on the social and economic activities. Over time, urban planning has adopted a focus on the social and environmental \"bottom lines\" that focuses on using planning as a tool to improve the health and well-being of people and maintain sustainability standards. In the early 21st century, urban planning experts such as Jane Jacobs called on urban planners to take resident experiences and needs more into consideration."
+  },
+  {
+    "category": "finance",
+    "instruction": "Why is Gross domestic product important for a modern city?",
+    "output": "Gross domestic product (GDP) is a monetary measure of the total market value of all of the final goods and services which are produced and rendered during a specific period of time by a country or countries. GDP is often used to measure the economic activity of a country or region. The major components of GDP are consumption, government spending, net exports, and investment. Changing any of these factors can increase the size of the economy. For example, population growth through mass immigration can raise consumption and demand for public services, thereby contributing to GDP growth. However, GDP is not a measure of overall standard of living or well-being, as it does not account for how income is distributed among the population. A country may rank high in GDP but still experience jobless growth depending on its planned economic structure and strategies. Dividing total GDP by the population gives an idealized rough measure of GDP per capita. Several national and international economic organizations, such as the OECD and the International Monetary Fund, maintain their own definitions of GDP."
+  },
+  {
+    "category": "emergency",
+    "instruction": "Why is Road safety important for a modern city?",
+    "output": "Road traffic safety refers to the methods and measures, such as traffic calming, to prevent road users from being killed or seriously injured. Typical road users include pedestrians, cyclists, motorists, passengers of vehicles, and passengers of on-road public transport, mainly buses and trams."
+  },
+  {
+    "category": "housing",
+    "instruction": "Why is Urban planning important for a modern city?",
+    "output": "Urban planning is the process of developing and designing land use and the built environment, including air, water, and the infrastructure passing into and out of urban areas, such as transportation, communications, and distribution networks, and their accessibility. Traditionally, urban planning followed a top-down approach in master planning the physical layout of human settlements. The primary concern was the public welfare, which included considerations of efficiency, sanitation, protection and use of the environment, as well as taking account of effects of the master plans on the social and economic activities. Over time, urban planning has adopted a focus on the social and environmental \"bottom lines\" that focuses on using planning as a tool to improve the health and well-being of people and maintain sustainability standards. In the early 21st century, urban planning experts such as Jane Jacobs called on urban planners to take resident experiences and needs more into consideration."
+  },
+  {
+    "category": "traffic",
+    "instruction": "Can you summarize Traffic congestion for me?",
+    "output": "Traffic congestion is a condition in transport that is characterized by slower speeds, longer trip times, and increased vehicular queuing. Traffic congestion on urban road networks has increased substantially since the 1950s, resulting in many of the roads becoming obsolete. When traffic demand is great enough that the interaction between vehicles slows the traffic stream, this results in congestion. While congestion is a possibility for any mode of transportation, this article will focus on automobile congestion on public roads. Mathematically, traffic is modeled as a flow through a fixed point on the route, analogously to fluid dynamics."
+  },
+  {
+    "category": "education",
+    "instruction": "What should I know about Open data?",
+    "output": "Open data are data that are openly accessible, exploitable, editable and shareable by anyone for any purpose. Open data are generally licensed under an open license."
+  },
+  {
+    "category": "finance",
+    "instruction": "What is the practical meaning of Inflation?",
+    "output": "In economics, inflation is an increase in the average price of goods and services in terms of money. This increase is measured using a price index, typically a consumer price index (CPI). When the general price level rises, each unit of currency buys fewer goods and services; consequently, inflation corresponds to a reduction in the purchasing power of money. The opposite of inflation is deflation, a decrease in the general price level of goods and services. The common measure of inflation is the inflation rate, the annualized percentage change in a general price index."
+  },
+  {
+    "category": "ecology",
+    "instruction": "What is the practical meaning of Renewable energy?",
+    "output": "Renewable energy is energy made from renewable natural resources that are replenished on a human timescale. The most widely used renewable energy types are solar energy, wind power, and hydropower. Bioenergy and geothermal power are also significant in some countries. Renewable energy installations can be large or small and are suited for both urban and rural areas. Renewable energy is often deployed together with further electrification. This has several benefits: electricity can move heat and vehicles efficiently and is clean at the point of consumption. Variable renewable energy sources are those that have a fluctuating nature, such as wind power and solar power. In contrast, controllable renewable energy sources include dammed hydroelectricity, bioenergy, or geothermal power."
+  },
+  {
+    "category": "tourism",
+    "instruction": "Can you summarize Ascension Cathedral, Almaty for me?",
+    "output": "The Ascension Cathedral, also known as Zenkov Cathedral, is a Russian Orthodox cathedral located in Panfilov Park in Almaty, Kazakhstan. Completed in 1907, the cathedral is made out of wood but without nails. It stands 56 meters tall, and is claimed to be the second tallest wooden church in the world."
+  },
+  {
+    "category": "education",
+    "instruction": "Can you summarize Neural network (machine learning) for me?",
+    "output": "In machine learning, a neural network (NN) or neural net, also called an artificial neural network (ANN), is a computational model inspired by the structure and functions of biological neural networks."
+  },
+  {
+    "category": "ecology",
+    "instruction": "Give me key facts about Air quality index.",
+    "output": "An air quality index (AQI) is an approximation of how polluted the air currently is or how polluted it is forecast to become. As air pollution levels rise, so does the AQI, along with the associated public health risks."
+  },
+  {
+    "category": "housing",
+    "instruction": "Give me key facts about Water supply network.",
+    "output": "A water supply network or water supply system is a system of engineered hydrologic and hydraulic components that provide water supply. A water supply system typically includes the following:A drainage basin \nA raw water collection point where the water accumulates, such as a lake, a river, or groundwater from an underground aquifer. Raw water may be transferred using uncovered ground-level aqueducts, covered tunnels, or underground pipes to water purification facilities..\nWater purification facilities. Treated water is transferred using water pipes.\nWater storage facilities such as reservoirs, water tanks, or water towers. Smaller water systems may store the water in cisterns or pressure vessels. Tall buildings may also need to store water locally in pressure vessels in order for the water to reach the upper floors.\nAdditional water pressurizing components such as pumping stations may need to be situated at the outlet of underground or aboveground reservoirs or cisterns.\nA pipe network for distribution of water to consumers and other usage points \nConnections to the sewers are generally found downstream of the water consumers, but the sewer system is considered to be a separate system, rather than part of the water supply system."
+  },
+  {
+    "category": "tourism",
+    "instruction": "Why is Kok Tobe important for a modern city?",
+    "output": "Köktöbe or Koktyube is a hill in Almaty, Kazakhstan's largest city and former capital. At 1,100 meters above sea level, it is one of the main landmarks of the city and a symbol of Almaty."
+  },
+  {
+    "category": "education",
+    "instruction": "What should I know about Neural network (machine learning)?",
+    "output": "In machine learning, a neural network (NN) or neural net, also called an artificial neural network (ANN), is a computational model inspired by the structure and functions of biological neural networks."
+  },
+  {
+    "category": "tourism",
+    "instruction": "Give me key facts about Medeu.",
+    "output": "The Medeu is an outdoor speed skating and bandy rink. It is located in Medeu Valley on the southeastern outskirts of Almaty, Kazakhstan. Medeu sits 1,691 m (5,548 ft) above sea level. It consists of 10,500 m2 of ice and utilizes a sophisticated freezing and watering system to ensure the quality of the ice."
+  },
+  {
+    "category": "finance",
+    "instruction": "What is the practical meaning of Public finance?",
+    "output": "Public finance refers to the monetary resources available to governments and also to the study of finance within government and role of the government in the economy. Within academic settings, public finance is a widely studied subject in many branches of political science, political economy and public economics. Research assesses the government revenue and government expenditure of the public authorities and the adjustment of one or the other to achieve desirable effects and avoid undesirable ones. The purview of public finance is considered to be threefold, consisting of governmental effects on:The efficient allocation of available resources;\nThe distribution of income among citizens; and\nThe stability of the economy."
+  },
+  {
+    "category": "education",
+    "instruction": "Give me key facts about Machine learning.",
+    "output": "Machine learning (ML) is a field of study in artificial intelligence concerned with the development and study of statistical algorithms that can learn from data and generalize to unseen data, and thus perform tasks without explicit instructions. Within a subdiscipline in machine learning, advances in the field of deep learning have allowed neural networks, a class of statistical algorithms, to surpass many previous machine learning approaches in performance."
+  },
+  {
+    "category": "traffic",
+    "instruction": "Give me key facts about Traffic congestion.",
+    "output": "Traffic congestion is a condition in transport that is characterized by slower speeds, longer trip times, and increased vehicular queuing. Traffic congestion on urban road networks has increased substantially since the 1950s, resulting in many of the roads becoming obsolete. When traffic demand is great enough that the interaction between vehicles slows the traffic stream, this results in congestion. While congestion is a possibility for any mode of transportation, this article will focus on automobile congestion on public roads. Mathematically, traffic is modeled as a flow through a fixed point on the route, analogously to fluid dynamics."
+  },
+  {
+    "category": "education",
+    "instruction": "Can you summarize Open data for me?",
+    "output": "Open data are data that are openly accessible, exploitable, editable and shareable by anyone for any purpose. Open data are generally licensed under an open license."
+  },
+  {
+    "category": "ecology",
+    "instruction": "What is the practical meaning of Urban heat island?",
+    "output": "The urban heat island (UHI) effect is a meteorological and climatological phenomenon in which urban areas experience significantly warmer temperatures than surrounding rural areas. The temperature difference is usually larger at night than during the day, and is most apparent when winds are weak, under block conditions, noticeably during the summer and winter.\nThe main cause of the UHI effect is from the modification of land surfaces, while waste heat generated by energy usage is a secondary contributor. Urban areas occupy about 0.5% of the Earth's land surface but host more than half of the world's population. As a population center grows, it tends to expand its area and increase its average temperature. The term heat island is also used; the term can be used to refer to any area that is relatively hotter than the surrounding, but generally refers to human-disturbed areas."
+  },
+  {
+    "category": "finance",
+    "instruction": "Explain Public finance in simple words.",
+    "output": "Public finance refers to the monetary resources available to governments and also to the study of finance within government and role of the government in the economy. Within academic settings, public finance is a widely studied subject in many branches of political science, political economy and public economics. Research assesses the government revenue and government expenditure of the public authorities and the adjustment of one or the other to achieve desirable effects and avoid undesirable ones. The purview of public finance is considered to be threefold, consisting of governmental effects on:The efficient allocation of available resources;\nThe distribution of income among citizens; and\nThe stability of the economy."
+  },
+  {
+    "category": "education",
+    "instruction": "Can you summarize Machine learning for me?",
+    "output": "Machine learning (ML) is a field of study in artificial intelligence concerned with the development and study of statistical algorithms that can learn from data and generalize to unseen data, and thus perform tasks without explicit instructions. Within a subdiscipline in machine learning, advances in the field of deep learning have allowed neural networks, a class of statistical algorithms, to surpass many previous machine learning approaches in performance."
+  },
+  {
+    "category": "education",
+    "instruction": "What is the practical meaning of Digital transformation?",
+    "output": "Digital transformation (DT) is the process of adoption and implementation of digital technology by an organization in order to create new or modify existing products, services and operations by the means of translating business processes into a digital format."
+  },
+  {
+    "category": "housing",
+    "instruction": "Explain Sanitation in simple words.",
+    "output": "Sanitation refers to public health conditions related to clean drinking water and treatment and disposal of human excreta and sewage. Preventing human contact with feces is part of sanitation, as is hand washing with soap. Sanitation systems aim to protect human health by providing a clean environment that will stop the transmission of disease, especially through the fecal–oral route. For example, diarrhea, a main cause of malnutrition and stunted growth in children, can be reduced through adequate sanitation. There are many other diseases which are easily transmitted in communities that have low levels of sanitation, such as ascariasis, cholera, hepatitis, polio, schistosomiasis, and trachoma, to name just a few."
+  },
+  {
+    "category": "housing",
+    "instruction": "Why is Water supply network important for a modern city?",
+    "output": "A water supply network or water supply system is a system of engineered hydrologic and hydraulic components that provide water supply. A water supply system typically includes the following:A drainage basin \nA raw water collection point where the water accumulates, such as a lake, a river, or groundwater from an underground aquifer. Raw water may be transferred using uncovered ground-level aqueducts, covered tunnels, or underground pipes to water purification facilities..\nWater purification facilities. Treated water is transferred using water pipes.\nWater storage facilities such as reservoirs, water tanks, or water towers. Smaller water systems may store the water in cisterns or pressure vessels. Tall buildings may also need to store water locally in pressure vessels in order for the water to reach the upper floors.\nAdditional water pressurizing components such as pumping stations may need to be situated at the outlet of underground or aboveground reservoirs or cisterns.\nA pipe network for distribution of water to consumers and other usage points \nConnections to the sewers are generally found downstream of the water consumers, but the sewer system is considered to be a separate system, rather than part of the water supply system."
+  },
+  {
+    "category": "tourism",
+    "instruction": "What is the practical meaning of Kazakhstan?",
+    "output": "Kazakhstan, officially the Republic of Kazakhstan, is a landlocked country situated primarily in Central Asia, with a small portion of its territory extending into Eastern Europe. It borders Russia to the north and west, China to the east, Kyrgyzstan to the southeast, Uzbekistan to the south, and Turkmenistan to the southwest, and it has a coastline along the Caspian Sea. The capital is Astana, and Almaty, the country’s largest city and principal cultural and economic center, served as the capital until 1997."
+  },
+  {
+    "category": "tourism",
+    "instruction": "How does Medeu affect everyday life?",
+    "output": "The Medeu is an outdoor speed skating and bandy rink. It is located in Medeu Valley on the southeastern outskirts of Almaty, Kazakhstan. Medeu sits 1,691 m (5,548 ft) above sea level. It consists of 10,500 m2 of ice and utilizes a sophisticated freezing and watering system to ensure the quality of the ice."
+  },
+  {
+    "category": "education",
+    "instruction": "How does Smart city affect everyday life?",
+    "output": "A smart city is an urban model that leverages technology, human capital, and governance to improve sustainability, efficiency, and social inclusion, which are considered goals for cities of the future. Smart cities use digital technology to collect data and operate services. Data is collected from citizens, devices, buildings, or cameras. Smart city applications are diverse and include, but are not limited to, traffic and transportation systems, power plants, utilities, urban forestry, water supply networks, waste disposal, criminal investigations, information systems, schools, libraries, hospitals, and other community services. The foundation of a smart city is built on the integration of people, technology, and processes, which connect and interact across sectors such as healthcare, transportation, education, infrastructure, etc. Smart cities are characterized by the ways in which their local governments monitor, analyze, plan, and govern the city. In a smart city, data sharing extends to businesses, citizens, and other third parties who can derive benefit from using that data. The three largest sources of spending associated with smart cities as of 2022 were visual surveillance, public transit, and outdoor lighting."
+  },
+  {
+    "category": "tourism",
+    "instruction": "How does Ascension Cathedral, Almaty affect everyday life?",
+    "output": "The Ascension Cathedral, also known as Zenkov Cathedral, is a Russian Orthodox cathedral located in Panfilov Park in Almaty, Kazakhstan. Completed in 1907, the cathedral is made out of wood but without nails. It stands 56 meters tall, and is claimed to be the second tallest wooden church in the world."
+  },
+  {
+    "category": "education",
+    "instruction": "Give me key facts about Geographic information system.",
+    "output": "A geographic information system (GIS) consists of integrated computer hardware and software that store, manage, analyze, edit, output, and visualize geographic data. Much of this often happens within a spatial database; however, this is not essential to meet the definition of a GIS. In a broader sense, one may consider such a system also to include human users and support staff, procedures and workflows, the body of knowledge of relevant concepts and methods, and institutional organizations."
+  },
+  {
+    "category": "education",
+    "instruction": "Explain Cybersecurity in simple words.",
+    "output": "Computer security is a subdiscipline within the field of information security. It focuses on protecting computer software, systems, and networks from threats that can lead to unauthorized information disclosure, theft or damage to hardware, software, or data, as well as to the disruption or misdirection of the services they provide."
+  },
+  {
+    "category": "traffic",
+    "instruction": "Can you summarize Bicycle-sharing system for me?",
+    "output": "A bicycle-sharing system, bike share program, public bicycle scheme, or public bike share (PBS) scheme, is a shared transport service where bicycles or electric bicycles are available for shared use by individuals at low cost."
+  },
+  {
+    "category": "ecology",
+    "instruction": "Can you summarize Waste management for me?",
+    "output": "Waste management or waste disposal includes the processes and actions required to manage waste from its inception to its final disposal. This includes the collection, transport, treatment, and disposal of waste, together with monitoring and regulation of the waste management process and waste-related laws, technologies, and economic mechanisms."
+  },
+  {
+    "category": "traffic",
+    "instruction": "What should I know about Electric vehicle?",
+    "output": "An electric vehicle (EV) is a motorized vehicle whose propulsion is provided fully or mostly by electric power, via grid electricity or from onboard rechargeable batteries. EVs encompass a wide range of transportation modes, including road and rail vehicles, electric boats and submersibles, electric aircraft and electric spacecraft."
+  },
+  {
+    "category": "tourism",
+    "instruction": "Explain Shymbulak in simple words.",
+    "output": "Shymbulak, also known as Chimbulak and Chymbulak, is a ski resort near Almaty, Kazakhstan. It is the largest ski resort in Central Asia. It is located in the upper part of the Medeu Valley in the Zailiisky Alatau mountain range, at an elevation of 2,200 metres (7,200 ft) above sea level. The resort area is about 25 kilometres (16 mi) south of Almaty city centre in the Medeo district."
+  },
+  {
+    "category": "traffic",
+    "instruction": "What is the practical meaning of Almaty Metro?",
+    "output": "Almaty Metro is a rapid transit/metro system in Almaty, the largest city and a former capital of Kazakhstan. The first line of the system was opened on 1 December 2011, after more than 23 years of construction. A 2.9-kilometre (1.8 mi), two-station extension of the Metro to Moskva station opened on 18 April 2015, followed by a 3.1 kilometres (1.9 mi), two-station extension to Bauyrzhan Momyshuly on 30 May 2022. As of October 2025, this is the only metro system in Kazakhstan, although the much-delayed Astana Light Metro is expected to open soon."
+  },
+  {
+    "category": "education",
+    "instruction": "How does Neural network (machine learning) affect everyday life?",
+    "output": "In machine learning, a neural network (NN) or neural net, also called an artificial neural network (ANN), is a computational model inspired by the structure and functions of biological neural networks."
+  },
+  {
+    "category": "education",
+    "instruction": "How does Telemedicine affect everyday life?",
+    "output": "Telehealth is the distribution of health-related services and information via electronic information and telecommunication technologies. It facilitates long-distance patient and clinician contact, care, advice, reminders, education, intervention, monitoring, and remote admissions. This includes data sharing by way of patient portals and electronic medical records."
+  },
+  {
+    "category": "education",
+    "instruction": "What should I know about Cybersecurity?",
+    "output": "Computer security is a subdiscipline within the field of information security. It focuses on protecting computer software, systems, and networks from threats that can lead to unauthorized information disclosure, theft or damage to hardware, software, or data, as well as to the disruption or misdirection of the services they provide."
+  },
+  {
+    "category": "traffic",
+    "instruction": "How does Bus affect everyday life?",
+    "output": "A bus is a motor vehicle that carries significantly more passengers than an average car or van, but fewer than the average rail transport. It is most commonly used in public transport, but is also in use for charter purposes, or through private ownership. Although the average bus carries between 30 and 100 passengers, some buses have a capacity of up to 300 passengers. The most common type is the single-deck rigid bus, with double-decker and articulated buses carrying larger loads, and midibuses and minibuses carrying smaller loads. Coaches are used for longer-distance services. Many types of buses, such as city transit buses and inter-city coaches, charge a fare. Other types, such as elementary or secondary school buses or shuttle buses within a post-secondary education campus, are free. In many jurisdictions, bus drivers require a special large vehicle licence above and beyond a regular driving license."
+  },
+  {
+    "category": "tourism",
+    "instruction": "What is the practical meaning of Medeu?",
+    "output": "The Medeu is an outdoor speed skating and bandy rink. It is located in Medeu Valley on the southeastern outskirts of Almaty, Kazakhstan. Medeu sits 1,691 m (5,548 ft) above sea level. It consists of 10,500 m2 of ice and utilizes a sophisticated freezing and watering system to ensure the quality of the ice."
+  },
+  {
+    "category": "ecology",
+    "instruction": "Explain Urban heat island in simple words.",
+    "output": "The urban heat island (UHI) effect is a meteorological and climatological phenomenon in which urban areas experience significantly warmer temperatures than surrounding rural areas. The temperature difference is usually larger at night than during the day, and is most apparent when winds are weak, under block conditions, noticeably during the summer and winter.\nThe main cause of the UHI effect is from the modification of land surfaces, while waste heat generated by energy usage is a secondary contributor. Urban areas occupy about 0.5% of the Earth's land surface but host more than half of the world's population. As a population center grows, it tends to expand its area and increase its average temperature. The term heat island is also used; the term can be used to refer to any area that is relatively hotter than the surrounding, but generally refers to human-disturbed areas."
+  },
+  {
+    "category": "education",
+    "instruction": "Can you summarize Geographic information system for me?",
+    "output": "A geographic information system (GIS) consists of integrated computer hardware and software that store, manage, analyze, edit, output, and visualize geographic data. Much of this often happens within a spatial database; however, this is not essential to meet the definition of a GIS. In a broader sense, one may consider such a system also to include human users and support staff, procedures and workflows, the body of knowledge of relevant concepts and methods, and institutional organizations."
+  },
+  {
+    "category": "traffic",
+    "instruction": "Explain Bus in simple words.",
+    "output": "A bus is a motor vehicle that carries significantly more passengers than an average car or van, but fewer than the average rail transport. It is most commonly used in public transport, but is also in use for charter purposes, or through private ownership. Although the average bus carries between 30 and 100 passengers, some buses have a capacity of up to 300 passengers. The most common type is the single-deck rigid bus, with double-decker and articulated buses carrying larger loads, and midibuses and minibuses carrying smaller loads. Coaches are used for longer-distance services. Many types of buses, such as city transit buses and inter-city coaches, charge a fare. Other types, such as elementary or secondary school buses or shuttle buses within a post-secondary education campus, are free. In many jurisdictions, bus drivers require a special large vehicle licence above and beyond a regular driving license."
+  },
+  {
+    "category": "traffic",
+    "instruction": "What is the practical meaning of Traffic congestion?",
+    "output": "Traffic congestion is a condition in transport that is characterized by slower speeds, longer trip times, and increased vehicular queuing. Traffic congestion on urban road networks has increased substantially since the 1950s, resulting in many of the roads becoming obsolete. When traffic demand is great enough that the interaction between vehicles slows the traffic stream, this results in congestion. While congestion is a possibility for any mode of transportation, this article will focus on automobile congestion on public roads. Mathematically, traffic is modeled as a flow through a fixed point on the route, analogously to fluid dynamics."
+  },
+  {
+    "category": "traffic",
+    "instruction": "What is the practical meaning of Electric vehicle?",
+    "output": "An electric vehicle (EV) is a motorized vehicle whose propulsion is provided fully or mostly by electric power, via grid electricity or from onboard rechargeable batteries. EVs encompass a wide range of transportation modes, including road and rail vehicles, electric boats and submersibles, electric aircraft and electric spacecraft."
+  },
+  {
+    "category": "education",
+    "instruction": "How does Digital transformation affect everyday life?",
+    "output": "Digital transformation (DT) is the process of adoption and implementation of digital technology by an organization in order to create new or modify existing products, services and operations by the means of translating business processes into a digital format."
+  },
+  {
+    "category": "tourism",
+    "instruction": "Give me key facts about Kazakhstan.",
+    "output": "Kazakhstan, officially the Republic of Kazakhstan, is a landlocked country situated primarily in Central Asia, with a small portion of its territory extending into Eastern Europe. It borders Russia to the north and west, China to the east, Kyrgyzstan to the southeast, Uzbekistan to the south, and Turkmenistan to the southwest, and it has a coastline along the Caspian Sea. The capital is Astana, and Almaty, the country’s largest city and principal cultural and economic center, served as the capital until 1997."
+  },
+  {
+    "category": "ecology",
+    "instruction": "How does Sustainable city affect everyday life?",
+    "output": "A sustainable city, eco-city, or green city is a city designed with consideration for the social, economic, and environmental impact, as well as a resilient habitat for existing populations. The UN Sustainable Development Goal 11 defines as one that is dedicated to achieving green, social, and economic sustainability, facilitating opportunities that prioritize inclusivity as well as maintaining a sustainable economic growth. Furthermore, the objective is to minimize the inputs of energy, water, and food, and to drastically reduce waste, as well as the outputs of heat, air pollution."
+  },
+  {
+    "category": "traffic",
+    "instruction": "Can you summarize Bus for me?",
+    "output": "A bus is a motor vehicle that carries significantly more passengers than an average car or van, but fewer than the average rail transport. It is most commonly used in public transport, but is also in use for charter purposes, or through private ownership. Although the average bus carries between 30 and 100 passengers, some buses have a capacity of up to 300 passengers. The most common type is the single-deck rigid bus, with double-decker and articulated buses carrying larger loads, and midibuses and minibuses carrying smaller loads. Coaches are used for longer-distance services. Many types of buses, such as city transit buses and inter-city coaches, charge a fare. Other types, such as elementary or secondary school buses or shuttle buses within a post-secondary education campus, are free. In many jurisdictions, bus drivers require a special large vehicle licence above and beyond a regular driving license."
+  },
+  {
+    "category": "tourism",
+    "instruction": "What is the practical meaning of Almaty?",
+    "output": "Almaty is the largest city in Kazakhstan, with a population exceeding two million residents within its metropolitan area. Located in the foothills of the Trans-Ili Alatau mountains in southern Kazakhstan, near the border with Kyrgyzstan, Almaty stands as a pivotal center of culture, commerce, finance and innovation. The city is nestled at an elevation of 700–900 metres, with the Big Almaty and Small Almaty rivers running through it, originating from the surrounding mountains and flowing into the plains. Almaty is the second-largest city in Central Asia and the fourth-largest in the Commonwealth of Independent States (CIS)."
+  },
+  {
+    "category": "tourism",
+    "instruction": "Give me key facts about Ascension Cathedral, Almaty.",
+    "output": "The Ascension Cathedral, also known as Zenkov Cathedral, is a Russian Orthodox cathedral located in Panfilov Park in Almaty, Kazakhstan. Completed in 1907, the cathedral is made out of wood but without nails. It stands 56 meters tall, and is claimed to be the second tallest wooden church in the world."
+  },
+  {
+    "category": "tourism",
+    "instruction": "What should I know about Kazakhstan?",
+    "output": "Kazakhstan, officially the Republic of Kazakhstan, is a landlocked country situated primarily in Central Asia, with a small portion of its territory extending into Eastern Europe. It borders Russia to the north and west, China to the east, Kyrgyzstan to the southeast, Uzbekistan to the south, and Turkmenistan to the southwest, and it has a coastline along the Caspian Sea. The capital is Astana, and Almaty, the country’s largest city and principal cultural and economic center, served as the capital until 1997."
+  },
+  {
+    "category": "education",
+    "instruction": "Give me key facts about Open data.",
+    "output": "Open data are data that are openly accessible, exploitable, editable and shareable by anyone for any purpose. Open data are generally licensed under an open license."
+  },
+  {
+    "category": "education",
+    "instruction": "How does Machine learning affect everyday life?",
+    "output": "Machine learning (ML) is a field of study in artificial intelligence concerned with the development and study of statistical algorithms that can learn from data and generalize to unseen data, and thus perform tasks without explicit instructions. Within a subdiscipline in machine learning, advances in the field of deep learning have allowed neural networks, a class of statistical algorithms, to surpass many previous machine learning approaches in performance."
+  },
+  {
+    "category": "tourism",
+    "instruction": "How does Shymbulak affect everyday life?",
+    "output": "Shymbulak, also known as Chimbulak and Chymbulak, is a ski resort near Almaty, Kazakhstan. It is the largest ski resort in Central Asia. It is located in the upper part of the Medeu Valley in the Zailiisky Alatau mountain range, at an elevation of 2,200 metres (7,200 ft) above sea level. The resort area is about 25 kilometres (16 mi) south of Almaty city centre in the Medeo district."
+  },
+  {
+    "category": "education",
+    "instruction": "Can you summarize Internet of things for me?",
+    "output": "Internet of things (IoT) describes physical objects that are embedded with sensors, processing ability, software, and other technologies that connect and exchange data with other devices and systems over the Internet or other communication networks. The field of IoT encompasses electronics, communication, and computer science engineering. \"Internet of things\" has been considered a misnomer because most devices do not need to be connected to the public Internet; they only need to be connected to a network and be individually addressable."
+  },
+  {
+    "category": "ecology",
+    "instruction": "How does Urban heat island affect everyday life?",
+    "output": "The urban heat island (UHI) effect is a meteorological and climatological phenomenon in which urban areas experience significantly warmer temperatures than surrounding rural areas. The temperature difference is usually larger at night than during the day, and is most apparent when winds are weak, under block conditions, noticeably during the summer and winter.\nThe main cause of the UHI effect is from the modification of land surfaces, while waste heat generated by energy usage is a secondary contributor. Urban areas occupy about 0.5% of the Earth's land surface but host more than half of the world's population. As a population center grows, it tends to expand its area and increase its average temperature. The term heat island is also used; the term can be used to refer to any area that is relatively hotter than the surrounding, but generally refers to human-disturbed areas."
+  },
+  {
+    "category": "ecology",
+    "instruction": "Why is Wind power important for a modern city?",
+    "output": "Wind power is the use of wind energy to generate useful work. Historically, wind power was used by sails, windmills and windpumps, but today it is mostly used to generate electricity. This article deals only with wind power for electricity generation.\nToday, wind power is generated almost completely using wind turbines, generally grouped into wind farms and connected to the electrical grid."
+  },
+  {
+    "category": "housing",
+    "instruction": "What should I know about Water supply network?",
+    "output": "A water supply network or water supply system is a system of engineered hydrologic and hydraulic components that provide water supply. A water supply system typically includes the following:A drainage basin \nA raw water collection point where the water accumulates, such as a lake, a river, or groundwater from an underground aquifer. Raw water may be transferred using uncovered ground-level aqueducts, covered tunnels, or underground pipes to water purification facilities..\nWater purification facilities. Treated water is transferred using water pipes.\nWater storage facilities such as reservoirs, water tanks, or water towers. Smaller water systems may store the water in cisterns or pressure vessels. Tall buildings may also need to store water locally in pressure vessels in order for the water to reach the upper floors.\nAdditional water pressurizing components such as pumping stations may need to be situated at the outlet of underground or aboveground reservoirs or cisterns.\nA pipe network for distribution of water to consumers and other usage points \nConnections to the sewers are generally found downstream of the water consumers, but the sewer system is considered to be a separate system, rather than part of the water supply system."
+  },
+  {
+    "category": "tourism",
+    "instruction": "What is the practical meaning of Ascension Cathedral, Almaty?",
+    "output": "The Ascension Cathedral, also known as Zenkov Cathedral, is a Russian Orthodox cathedral located in Panfilov Park in Almaty, Kazakhstan. Completed in 1907, the cathedral is made out of wood but without nails. It stands 56 meters tall, and is claimed to be the second tallest wooden church in the world."
+  },
+  {
+    "category": "ecology",
+    "instruction": "What should I know about Waste management?",
+    "output": "Waste management or waste disposal includes the processes and actions required to manage waste from its inception to its final disposal. This includes the collection, transport, treatment, and disposal of waste, together with monitoring and regulation of the waste management process and waste-related laws, technologies, and economic mechanisms."
+  },
+  {
+    "category": "education",
+    "instruction": "Why is Smart city important for a modern city?",
+    "output": "A smart city is an urban model that leverages technology, human capital, and governance to improve sustainability, efficiency, and social inclusion, which are considered goals for cities of the future. Smart cities use digital technology to collect data and operate services. Data is collected from citizens, devices, buildings, or cameras. Smart city applications are diverse and include, but are not limited to, traffic and transportation systems, power plants, utilities, urban forestry, water supply networks, waste disposal, criminal investigations, information systems, schools, libraries, hospitals, and other community services. The foundation of a smart city is built on the integration of people, technology, and processes, which connect and interact across sectors such as healthcare, transportation, education, infrastructure, etc. Smart cities are characterized by the ways in which their local governments monitor, analyze, plan, and govern the city. In a smart city, data sharing extends to businesses, citizens, and other third parties who can derive benefit from using that data. The three largest sources of spending associated with smart cities as of 2022 were visual surveillance, public transit, and outdoor lighting."
+  },
+  {
+    "category": "ecology",
+    "instruction": "Give me key facts about Urban heat island.",
+    "output": "The urban heat island (UHI) effect is a meteorological and climatological phenomenon in which urban areas experience significantly warmer temperatures than surrounding rural areas. The temperature difference is usually larger at night than during the day, and is most apparent when winds are weak, under block conditions, noticeably during the summer and winter.\nThe main cause of the UHI effect is from the modification of land surfaces, while waste heat generated by energy usage is a secondary contributor. Urban areas occupy about 0.5% of the Earth's land surface but host more than half of the world's population. As a population center grows, it tends to expand its area and increase its average temperature. The term heat island is also used; the term can be used to refer to any area that is relatively hotter than the surrounding, but generally refers to human-disturbed areas."
+  },
+  {
+    "category": "education",
+    "instruction": "What is the practical meaning of Internet of things?",
+    "output": "Internet of things (IoT) describes physical objects that are embedded with sensors, processing ability, software, and other technologies that connect and exchange data with other devices and systems over the Internet or other communication networks. The field of IoT encompasses electronics, communication, and computer science engineering. \"Internet of things\" has been considered a misnomer because most devices do not need to be connected to the public Internet; they only need to be connected to a network and be individually addressable."
+  },
+  {
+    "category": "ecology",
+    "instruction": "Why is Solar power important for a modern city?",
+    "output": "Solar power, also known as solar electricity, is the conversion of energy from sunlight into electricity, either directly using photovoltaics (PV) or indirectly using concentrated solar power. Solar panels use the photovoltaic effect to convert light into an electric current. Concentrated solar power systems use lenses or mirrors and solar tracking systems to focus a large area of sunlight to a hot spot, often to drive a steam turbine."
+  },
+  {
+    "category": "finance",
+    "instruction": "How does Inflation affect everyday life?",
+    "output": "In economics, inflation is an increase in the average price of goods and services in terms of money. This increase is measured using a price index, typically a consumer price index (CPI). When the general price level rises, each unit of currency buys fewer goods and services; consequently, inflation corresponds to a reduction in the purchasing power of money. The opposite of inflation is deflation, a decrease in the general price level of goods and services. The common measure of inflation is the inflation rate, the annualized percentage change in a general price index."
+  },
+  {
+    "category": "education",
+    "instruction": "What is the practical meaning of Telemedicine?",
+    "output": "Telehealth is the distribution of health-related services and information via electronic information and telecommunication technologies. It facilitates long-distance patient and clinician contact, care, advice, reminders, education, intervention, monitoring, and remote admissions. This includes data sharing by way of patient portals and electronic medical records."
+  },
+  {
+    "category": "ecology",
+    "instruction": "Why is Air pollution important for a modern city?",
+    "output": "Air pollution is the presence of substances in the air that are harmful to humans, other living beings or the environment. Pollutants can be gases, like ozone or nitrogen oxides, or small particles like soot and dust. Both outdoor and indoor air can be polluted."
+  },
+  {
+    "category": "education",
+    "instruction": "Why is Internet of things important for a modern city?",
+    "output": "Internet of things (IoT) describes physical objects that are embedded with sensors, processing ability, software, and other technologies that connect and exchange data with other devices and systems over the Internet or other communication networks. The field of IoT encompasses electronics, communication, and computer science engineering. \"Internet of things\" has been considered a misnomer because most devices do not need to be connected to the public Internet; they only need to be connected to a network and be individually addressable."
+  },
+  {
+    "category": "emergency",
+    "instruction": "What is the practical meaning of Emergency management?",
+    "output": "Emergency management refers to the systematic reduction of a community's vulnerability to natural and man-made hazards as well as the coordinated response to disasters after they occur. Emergency management focuses on destructive events that overwhelm a community's ability to handle on its own, such as hurricanes, pandemics, and terrorism. Professional emergency management activities include search and rescue, providing for the basic needs of affected individuals, and issuing evacuation alerts. The management of disasters requires collaboration between individuals, households, non-governmental organizations, and local, provincial, and federal governments."
+  },
+  {
+    "category": "ecology",
+    "instruction": "Give me key facts about Renewable energy.",
+    "output": "Renewable energy is energy made from renewable natural resources that are replenished on a human timescale. The most widely used renewable energy types are solar energy, wind power, and hydropower. Bioenergy and geothermal power are also significant in some countries. Renewable energy installations can be large or small and are suited for both urban and rural areas. Renewable energy is often deployed together with further electrification. This has several benefits: electricity can move heat and vehicles efficiently and is clean at the point of consumption. Variable renewable energy sources are those that have a fluctuating nature, such as wind power and solar power. In contrast, controllable renewable energy sources include dammed hydroelectricity, bioenergy, or geothermal power."
+  },
+  {
+    "category": "ecology",
+    "instruction": "Can you summarize Air pollution for me?",
+    "output": "Air pollution is the presence of substances in the air that are harmful to humans, other living beings or the environment. Pollutants can be gases, like ozone or nitrogen oxides, or small particles like soot and dust. Both outdoor and indoor air can be polluted."
+  },
+  {
+    "category": "food",
+    "instruction": "What is the practical meaning of Green Bazaar?",
+    "output": "The Green Bazar is a public market in Almaty, Kazakhstan. Since its inauguration in 1875, the market has been an important trading point in Almaty. The market currently sells spices, prepared foods, produce, textile, furniture, and a wide variety of different objects, including antiques."
+  },
+  {
+    "category": "finance",
+    "instruction": "How does Public finance affect everyday life?",
+    "output": "Public finance refers to the monetary resources available to governments and also to the study of finance within government and role of the government in the economy. Within academic settings, public finance is a widely studied subject in many branches of political science, political economy and public economics. Research assesses the government revenue and government expenditure of the public authorities and the adjustment of one or the other to achieve desirable effects and avoid undesirable ones. The purview of public finance is considered to be threefold, consisting of governmental effects on:The efficient allocation of available resources;\nThe distribution of income among citizens; and\nThe stability of the economy."
+  },
+  {
+    "category": "traffic",
+    "instruction": "Why is Bicycle-sharing system important for a modern city?",
+    "output": "A bicycle-sharing system, bike share program, public bicycle scheme, or public bike share (PBS) scheme, is a shared transport service where bicycles or electric bicycles are available for shared use by individuals at low cost."
+  },
+  {
+    "category": "education",
+    "instruction": "What is the practical meaning of Cloud computing?",
+    "output": "Cloud computing is defined by the International Organization for Standardization (ISO) as \"a paradigm for enabling network access to a scalable and elastic pool of shareable physical or virtual resources with self-service provisioning and administration on demand\". It is commonly referred to as \"the cloud\"."
+  },
+  {
+    "category": "housing",
+    "instruction": "What is the practical meaning of Urban planning?",
+    "output": "Urban planning is the process of developing and designing land use and the built environment, including air, water, and the infrastructure passing into and out of urban areas, such as transportation, communications, and distribution networks, and their accessibility. Traditionally, urban planning followed a top-down approach in master planning the physical layout of human settlements. The primary concern was the public welfare, which included considerations of efficiency, sanitation, protection and use of the environment, as well as taking account of effects of the master plans on the social and economic activities. Over time, urban planning has adopted a focus on the social and environmental \"bottom lines\" that focuses on using planning as a tool to improve the health and well-being of people and maintain sustainability standards. In the early 21st century, urban planning experts such as Jane Jacobs called on urban planners to take resident experiences and needs more into consideration."
+  },
+  {
+    "category": "finance",
+    "instruction": "What should I know about Public finance?",
+    "output": "Public finance refers to the monetary resources available to governments and also to the study of finance within government and role of the government in the economy. Within academic settings, public finance is a widely studied subject in many branches of political science, political economy and public economics. Research assesses the government revenue and government expenditure of the public authorities and the adjustment of one or the other to achieve desirable effects and avoid undesirable ones. The purview of public finance is considered to be threefold, consisting of governmental effects on:The efficient allocation of available resources;\nThe distribution of income among citizens; and\nThe stability of the economy."
+  },
+  {
+    "category": "education",
+    "instruction": "How does Open data affect everyday life?",
+    "output": "Open data are data that are openly accessible, exploitable, editable and shareable by anyone for any purpose. Open data are generally licensed under an open license."
+  },
+  {
+    "category": "housing",
+    "instruction": "What should I know about Urban planning?",
+    "output": "Urban planning is the process of developing and designing land use and the built environment, including air, water, and the infrastructure passing into and out of urban areas, such as transportation, communications, and distribution networks, and their accessibility. Traditionally, urban planning followed a top-down approach in master planning the physical layout of human settlements. The primary concern was the public welfare, which included considerations of efficiency, sanitation, protection and use of the environment, as well as taking account of effects of the master plans on the social and economic activities. Over time, urban planning has adopted a focus on the social and environmental \"bottom lines\" that focuses on using planning as a tool to improve the health and well-being of people and maintain sustainability standards. In the early 21st century, urban planning experts such as Jane Jacobs called on urban planners to take resident experiences and needs more into consideration."
+  },
+  {
+    "category": "tourism",
+    "instruction": "What should I know about Almaty?",
+    "output": "Almaty is the largest city in Kazakhstan, with a population exceeding two million residents within its metropolitan area. Located in the foothills of the Trans-Ili Alatau mountains in southern Kazakhstan, near the border with Kyrgyzstan, Almaty stands as a pivotal center of culture, commerce, finance and innovation. The city is nestled at an elevation of 700–900 metres, with the Big Almaty and Small Almaty rivers running through it, originating from the surrounding mountains and flowing into the plains. Almaty is the second-largest city in Central Asia and the fourth-largest in the Commonwealth of Independent States (CIS)."
+  },
+  {
+    "category": "traffic",
+    "instruction": "How does Almaty Metro affect everyday life?",
+    "output": "Almaty Metro is a rapid transit/metro system in Almaty, the largest city and a former capital of Kazakhstan. The first line of the system was opened on 1 December 2011, after more than 23 years of construction. A 2.9-kilometre (1.8 mi), two-station extension of the Metro to Moskva station opened on 18 April 2015, followed by a 3.1 kilometres (1.9 mi), two-station extension to Bauyrzhan Momyshuly on 30 May 2022. As of October 2025, this is the only metro system in Kazakhstan, although the much-delayed Astana Light Metro is expected to open soon."
+  },
+  {
+    "category": "emergency",
+    "instruction": "What should I know about Emergency management?",
+    "output": "Emergency management refers to the systematic reduction of a community's vulnerability to natural and man-made hazards as well as the coordinated response to disasters after they occur. Emergency management focuses on destructive events that overwhelm a community's ability to handle on its own, such as hurricanes, pandemics, and terrorism. Professional emergency management activities include search and rescue, providing for the basic needs of affected individuals, and issuing evacuation alerts. The management of disasters requires collaboration between individuals, households, non-governmental organizations, and local, provincial, and federal governments."
+  },
+  {
+    "category": "traffic",
+    "instruction": "Explain Public transport in simple words.",
+    "output": "Public transport refers to forms of transport made available for use by the general public. Public transport systems typically operate on fixed routes and schedules and charge a standardized fare intended to cover operating costs, often supplemented by public funding where required."
+  },
+  {
+    "category": "finance",
+    "instruction": "What is the practical meaning of Gross domestic product?",
+    "output": "Gross domestic product (GDP) is a monetary measure of the total market value of all of the final goods and services which are produced and rendered during a specific period of time by a country or countries. GDP is often used to measure the economic activity of a country or region. The major components of GDP are consumption, government spending, net exports, and investment. Changing any of these factors can increase the size of the economy. For example, population growth through mass immigration can raise consumption and demand for public services, thereby contributing to GDP growth. However, GDP is not a measure of overall standard of living or well-being, as it does not account for how income is distributed among the population. A country may rank high in GDP but still experience jobless growth depending on its planned economic structure and strategies. Dividing total GDP by the population gives an idealized rough measure of GDP per capita. Several national and international economic organizations, such as the OECD and the International Monetary Fund, maintain their own definitions of GDP."
+  },
+  {
+    "category": "tourism",
+    "instruction": "Give me key facts about Shymbulak.",
+    "output": "Shymbulak, also known as Chimbulak and Chymbulak, is a ski resort near Almaty, Kazakhstan. It is the largest ski resort in Central Asia. It is located in the upper part of the Medeu Valley in the Zailiisky Alatau mountain range, at an elevation of 2,200 metres (7,200 ft) above sea level. The resort area is about 25 kilometres (16 mi) south of Almaty city centre in the Medeo district."
+  },
+  {
+    "category": "education",
+    "instruction": "What is the practical meaning of Geographic information system?",
+    "output": "A geographic information system (GIS) consists of integrated computer hardware and software that store, manage, analyze, edit, output, and visualize geographic data. Much of this often happens within a spatial database; however, this is not essential to meet the definition of a GIS. In a broader sense, one may consider such a system also to include human users and support staff, procedures and workflows, the body of knowledge of relevant concepts and methods, and institutional organizations."
+  },
+  {
+    "category": "finance",
+    "instruction": "Explain Inflation in simple words.",
+    "output": "In economics, inflation is an increase in the average price of goods and services in terms of money. This increase is measured using a price index, typically a consumer price index (CPI). When the general price level rises, each unit of currency buys fewer goods and services; consequently, inflation corresponds to a reduction in the purchasing power of money. The opposite of inflation is deflation, a decrease in the general price level of goods and services. The common measure of inflation is the inflation rate, the annualized percentage change in a general price index."
+  },
+  {
+    "category": "ecology",
+    "instruction": "How does Solar power affect everyday life?",
+    "output": "Solar power, also known as solar electricity, is the conversion of energy from sunlight into electricity, either directly using photovoltaics (PV) or indirectly using concentrated solar power. Solar panels use the photovoltaic effect to convert light into an electric current. Concentrated solar power systems use lenses or mirrors and solar tracking systems to focus a large area of sunlight to a hot spot, often to drive a steam turbine."
+  },
+  {
+    "category": "finance",
+    "instruction": "How does Gross domestic product affect everyday life?",
+    "output": "Gross domestic product (GDP) is a monetary measure of the total market value of all of the final goods and services which are produced and rendered during a specific period of time by a country or countries. GDP is often used to measure the economic activity of a country or region. The major components of GDP are consumption, government spending, net exports, and investment. Changing any of these factors can increase the size of the economy. For example, population growth through mass immigration can raise consumption and demand for public services, thereby contributing to GDP growth. However, GDP is not a measure of overall standard of living or well-being, as it does not account for how income is distributed among the population. A country may rank high in GDP but still experience jobless growth depending on its planned economic structure and strategies. Dividing total GDP by the population gives an idealized rough measure of GDP per capita. Several national and international economic organizations, such as the OECD and the International Monetary Fund, maintain their own definitions of GDP."
+  },
+  {
+    "category": "tourism",
+    "instruction": "Can you summarize Medeu for me?",
+    "output": "The Medeu is an outdoor speed skating and bandy rink. It is located in Medeu Valley on the southeastern outskirts of Almaty, Kazakhstan. Medeu sits 1,691 m (5,548 ft) above sea level. It consists of 10,500 m2 of ice and utilizes a sophisticated freezing and watering system to ensure the quality of the ice."
+  },
+  {
+    "category": "education",
+    "instruction": "What should I know about Smart city?",
+    "output": "A smart city is an urban model that leverages technology, human capital, and governance to improve sustainability, efficiency, and social inclusion, which are considered goals for cities of the future. Smart cities use digital technology to collect data and operate services. Data is collected from citizens, devices, buildings, or cameras. Smart city applications are diverse and include, but are not limited to, traffic and transportation systems, power plants, utilities, urban forestry, water supply networks, waste disposal, criminal investigations, information systems, schools, libraries, hospitals, and other community services. The foundation of a smart city is built on the integration of people, technology, and processes, which connect and interact across sectors such as healthcare, transportation, education, infrastructure, etc. Smart cities are characterized by the ways in which their local governments monitor, analyze, plan, and govern the city. In a smart city, data sharing extends to businesses, citizens, and other third parties who can derive benefit from using that data. The three largest sources of spending associated with smart cities as of 2022 were visual surveillance, public transit, and outdoor lighting."
+  },
+  {
+    "category": "education",
+    "instruction": "How does Internet of things affect everyday life?",
+    "output": "Internet of things (IoT) describes physical objects that are embedded with sensors, processing ability, software, and other technologies that connect and exchange data with other devices and systems over the Internet or other communication networks. The field of IoT encompasses electronics, communication, and computer science engineering. \"Internet of things\" has been considered a misnomer because most devices do not need to be connected to the public Internet; they only need to be connected to a network and be individually addressable."
+  },
+  {
+    "category": "housing",
+    "instruction": "Can you summarize Urban planning for me?",
+    "output": "Urban planning is the process of developing and designing land use and the built environment, including air, water, and the infrastructure passing into and out of urban areas, such as transportation, communications, and distribution networks, and their accessibility. Traditionally, urban planning followed a top-down approach in master planning the physical layout of human settlements. The primary concern was the public welfare, which included considerations of efficiency, sanitation, protection and use of the environment, as well as taking account of effects of the master plans on the social and economic activities. Over time, urban planning has adopted a focus on the social and environmental \"bottom lines\" that focuses on using planning as a tool to improve the health and well-being of people and maintain sustainability standards. In the early 21st century, urban planning experts such as Jane Jacobs called on urban planners to take resident experiences and needs more into consideration."
+  },
+  {
+    "category": "ecology",
+    "instruction": "How does Air pollution affect everyday life?",
+    "output": "Air pollution is the presence of substances in the air that are harmful to humans, other living beings or the environment. Pollutants can be gases, like ozone or nitrogen oxides, or small particles like soot and dust. Both outdoor and indoor air can be polluted."
+  },
+  {
+    "category": "finance",
+    "instruction": "What should I know about Gross domestic product?",
+    "output": "Gross domestic product (GDP) is a monetary measure of the total market value of all of the final goods and services which are produced and rendered during a specific period of time by a country or countries. GDP is often used to measure the economic activity of a country or region. The major components of GDP are consumption, government spending, net exports, and investment. Changing any of these factors can increase the size of the economy. For example, population growth through mass immigration can raise consumption and demand for public services, thereby contributing to GDP growth. However, GDP is not a measure of overall standard of living or well-being, as it does not account for how income is distributed among the population. A country may rank high in GDP but still experience jobless growth depending on its planned economic structure and strategies. Dividing total GDP by the population gives an idealized rough measure of GDP per capita. Several national and international economic organizations, such as the OECD and the International Monetary Fund, maintain their own definitions of GDP."
+  },
+  {
+    "category": "ecology",
+    "instruction": "What is the practical meaning of Wind power?",
+    "output": "Wind power is the use of wind energy to generate useful work. Historically, wind power was used by sails, windmills and windpumps, but today it is mostly used to generate electricity. This article deals only with wind power for electricity generation.\nToday, wind power is generated almost completely using wind turbines, generally grouped into wind farms and connected to the electrical grid."
+  },
+  {
+    "category": "emergency",
+    "instruction": "What should I know about Road safety?",
+    "output": "Road traffic safety refers to the methods and measures, such as traffic calming, to prevent road users from being killed or seriously injured. Typical road users include pedestrians, cyclists, motorists, passengers of vehicles, and passengers of on-road public transport, mainly buses and trams."
+  },
+  {
+    "category": "ecology",
+    "instruction": "Why is Waste management important for a modern city?",
+    "output": "Waste management or waste disposal includes the processes and actions required to manage waste from its inception to its final disposal. This includes the collection, transport, treatment, and disposal of waste, together with monitoring and regulation of the waste management process and waste-related laws, technologies, and economic mechanisms."
+  },
+  {
+    "category": "traffic",
+    "instruction": "What is the practical meaning of Bicycle-sharing system?",
+    "output": "A bicycle-sharing system, bike share program, public bicycle scheme, or public bike share (PBS) scheme, is a shared transport service where bicycles or electric bicycles are available for shared use by individuals at low cost."
+  },
+  {
+    "category": "education",
+    "instruction": "Why is Open data important for a modern city?",
+    "output": "Open data are data that are openly accessible, exploitable, editable and shareable by anyone for any purpose. Open data are generally licensed under an open license."
+  },
+  {
+    "category": "education",
+    "instruction": "What is the practical meaning of Neural network (machine learning)?",
+    "output": "In machine learning, a neural network (NN) or neural net, also called an artificial neural network (ANN), is a computational model inspired by the structure and functions of biological neural networks."
+  },
+  {
+    "category": "traffic",
+    "instruction": "Why is Electric vehicle important for a modern city?",
+    "output": "An electric vehicle (EV) is a motorized vehicle whose propulsion is provided fully or mostly by electric power, via grid electricity or from onboard rechargeable batteries. EVs encompass a wide range of transportation modes, including road and rail vehicles, electric boats and submersibles, electric aircraft and electric spacecraft."
+  },
+  {
+    "category": "finance",
+    "instruction": "Can you summarize Public finance for me?",
+    "output": "Public finance refers to the monetary resources available to governments and also to the study of finance within government and role of the government in the economy. Within academic settings, public finance is a widely studied subject in many branches of political science, political economy and public economics. Research assesses the government revenue and government expenditure of the public authorities and the adjustment of one or the other to achieve desirable effects and avoid undesirable ones. The purview of public finance is considered to be threefold, consisting of governmental effects on:The efficient allocation of available resources;\nThe distribution of income among citizens; and\nThe stability of the economy."
+  },
+  {
+    "category": "tourism",
+    "instruction": "Why is Kazakhstan important for a modern city?",
+    "output": "Kazakhstan, officially the Republic of Kazakhstan, is a landlocked country situated primarily in Central Asia, with a small portion of its territory extending into Eastern Europe. It borders Russia to the north and west, China to the east, Kyrgyzstan to the southeast, Uzbekistan to the south, and Turkmenistan to the southwest, and it has a coastline along the Caspian Sea. The capital is Astana, and Almaty, the country’s largest city and principal cultural and economic center, served as the capital until 1997."
+  },
+  {
+    "category": "tourism",
+    "instruction": "What is the practical meaning of Kok Tobe?",
+    "output": "Köktöbe or Koktyube is a hill in Almaty, Kazakhstan's largest city and former capital. At 1,100 meters above sea level, it is one of the main landmarks of the city and a symbol of Almaty."
+  },
+  {
+    "category": "housing",
+    "instruction": "How does Urban planning affect everyday life?",
+    "output": "Urban planning is the process of developing and designing land use and the built environment, including air, water, and the infrastructure passing into and out of urban areas, such as transportation, communications, and distribution networks, and their accessibility. Traditionally, urban planning followed a top-down approach in master planning the physical layout of human settlements. The primary concern was the public welfare, which included considerations of efficiency, sanitation, protection and use of the environment, as well as taking account of effects of the master plans on the social and economic activities. Over time, urban planning has adopted a focus on the social and environmental \"bottom lines\" that focuses on using planning as a tool to improve the health and well-being of people and maintain sustainability standards. In the early 21st century, urban planning experts such as Jane Jacobs called on urban planners to take resident experiences and needs more into consideration."
+  },
+  {
+    "category": "ecology",
+    "instruction": "Can you summarize Hydroelectricity for me?",
+    "output": "Hydroelectricity, or hydroelectric power, is electricity generated from hydropower. Hydropower supplies 15% of the world's electricity, almost 4,210 TWh in 2023, which is more than all other renewable sources combined and also more than nuclear power. Hydropower can provide large amounts of low-carbon electricity on demand, making it a key element for creating secure and clean electricity supply systems. A hydroelectric power station that has a dam and reservoir is a flexible source, since the amount of electricity produced can be increased or decreased in seconds or minutes in response to varying electricity demand. Once a hydroelectric complex is constructed, it produces no direct waste, and almost always emits considerably less greenhouse gas than fossil fuel-powered energy plants. However, when constructed in lowland rainforest areas, where part of the forest is inundated, substantial amounts of greenhouse gases may be emitted."
+  },
+  {
+    "category": "traffic",
+    "instruction": "Why is Public transport important for a modern city?",
+    "output": "Public transport refers to forms of transport made available for use by the general public. Public transport systems typically operate on fixed routes and schedules and charge a standardized fare intended to cover operating costs, often supplemented by public funding where required."
+  },
+  {
+    "category": "housing",
+    "instruction": "How does Water supply network affect everyday life?",
+    "output": "A water supply network or water supply system is a system of engineered hydrologic and hydraulic components that provide water supply. A water supply system typically includes the following:A drainage basin \nA raw water collection point where the water accumulates, such as a lake, a river, or groundwater from an underground aquifer. Raw water may be transferred using uncovered ground-level aqueducts, covered tunnels, or underground pipes to water purification facilities..\nWater purification facilities. Treated water is transferred using water pipes.\nWater storage facilities such as reservoirs, water tanks, or water towers. Smaller water systems may store the water in cisterns or pressure vessels. Tall buildings may also need to store water locally in pressure vessels in order for the water to reach the upper floors.\nAdditional water pressurizing components such as pumping stations may need to be situated at the outlet of underground or aboveground reservoirs or cisterns.\nA pipe network for distribution of water to consumers and other usage points \nConnections to the sewers are generally found downstream of the water consumers, but the sewer system is considered to be a separate system, rather than part of the water supply system."
+  },
+  {
+    "category": "ecology",
+    "instruction": "What is the practical meaning of Solar power?",
+    "output": "Solar power, also known as solar electricity, is the conversion of energy from sunlight into electricity, either directly using photovoltaics (PV) or indirectly using concentrated solar power. Solar panels use the photovoltaic effect to convert light into an electric current. Concentrated solar power systems use lenses or mirrors and solar tracking systems to focus a large area of sunlight to a hot spot, often to drive a steam turbine."
+  },
+  {
+    "category": "tourism",
+    "instruction": "How does Almaty affect everyday life?",
+    "output": "Almaty is the largest city in Kazakhstan, with a population exceeding two million residents within its metropolitan area. Located in the foothills of the Trans-Ili Alatau mountains in southern Kazakhstan, near the border with Kyrgyzstan, Almaty stands as a pivotal center of culture, commerce, finance and innovation. The city is nestled at an elevation of 700–900 metres, with the Big Almaty and Small Almaty rivers running through it, originating from the surrounding mountains and flowing into the plains. Almaty is the second-largest city in Central Asia and the fourth-largest in the Commonwealth of Independent States (CIS)."
+  },
+  {
+    "category": "ecology",
+    "instruction": "Explain Wind power in simple words.",
+    "output": "Wind power is the use of wind energy to generate useful work. Historically, wind power was used by sails, windmills and windpumps, but today it is mostly used to generate electricity. This article deals only with wind power for electricity generation.\nToday, wind power is generated almost completely using wind turbines, generally grouped into wind farms and connected to the electrical grid."
+  },
+  {
+    "category": "education",
+    "instruction": "Explain Neural network (machine learning) in simple words.",
+    "output": "In machine learning, a neural network (NN) or neural net, also called an artificial neural network (ANN), is a computational model inspired by the structure and functions of biological neural networks."
+  },
+  {
+    "category": "education",
+    "instruction": "Explain Cloud computing in simple words.",
+    "output": "Cloud computing is defined by the International Organization for Standardization (ISO) as \"a paradigm for enabling network access to a scalable and elastic pool of shareable physical or virtual resources with self-service provisioning and administration on demand\". It is commonly referred to as \"the cloud\"."
+  },
+  {
+    "category": "finance",
+    "instruction": "Why is Inflation important for a modern city?",
+    "output": "In economics, inflation is an increase in the average price of goods and services in terms of money. This increase is measured using a price index, typically a consumer price index (CPI). When the general price level rises, each unit of currency buys fewer goods and services; consequently, inflation corresponds to a reduction in the purchasing power of money. The opposite of inflation is deflation, a decrease in the general price level of goods and services. The common measure of inflation is the inflation rate, the annualized percentage change in a general price index."
+  },
+  {
+    "category": "tourism",
+    "instruction": "Explain Kazakhstan in simple words.",
+    "output": "Kazakhstan, officially the Republic of Kazakhstan, is a landlocked country situated primarily in Central Asia, with a small portion of its territory extending into Eastern Europe. It borders Russia to the north and west, China to the east, Kyrgyzstan to the southeast, Uzbekistan to the south, and Turkmenistan to the southwest, and it has a coastline along the Caspian Sea. The capital is Astana, and Almaty, the country’s largest city and principal cultural and economic center, served as the capital until 1997."
+  },
+  {
+    "category": "traffic",
+    "instruction": "Give me key facts about Bus.",
+    "output": "A bus is a motor vehicle that carries significantly more passengers than an average car or van, but fewer than the average rail transport. It is most commonly used in public transport, but is also in use for charter purposes, or through private ownership. Although the average bus carries between 30 and 100 passengers, some buses have a capacity of up to 300 passengers. The most common type is the single-deck rigid bus, with double-decker and articulated buses carrying larger loads, and midibuses and minibuses carrying smaller loads. Coaches are used for longer-distance services. Many types of buses, such as city transit buses and inter-city coaches, charge a fare. Other types, such as elementary or secondary school buses or shuttle buses within a post-secondary education campus, are free. In many jurisdictions, bus drivers require a special large vehicle licence above and beyond a regular driving license."
+  },
+  {
+    "category": "traffic",
+    "instruction": "What should I know about Public transport?",
+    "output": "Public transport refers to forms of transport made available for use by the general public. Public transport systems typically operate on fixed routes and schedules and charge a standardized fare intended to cover operating costs, often supplemented by public funding where required."
+  },
+  {
+    "category": "traffic",
+    "instruction": "Explain Bicycle-sharing system in simple words.",
+    "output": "A bicycle-sharing system, bike share program, public bicycle scheme, or public bike share (PBS) scheme, is a shared transport service where bicycles or electric bicycles are available for shared use by individuals at low cost."
+  },
+  {
+    "category": "tourism",
+    "instruction": "What is the practical meaning of Shymbulak?",
+    "output": "Shymbulak, also known as Chimbulak and Chymbulak, is a ski resort near Almaty, Kazakhstan. It is the largest ski resort in Central Asia. It is located in the upper part of the Medeu Valley in the Zailiisky Alatau mountain range, at an elevation of 2,200 metres (7,200 ft) above sea level. The resort area is about 25 kilometres (16 mi) south of Almaty city centre in the Medeo district."
+  },
+  {
+    "category": "education",
+    "instruction": "Give me key facts about Internet of things.",
+    "output": "Internet of things (IoT) describes physical objects that are embedded with sensors, processing ability, software, and other technologies that connect and exchange data with other devices and systems over the Internet or other communication networks. The field of IoT encompasses electronics, communication, and computer science engineering. \"Internet of things\" has been considered a misnomer because most devices do not need to be connected to the public Internet; they only need to be connected to a network and be individually addressable."
+  },
+  {
+    "category": "ecology",
+    "instruction": "What is the practical meaning of Air quality index?",
+    "output": "An air quality index (AQI) is an approximation of how polluted the air currently is or how polluted it is forecast to become. As air pollution levels rise, so does the AQI, along with the associated public health risks."
+  },
+  {
+    "category": "housing",
+    "instruction": "Why is Sanitation important for a modern city?",
+    "output": "Sanitation refers to public health conditions related to clean drinking water and treatment and disposal of human excreta and sewage. Preventing human contact with feces is part of sanitation, as is hand washing with soap. Sanitation systems aim to protect human health by providing a clean environment that will stop the transmission of disease, especially through the fecal–oral route. For example, diarrhea, a main cause of malnutrition and stunted growth in children, can be reduced through adequate sanitation. There are many other diseases which are easily transmitted in communities that have low levels of sanitation, such as ascariasis, cholera, hepatitis, polio, schistosomiasis, and trachoma, to name just a few."
+  },
+  {
+    "category": "ecology",
+    "instruction": "Give me key facts about Hydroelectricity.",
+    "output": "Hydroelectricity, or hydroelectric power, is electricity generated from hydropower. Hydropower supplies 15% of the world's electricity, almost 4,210 TWh in 2023, which is more than all other renewable sources combined and also more than nuclear power. Hydropower can provide large amounts of low-carbon electricity on demand, making it a key element for creating secure and clean electricity supply systems. A hydroelectric power station that has a dam and reservoir is a flexible source, since the amount of electricity produced can be increased or decreased in seconds or minutes in response to varying electricity demand. Once a hydroelectric complex is constructed, it produces no direct waste, and almost always emits considerably less greenhouse gas than fossil fuel-powered energy plants. However, when constructed in lowland rainforest areas, where part of the forest is inundated, substantial amounts of greenhouse gases may be emitted."
+  },
+  {
+    "category": "housing",
+    "instruction": "What is the practical meaning of Sanitation?",
+    "output": "Sanitation refers to public health conditions related to clean drinking water and treatment and disposal of human excreta and sewage. Preventing human contact with feces is part of sanitation, as is hand washing with soap. Sanitation systems aim to protect human health by providing a clean environment that will stop the transmission of disease, especially through the fecal–oral route. For example, diarrhea, a main cause of malnutrition and stunted growth in children, can be reduced through adequate sanitation. There are many other diseases which are easily transmitted in communities that have low levels of sanitation, such as ascariasis, cholera, hepatitis, polio, schistosomiasis, and trachoma, to name just a few."
+  },
+  {
+    "category": "education",
+    "instruction": "What should I know about Digital transformation?",
+    "output": "Digital transformation (DT) is the process of adoption and implementation of digital technology by an organization in order to create new or modify existing products, services and operations by the means of translating business processes into a digital format."
+  },
+  {
+    "category": "traffic",
+    "instruction": "Explain Almaty Metro in simple words.",
+    "output": "Almaty Metro is a rapid transit/metro system in Almaty, the largest city and a former capital of Kazakhstan. The first line of the system was opened on 1 December 2011, after more than 23 years of construction. A 2.9-kilometre (1.8 mi), two-station extension of the Metro to Moskva station opened on 18 April 2015, followed by a 3.1 kilometres (1.9 mi), two-station extension to Bauyrzhan Momyshuly on 30 May 2022. As of October 2025, this is the only metro system in Kazakhstan, although the much-delayed Astana Light Metro is expected to open soon."
+  },
+  {
+    "category": "ecology",
+    "instruction": "Explain Air quality index in simple words.",
+    "output": "An air quality index (AQI) is an approximation of how polluted the air currently is or how polluted it is forecast to become. As air pollution levels rise, so does the AQI, along with the associated public health risks."
+  },
+  {
+    "category": "education",
+    "instruction": "How does Geographic information system affect everyday life?",
+    "output": "A geographic information system (GIS) consists of integrated computer hardware and software that store, manage, analyze, edit, output, and visualize geographic data. Much of this often happens within a spatial database; however, this is not essential to meet the definition of a GIS. In a broader sense, one may consider such a system also to include human users and support staff, procedures and workflows, the body of knowledge of relevant concepts and methods, and institutional organizations."
+  },
+  {
+    "category": "education",
+    "instruction": "What is the practical meaning of Machine learning?",
+    "output": "Machine learning (ML) is a field of study in artificial intelligence concerned with the development and study of statistical algorithms that can learn from data and generalize to unseen data, and thus perform tasks without explicit instructions. Within a subdiscipline in machine learning, advances in the field of deep learning have allowed neural networks, a class of statistical algorithms, to surpass many previous machine learning approaches in performance."
+  },
+  {
+    "category": "education",
+    "instruction": "What should I know about Telemedicine?",
+    "output": "Telehealth is the distribution of health-related services and information via electronic information and telecommunication technologies. It facilitates long-distance patient and clinician contact, care, advice, reminders, education, intervention, monitoring, and remote admissions. This includes data sharing by way of patient portals and electronic medical records."
+  },
+  {
+    "category": "education",
+    "instruction": "Can you summarize Digital transformation for me?",
+    "output": "Digital transformation (DT) is the process of adoption and implementation of digital technology by an organization in order to create new or modify existing products, services and operations by the means of translating business processes into a digital format."
+  },
+  {
+    "category": "tourism",
+    "instruction": "Can you summarize Kazakhstan for me?",
+    "output": "Kazakhstan, officially the Republic of Kazakhstan, is a landlocked country situated primarily in Central Asia, with a small portion of its territory extending into Eastern Europe. It borders Russia to the north and west, China to the east, Kyrgyzstan to the southeast, Uzbekistan to the south, and Turkmenistan to the southwest, and it has a coastline along the Caspian Sea. The capital is Astana, and Almaty, the country’s largest city and principal cultural and economic center, served as the capital until 1997."
+  },
+  {
+    "category": "ecology",
+    "instruction": "Why is Urban heat island important for a modern city?",
+    "output": "The urban heat island (UHI) effect is a meteorological and climatological phenomenon in which urban areas experience significantly warmer temperatures than surrounding rural areas. The temperature difference is usually larger at night than during the day, and is most apparent when winds are weak, under block conditions, noticeably during the summer and winter.\nThe main cause of the UHI effect is from the modification of land surfaces, while waste heat generated by energy usage is a secondary contributor. Urban areas occupy about 0.5% of the Earth's land surface but host more than half of the world's population. As a population center grows, it tends to expand its area and increase its average temperature. The term heat island is also used; the term can be used to refer to any area that is relatively hotter than the surrounding, but generally refers to human-disturbed areas."
+  },
+  {
+    "category": "education",
+    "instruction": "Give me key facts about Smart city.",
+    "output": "A smart city is an urban model that leverages technology, human capital, and governance to improve sustainability, efficiency, and social inclusion, which are considered goals for cities of the future. Smart cities use digital technology to collect data and operate services. Data is collected from citizens, devices, buildings, or cameras. Smart city applications are diverse and include, but are not limited to, traffic and transportation systems, power plants, utilities, urban forestry, water supply networks, waste disposal, criminal investigations, information systems, schools, libraries, hospitals, and other community services. The foundation of a smart city is built on the integration of people, technology, and processes, which connect and interact across sectors such as healthcare, transportation, education, infrastructure, etc. Smart cities are characterized by the ways in which their local governments monitor, analyze, plan, and govern the city. In a smart city, data sharing extends to businesses, citizens, and other third parties who can derive benefit from using that data. The three largest sources of spending associated with smart cities as of 2022 were visual surveillance, public transit, and outdoor lighting."
+  },
+  {
+    "category": "ecology",
+    "instruction": "What should I know about Hydroelectricity?",
+    "output": "Hydroelectricity, or hydroelectric power, is electricity generated from hydropower. Hydropower supplies 15% of the world's electricity, almost 4,210 TWh in 2023, which is more than all other renewable sources combined and also more than nuclear power. Hydropower can provide large amounts of low-carbon electricity on demand, making it a key element for creating secure and clean electricity supply systems. A hydroelectric power station that has a dam and reservoir is a flexible source, since the amount of electricity produced can be increased or decreased in seconds or minutes in response to varying electricity demand. Once a hydroelectric complex is constructed, it produces no direct waste, and almost always emits considerably less greenhouse gas than fossil fuel-powered energy plants. However, when constructed in lowland rainforest areas, where part of the forest is inundated, substantial amounts of greenhouse gases may be emitted."
+  },
+  {
+    "category": "education",
+    "instruction": "Why is Cybersecurity important for a modern city?",
+    "output": "Computer security is a subdiscipline within the field of information security. It focuses on protecting computer software, systems, and networks from threats that can lead to unauthorized information disclosure, theft or damage to hardware, software, or data, as well as to the disruption or misdirection of the services they provide."
+  },
+  {
+    "category": "finance",
+    "instruction": "Can you summarize Inflation for me?",
+    "output": "In economics, inflation is an increase in the average price of goods and services in terms of money. This increase is measured using a price index, typically a consumer price index (CPI). When the general price level rises, each unit of currency buys fewer goods and services; consequently, inflation corresponds to a reduction in the purchasing power of money. The opposite of inflation is deflation, a decrease in the general price level of goods and services. The common measure of inflation is the inflation rate, the annualized percentage change in a general price index."
+  },
+  {
+    "category": "emergency",
+    "instruction": "How does Emergency management affect everyday life?",
+    "output": "Emergency management refers to the systematic reduction of a community's vulnerability to natural and man-made hazards as well as the coordinated response to disasters after they occur. Emergency management focuses on destructive events that overwhelm a community's ability to handle on its own, such as hurricanes, pandemics, and terrorism. Professional emergency management activities include search and rescue, providing for the basic needs of affected individuals, and issuing evacuation alerts. The management of disasters requires collaboration between individuals, households, non-governmental organizations, and local, provincial, and federal governments."
+  },
+  {
+    "category": "ecology",
+    "instruction": "What is the practical meaning of Hydroelectricity?",
+    "output": "Hydroelectricity, or hydroelectric power, is electricity generated from hydropower. Hydropower supplies 15% of the world's electricity, almost 4,210 TWh in 2023, which is more than all other renewable sources combined and also more than nuclear power. Hydropower can provide large amounts of low-carbon electricity on demand, making it a key element for creating secure and clean electricity supply systems. A hydroelectric power station that has a dam and reservoir is a flexible source, since the amount of electricity produced can be increased or decreased in seconds or minutes in response to varying electricity demand. Once a hydroelectric complex is constructed, it produces no direct waste, and almost always emits considerably less greenhouse gas than fossil fuel-powered energy plants. However, when constructed in lowland rainforest areas, where part of the forest is inundated, substantial amounts of greenhouse gases may be emitted."
+  },
+  {
+    "category": "tourism",
+    "instruction": "Give me key facts about Kok Tobe.",
+    "output": "Köktöbe or Koktyube is a hill in Almaty, Kazakhstan's largest city and former capital. At 1,100 meters above sea level, it is one of the main landmarks of the city and a symbol of Almaty."
+  },
+  {
+    "category": "finance",
+    "instruction": "What should I know about Inflation?",
+    "output": "In economics, inflation is an increase in the average price of goods and services in terms of money. This increase is measured using a price index, typically a consumer price index (CPI). When the general price level rises, each unit of currency buys fewer goods and services; consequently, inflation corresponds to a reduction in the purchasing power of money. The opposite of inflation is deflation, a decrease in the general price level of goods and services. The common measure of inflation is the inflation rate, the annualized percentage change in a general price index."
+  },
+  {
+    "category": "housing",
+    "instruction": "Can you summarize Sanitation for me?",
+    "output": "Sanitation refers to public health conditions related to clean drinking water and treatment and disposal of human excreta and sewage. Preventing human contact with feces is part of sanitation, as is hand washing with soap. Sanitation systems aim to protect human health by providing a clean environment that will stop the transmission of disease, especially through the fecal–oral route. For example, diarrhea, a main cause of malnutrition and stunted growth in children, can be reduced through adequate sanitation. There are many other diseases which are easily transmitted in communities that have low levels of sanitation, such as ascariasis, cholera, hepatitis, polio, schistosomiasis, and trachoma, to name just a few."
+  },
+  {
+    "category": "traffic",
+    "instruction": "Why is Almaty Metro important for a modern city?",
+    "output": "Almaty Metro is a rapid transit/metro system in Almaty, the largest city and a former capital of Kazakhstan. The first line of the system was opened on 1 December 2011, after more than 23 years of construction. A 2.9-kilometre (1.8 mi), two-station extension of the Metro to Moskva station opened on 18 April 2015, followed by a 3.1 kilometres (1.9 mi), two-station extension to Bauyrzhan Momyshuly on 30 May 2022. As of October 2025, this is the only metro system in Kazakhstan, although the much-delayed Astana Light Metro is expected to open soon."
+  },
+  {
+    "category": "ecology",
+    "instruction": "Can you summarize Wind power for me?",
+    "output": "Wind power is the use of wind energy to generate useful work. Historically, wind power was used by sails, windmills and windpumps, but today it is mostly used to generate electricity. This article deals only with wind power for electricity generation.\nToday, wind power is generated almost completely using wind turbines, generally grouped into wind farms and connected to the electrical grid."
+  },
+  {
+    "category": "traffic",
+    "instruction": "What should I know about Bicycle-sharing system?",
+    "output": "A bicycle-sharing system, bike share program, public bicycle scheme, or public bike share (PBS) scheme, is a shared transport service where bicycles or electric bicycles are available for shared use by individuals at low cost."
+  },
+  {
+    "category": "tourism",
+    "instruction": "What should I know about Shymbulak?",
+    "output": "Shymbulak, also known as Chimbulak and Chymbulak, is a ski resort near Almaty, Kazakhstan. It is the largest ski resort in Central Asia. It is located in the upper part of the Medeu Valley in the Zailiisky Alatau mountain range, at an elevation of 2,200 metres (7,200 ft) above sea level. The resort area is about 25 kilometres (16 mi) south of Almaty city centre in the Medeo district."
+  },
+  {
+    "category": "finance",
+    "instruction": "Why is Public finance important for a modern city?",
+    "output": "Public finance refers to the monetary resources available to governments and also to the study of finance within government and role of the government in the economy. Within academic settings, public finance is a widely studied subject in many branches of political science, political economy and public economics. Research assesses the government revenue and government expenditure of the public authorities and the adjustment of one or the other to achieve desirable effects and avoid undesirable ones. The purview of public finance is considered to be threefold, consisting of governmental effects on:The efficient allocation of available resources;\nThe distribution of income among citizens; and\nThe stability of the economy."
+  },
+  {
+    "category": "ecology",
+    "instruction": "Give me key facts about Solar power.",
+    "output": "Solar power, also known as solar electricity, is the conversion of energy from sunlight into electricity, either directly using photovoltaics (PV) or indirectly using concentrated solar power. Solar panels use the photovoltaic effect to convert light into an electric current. Concentrated solar power systems use lenses or mirrors and solar tracking systems to focus a large area of sunlight to a hot spot, often to drive a steam turbine."
+  },
+  {
+    "category": "education",
+    "instruction": "Give me key facts about Neural network (machine learning).",
+    "output": "In machine learning, a neural network (NN) or neural net, also called an artificial neural network (ANN), is a computational model inspired by the structure and functions of biological neural networks."
+  },
+  {
+    "category": "education",
+    "instruction": "Explain Open data in simple words.",
+    "output": "Open data are data that are openly accessible, exploitable, editable and shareable by anyone for any purpose. Open data are generally licensed under an open license."
+  },
+  {
+    "category": "education",
+    "instruction": "Why is Cloud computing important for a modern city?",
+    "output": "Cloud computing is defined by the International Organization for Standardization (ISO) as \"a paradigm for enabling network access to a scalable and elastic pool of shareable physical or virtual resources with self-service provisioning and administration on demand\". It is commonly referred to as \"the cloud\"."
+  },
+  {
+    "category": "ecology",
+    "instruction": "How does Renewable energy affect everyday life?",
+    "output": "Renewable energy is energy made from renewable natural resources that are replenished on a human timescale. The most widely used renewable energy types are solar energy, wind power, and hydropower. Bioenergy and geothermal power are also significant in some countries. Renewable energy installations can be large or small and are suited for both urban and rural areas. Renewable energy is often deployed together with further electrification. This has several benefits: electricity can move heat and vehicles efficiently and is clean at the point of consumption. Variable renewable energy sources are those that have a fluctuating nature, such as wind power and solar power. In contrast, controllable renewable energy sources include dammed hydroelectricity, bioenergy, or geothermal power."
+  },
+  {
+    "category": "tourism",
+    "instruction": "Explain Kok Tobe in simple words.",
+    "output": "Köktöbe or Koktyube is a hill in Almaty, Kazakhstan's largest city and former capital. At 1,100 meters above sea level, it is one of the main landmarks of the city and a symbol of Almaty."
+  },
+  {
+    "category": "ecology",
+    "instruction": "What is the practical meaning of Sustainable city?",
+    "output": "A sustainable city, eco-city, or green city is a city designed with consideration for the social, economic, and environmental impact, as well as a resilient habitat for existing populations. The UN Sustainable Development Goal 11 defines as one that is dedicated to achieving green, social, and economic sustainability, facilitating opportunities that prioritize inclusivity as well as maintaining a sustainable economic growth. Furthermore, the objective is to minimize the inputs of energy, water, and food, and to drastically reduce waste, as well as the outputs of heat, air pollution."
+  },
+  {
+    "category": "education",
+    "instruction": "Why is Machine learning important for a modern city?",
+    "output": "Machine learning (ML) is a field of study in artificial intelligence concerned with the development and study of statistical algorithms that can learn from data and generalize to unseen data, and thus perform tasks without explicit instructions. Within a subdiscipline in machine learning, advances in the field of deep learning have allowed neural networks, a class of statistical algorithms, to surpass many previous machine learning approaches in performance."
+  },
+  {
+    "category": "education",
+    "instruction": "What should I know about Internet of things?",
+    "output": "Internet of things (IoT) describes physical objects that are embedded with sensors, processing ability, software, and other technologies that connect and exchange data with other devices and systems over the Internet or other communication networks. The field of IoT encompasses electronics, communication, and computer science engineering. \"Internet of things\" has been considered a misnomer because most devices do not need to be connected to the public Internet; they only need to be connected to a network and be individually addressable."
+  },
+  {
+    "category": "food",
+    "instruction": "How does Green Bazaar affect everyday life?",
+    "output": "The Green Bazar is a public market in Almaty, Kazakhstan. Since its inauguration in 1875, the market has been an important trading point in Almaty. The market currently sells spices, prepared foods, produce, textile, furniture, and a wide variety of different objects, including antiques."
+  },
+  {
+    "category": "education",
+    "instruction": "Can you summarize Telemedicine for me?",
+    "output": "Telehealth is the distribution of health-related services and information via electronic information and telecommunication technologies. It facilitates long-distance patient and clinician contact, care, advice, reminders, education, intervention, monitoring, and remote admissions. This includes data sharing by way of patient portals and electronic medical records."
+  },
+  {
+    "category": "ecology",
+    "instruction": "What should I know about Air pollution?",
+    "output": "Air pollution is the presence of substances in the air that are harmful to humans, other living beings or the environment. Pollutants can be gases, like ozone or nitrogen oxides, or small particles like soot and dust. Both outdoor and indoor air can be polluted."
+  },
+  {
+    "category": "tourism",
+    "instruction": "What should I know about Medeu?",
+    "output": "The Medeu is an outdoor speed skating and bandy rink. It is located in Medeu Valley on the southeastern outskirts of Almaty, Kazakhstan. Medeu sits 1,691 m (5,548 ft) above sea level. It consists of 10,500 m2 of ice and utilizes a sophisticated freezing and watering system to ensure the quality of the ice."
+  },
+  {
+    "category": "finance",
+    "instruction": "Give me key facts about Gross domestic product.",
+    "output": "Gross domestic product (GDP) is a monetary measure of the total market value of all of the final goods and services which are produced and rendered during a specific period of time by a country or countries. GDP is often used to measure the economic activity of a country or region. The major components of GDP are consumption, government spending, net exports, and investment. Changing any of these factors can increase the size of the economy. For example, population growth through mass immigration can raise consumption and demand for public services, thereby contributing to GDP growth. However, GDP is not a measure of overall standard of living or well-being, as it does not account for how income is distributed among the population. A country may rank high in GDP but still experience jobless growth depending on its planned economic structure and strategies. Dividing total GDP by the population gives an idealized rough measure of GDP per capita. Several national and international economic organizations, such as the OECD and the International Monetary Fund, maintain their own definitions of GDP."
+  },
+  {
+    "category": "emergency",
+    "instruction": "How does Road safety affect everyday life?",
+    "output": "Road traffic safety refers to the methods and measures, such as traffic calming, to prevent road users from being killed or seriously injured. Typical road users include pedestrians, cyclists, motorists, passengers of vehicles, and passengers of on-road public transport, mainly buses and trams."
+  },
+  {
+    "category": "tourism",
+    "instruction": "Give me key facts about Almaty.",
+    "output": "Almaty is the largest city in Kazakhstan, with a population exceeding two million residents within its metropolitan area. Located in the foothills of the Trans-Ili Alatau mountains in southern Kazakhstan, near the border with Kyrgyzstan, Almaty stands as a pivotal center of culture, commerce, finance and innovation. The city is nestled at an elevation of 700–900 metres, with the Big Almaty and Small Almaty rivers running through it, originating from the surrounding mountains and flowing into the plains. Almaty is the second-largest city in Central Asia and the fourth-largest in the Commonwealth of Independent States (CIS)."
+  },
+  {
+    "category": "tourism",
+    "instruction": "How does Kazakhstan affect everyday life?",
+    "output": "Kazakhstan, officially the Republic of Kazakhstan, is a landlocked country situated primarily in Central Asia, with a small portion of its territory extending into Eastern Europe. It borders Russia to the north and west, China to the east, Kyrgyzstan to the southeast, Uzbekistan to the south, and Turkmenistan to the southwest, and it has a coastline along the Caspian Sea. The capital is Astana, and Almaty, the country’s largest city and principal cultural and economic center, served as the capital until 1997."
+  },
+  {
+    "category": "traffic",
+    "instruction": "How does Electric vehicle affect everyday life?",
+    "output": "An electric vehicle (EV) is a motorized vehicle whose propulsion is provided fully or mostly by electric power, via grid electricity or from onboard rechargeable batteries. EVs encompass a wide range of transportation modes, including road and rail vehicles, electric boats and submersibles, electric aircraft and electric spacecraft."
+  },
+  {
+    "category": "ecology",
+    "instruction": "Explain Solar power in simple words.",
+    "output": "Solar power, also known as solar electricity, is the conversion of energy from sunlight into electricity, either directly using photovoltaics (PV) or indirectly using concentrated solar power. Solar panels use the photovoltaic effect to convert light into an electric current. Concentrated solar power systems use lenses or mirrors and solar tracking systems to focus a large area of sunlight to a hot spot, often to drive a steam turbine."
+  },
+  {
+    "category": "education",
+    "instruction": "What should I know about Cloud computing?",
+    "output": "Cloud computing is defined by the International Organization for Standardization (ISO) as \"a paradigm for enabling network access to a scalable and elastic pool of shareable physical or virtual resources with self-service provisioning and administration on demand\". It is commonly referred to as \"the cloud\"."
+  },
+  {
+    "category": "traffic",
+    "instruction": "Explain Traffic congestion in simple words.",
+    "output": "Traffic congestion is a condition in transport that is characterized by slower speeds, longer trip times, and increased vehicular queuing. Traffic congestion on urban road networks has increased substantially since the 1950s, resulting in many of the roads becoming obsolete. When traffic demand is great enough that the interaction between vehicles slows the traffic stream, this results in congestion. While congestion is a possibility for any mode of transportation, this article will focus on automobile congestion on public roads. Mathematically, traffic is modeled as a flow through a fixed point on the route, analogously to fluid dynamics."
+  },
+  {
+    "category": "education",
+    "instruction": "Give me key facts about Cloud computing.",
+    "output": "Cloud computing is defined by the International Organization for Standardization (ISO) as \"a paradigm for enabling network access to a scalable and elastic pool of shareable physical or virtual resources with self-service provisioning and administration on demand\". It is commonly referred to as \"the cloud\"."
+  },
+  {
+    "category": "ecology",
+    "instruction": "Explain Hydroelectricity in simple words.",
+    "output": "Hydroelectricity, or hydroelectric power, is electricity generated from hydropower. Hydropower supplies 15% of the world's electricity, almost 4,210 TWh in 2023, which is more than all other renewable sources combined and also more than nuclear power. Hydropower can provide large amounts of low-carbon electricity on demand, making it a key element for creating secure and clean electricity supply systems. A hydroelectric power station that has a dam and reservoir is a flexible source, since the amount of electricity produced can be increased or decreased in seconds or minutes in response to varying electricity demand. Once a hydroelectric complex is constructed, it produces no direct waste, and almost always emits considerably less greenhouse gas than fossil fuel-powered energy plants. However, when constructed in lowland rainforest areas, where part of the forest is inundated, substantial amounts of greenhouse gases may be emitted."
+  },
+  {
+    "category": "tourism",
+    "instruction": "Can you summarize Kok Tobe for me?",
+    "output": "Köktöbe or Koktyube is a hill in Almaty, Kazakhstan's largest city and former capital. At 1,100 meters above sea level, it is one of the main landmarks of the city and a symbol of Almaty."
+  },
+  {
+    "category": "ecology",
+    "instruction": "What should I know about Sustainable city?",
+    "output": "A sustainable city, eco-city, or green city is a city designed with consideration for the social, economic, and environmental impact, as well as a resilient habitat for existing populations. The UN Sustainable Development Goal 11 defines as one that is dedicated to achieving green, social, and economic sustainability, facilitating opportunities that prioritize inclusivity as well as maintaining a sustainable economic growth. Furthermore, the objective is to minimize the inputs of energy, water, and food, and to drastically reduce waste, as well as the outputs of heat, air pollution."
+  },
+  {
+    "category": "ecology",
+    "instruction": "Give me key facts about Sustainable city.",
+    "output": "A sustainable city, eco-city, or green city is a city designed with consideration for the social, economic, and environmental impact, as well as a resilient habitat for existing populations. The UN Sustainable Development Goal 11 defines as one that is dedicated to achieving green, social, and economic sustainability, facilitating opportunities that prioritize inclusivity as well as maintaining a sustainable economic growth. Furthermore, the objective is to minimize the inputs of energy, water, and food, and to drastically reduce waste, as well as the outputs of heat, air pollution."
+  },
+  {
+    "category": "education",
+    "instruction": "Why is Geographic information system important for a modern city?",
+    "output": "A geographic information system (GIS) consists of integrated computer hardware and software that store, manage, analyze, edit, output, and visualize geographic data. Much of this often happens within a spatial database; however, this is not essential to meet the definition of a GIS. In a broader sense, one may consider such a system also to include human users and support staff, procedures and workflows, the body of knowledge of relevant concepts and methods, and institutional organizations."
+  },
+  {
+    "category": "education",
+    "instruction": "Can you summarize Smart city for me?",
+    "output": "A smart city is an urban model that leverages technology, human capital, and governance to improve sustainability, efficiency, and social inclusion, which are considered goals for cities of the future. Smart cities use digital technology to collect data and operate services. Data is collected from citizens, devices, buildings, or cameras. Smart city applications are diverse and include, but are not limited to, traffic and transportation systems, power plants, utilities, urban forestry, water supply networks, waste disposal, criminal investigations, information systems, schools, libraries, hospitals, and other community services. The foundation of a smart city is built on the integration of people, technology, and processes, which connect and interact across sectors such as healthcare, transportation, education, infrastructure, etc. Smart cities are characterized by the ways in which their local governments monitor, analyze, plan, and govern the city. In a smart city, data sharing extends to businesses, citizens, and other third parties who can derive benefit from using that data. The three largest sources of spending associated with smart cities as of 2022 were visual surveillance, public transit, and outdoor lighting."
+  },
+  {
+    "category": "emergency",
+    "instruction": "Explain Road safety in simple words.",
+    "output": "Road traffic safety refers to the methods and measures, such as traffic calming, to prevent road users from being killed or seriously injured. Typical road users include pedestrians, cyclists, motorists, passengers of vehicles, and passengers of on-road public transport, mainly buses and trams."
+  },
+  {
+    "category": "tourism",
+    "instruction": "Can you summarize Almaty for me?",
+    "output": "Almaty is the largest city in Kazakhstan, with a population exceeding two million residents within its metropolitan area. Located in the foothills of the Trans-Ili Alatau mountains in southern Kazakhstan, near the border with Kyrgyzstan, Almaty stands as a pivotal center of culture, commerce, finance and innovation. The city is nestled at an elevation of 700–900 metres, with the Big Almaty and Small Almaty rivers running through it, originating from the surrounding mountains and flowing into the plains. Almaty is the second-largest city in Central Asia and the fourth-largest in the Commonwealth of Independent States (CIS)."
+  },
+  {
+    "category": "food",
+    "instruction": "Give me key facts about Green Bazaar.",
+    "output": "The Green Bazar is a public market in Almaty, Kazakhstan. Since its inauguration in 1875, the market has been an important trading point in Almaty. The market currently sells spices, prepared foods, produce, textile, furniture, and a wide variety of different objects, including antiques."
+  },
+  {
+    "category": "ecology",
+    "instruction": "How does Air quality index affect everyday life?",
+    "output": "An air quality index (AQI) is an approximation of how polluted the air currently is or how polluted it is forecast to become. As air pollution levels rise, so does the AQI, along with the associated public health risks."
+  },
+  {
+    "category": "housing",
+    "instruction": "Explain Urban planning in simple words.",
+    "output": "Urban planning is the process of developing and designing land use and the built environment, including air, water, and the infrastructure passing into and out of urban areas, such as transportation, communications, and distribution networks, and their accessibility. Traditionally, urban planning followed a top-down approach in master planning the physical layout of human settlements. The primary concern was the public welfare, which included considerations of efficiency, sanitation, protection and use of the environment, as well as taking account of effects of the master plans on the social and economic activities. Over time, urban planning has adopted a focus on the social and environmental \"bottom lines\" that focuses on using planning as a tool to improve the health and well-being of people and maintain sustainability standards. In the early 21st century, urban planning experts such as Jane Jacobs called on urban planners to take resident experiences and needs more into consideration."
+  },
+  {
+    "category": "emergency",
+    "instruction": "Why is Emergency management important for a modern city?",
+    "output": "Emergency management refers to the systematic reduction of a community's vulnerability to natural and man-made hazards as well as the coordinated response to disasters after they occur. Emergency management focuses on destructive events that overwhelm a community's ability to handle on its own, such as hurricanes, pandemics, and terrorism. Professional emergency management activities include search and rescue, providing for the basic needs of affected individuals, and issuing evacuation alerts. The management of disasters requires collaboration between individuals, households, non-governmental organizations, and local, provincial, and federal governments."
+  },
+  {
+    "category": "ecology",
+    "instruction": "Give me key facts about Waste management.",
+    "output": "Waste management or waste disposal includes the processes and actions required to manage waste from its inception to its final disposal. This includes the collection, transport, treatment, and disposal of waste, together with monitoring and regulation of the waste management process and waste-related laws, technologies, and economic mechanisms."
+  },
+  {
+    "category": "education",
+    "instruction": "Why is Telemedicine important for a modern city?",
+    "output": "Telehealth is the distribution of health-related services and information via electronic information and telecommunication technologies. It facilitates long-distance patient and clinician contact, care, advice, reminders, education, intervention, monitoring, and remote admissions. This includes data sharing by way of patient portals and electronic medical records."
+  },
+  {
+    "category": "traffic",
+    "instruction": "What should I know about Bus?",
+    "output": "A bus is a motor vehicle that carries significantly more passengers than an average car or van, but fewer than the average rail transport. It is most commonly used in public transport, but is also in use for charter purposes, or through private ownership. Although the average bus carries between 30 and 100 passengers, some buses have a capacity of up to 300 passengers. The most common type is the single-deck rigid bus, with double-decker and articulated buses carrying larger loads, and midibuses and minibuses carrying smaller loads. Coaches are used for longer-distance services. Many types of buses, such as city transit buses and inter-city coaches, charge a fare. Other types, such as elementary or secondary school buses or shuttle buses within a post-secondary education campus, are free. In many jurisdictions, bus drivers require a special large vehicle licence above and beyond a regular driving license."
+  },
+  {
+    "category": "emergency",
+    "instruction": "What is the practical meaning of Road safety?",
+    "output": "Road traffic safety refers to the methods and measures, such as traffic calming, to prevent road users from being killed or seriously injured. Typical road users include pedestrians, cyclists, motorists, passengers of vehicles, and passengers of on-road public transport, mainly buses and trams."
+  },
+  {
+    "category": "traffic",
+    "instruction": "Give me key facts about Almaty Metro.",
+    "output": "Almaty Metro is a rapid transit/metro system in Almaty, the largest city and a former capital of Kazakhstan. The first line of the system was opened on 1 December 2011, after more than 23 years of construction. A 2.9-kilometre (1.8 mi), two-station extension of the Metro to Moskva station opened on 18 April 2015, followed by a 3.1 kilometres (1.9 mi), two-station extension to Bauyrzhan Momyshuly on 30 May 2022. As of October 2025, this is the only metro system in Kazakhstan, although the much-delayed Astana Light Metro is expected to open soon."
+  },
+  {
+    "category": "traffic",
+    "instruction": "What should I know about Almaty Metro?",
+    "output": "Almaty Metro is a rapid transit/metro system in Almaty, the largest city and a former capital of Kazakhstan. The first line of the system was opened on 1 December 2011, after more than 23 years of construction. A 2.9-kilometre (1.8 mi), two-station extension of the Metro to Moskva station opened on 18 April 2015, followed by a 3.1 kilometres (1.9 mi), two-station extension to Bauyrzhan Momyshuly on 30 May 2022. As of October 2025, this is the only metro system in Kazakhstan, although the much-delayed Astana Light Metro is expected to open soon."
+  },
+  {
+    "category": "education",
+    "instruction": "What is the practical meaning of Cybersecurity?",
+    "output": "Computer security is a subdiscipline within the field of information security. It focuses on protecting computer software, systems, and networks from threats that can lead to unauthorized information disclosure, theft or damage to hardware, software, or data, as well as to the disruption or misdirection of the services they provide."
+  },
+  {
+    "category": "housing",
+    "instruction": "What should I know about Sanitation?",
+    "output": "Sanitation refers to public health conditions related to clean drinking water and treatment and disposal of human excreta and sewage. Preventing human contact with feces is part of sanitation, as is hand washing with soap. Sanitation systems aim to protect human health by providing a clean environment that will stop the transmission of disease, especially through the fecal–oral route. For example, diarrhea, a main cause of malnutrition and stunted growth in children, can be reduced through adequate sanitation. There are many other diseases which are easily transmitted in communities that have low levels of sanitation, such as ascariasis, cholera, hepatitis, polio, schistosomiasis, and trachoma, to name just a few."
+  },
+  {
+    "category": "ecology",
+    "instruction": "Can you summarize Sustainable city for me?",
+    "output": "A sustainable city, eco-city, or green city is a city designed with consideration for the social, economic, and environmental impact, as well as a resilient habitat for existing populations. The UN Sustainable Development Goal 11 defines as one that is dedicated to achieving green, social, and economic sustainability, facilitating opportunities that prioritize inclusivity as well as maintaining a sustainable economic growth. Furthermore, the objective is to minimize the inputs of energy, water, and food, and to drastically reduce waste, as well as the outputs of heat, air pollution."
+  },
+  {
+    "category": "ecology",
+    "instruction": "Can you summarize Air quality index for me?",
+    "output": "An air quality index (AQI) is an approximation of how polluted the air currently is or how polluted it is forecast to become. As air pollution levels rise, so does the AQI, along with the associated public health risks."
+  },
+  {
+    "category": "ecology",
+    "instruction": "What should I know about Renewable energy?",
+    "output": "Renewable energy is energy made from renewable natural resources that are replenished on a human timescale. The most widely used renewable energy types are solar energy, wind power, and hydropower. Bioenergy and geothermal power are also significant in some countries. Renewable energy installations can be large or small and are suited for both urban and rural areas. Renewable energy is often deployed together with further electrification. This has several benefits: electricity can move heat and vehicles efficiently and is clean at the point of consumption. Variable renewable energy sources are those that have a fluctuating nature, such as wind power and solar power. In contrast, controllable renewable energy sources include dammed hydroelectricity, bioenergy, or geothermal power."
+  },
+  {
+    "category": "ecology",
+    "instruction": "What should I know about Urban heat island?",
+    "output": "The urban heat island (UHI) effect is a meteorological and climatological phenomenon in which urban areas experience significantly warmer temperatures than surrounding rural areas. The temperature difference is usually larger at night than during the day, and is most apparent when winds are weak, under block conditions, noticeably during the summer and winter.\nThe main cause of the UHI effect is from the modification of land surfaces, while waste heat generated by energy usage is a secondary contributor. Urban areas occupy about 0.5% of the Earth's land surface but host more than half of the world's population. As a population center grows, it tends to expand its area and increase its average temperature. The term heat island is also used; the term can be used to refer to any area that is relatively hotter than the surrounding, but generally refers to human-disturbed areas."
+  },
+  {
+    "category": "ecology",
+    "instruction": "Can you summarize Urban heat island for me?",
+    "output": "The urban heat island (UHI) effect is a meteorological and climatological phenomenon in which urban areas experience significantly warmer temperatures than surrounding rural areas. The temperature difference is usually larger at night than during the day, and is most apparent when winds are weak, under block conditions, noticeably during the summer and winter.\nThe main cause of the UHI effect is from the modification of land surfaces, while waste heat generated by energy usage is a secondary contributor. Urban areas occupy about 0.5% of the Earth's land surface but host more than half of the world's population. As a population center grows, it tends to expand its area and increase its average temperature. The term heat island is also used; the term can be used to refer to any area that is relatively hotter than the surrounding, but generally refers to human-disturbed areas."
+  },
+  {
+    "category": "tourism",
+    "instruction": "What should I know about Ascension Cathedral, Almaty?",
+    "output": "The Ascension Cathedral, also known as Zenkov Cathedral, is a Russian Orthodox cathedral located in Panfilov Park in Almaty, Kazakhstan. Completed in 1907, the cathedral is made out of wood but without nails. It stands 56 meters tall, and is claimed to be the second tallest wooden church in the world."
+  },
+  {
+    "category": "traffic",
+    "instruction": "Can you summarize Almaty Metro for me?",
+    "output": "Almaty Metro is a rapid transit/metro system in Almaty, the largest city and a former capital of Kazakhstan. The first line of the system was opened on 1 December 2011, after more than 23 years of construction. A 2.9-kilometre (1.8 mi), two-station extension of the Metro to Moskva station opened on 18 April 2015, followed by a 3.1 kilometres (1.9 mi), two-station extension to Bauyrzhan Momyshuly on 30 May 2022. As of October 2025, this is the only metro system in Kazakhstan, although the much-delayed Astana Light Metro is expected to open soon."
+  },
+  {
+    "category": "traffic",
+    "instruction": "Explain Electric vehicle in simple words.",
+    "output": "An electric vehicle (EV) is a motorized vehicle whose propulsion is provided fully or mostly by electric power, via grid electricity or from onboard rechargeable batteries. EVs encompass a wide range of transportation modes, including road and rail vehicles, electric boats and submersibles, electric aircraft and electric spacecraft."
+  },
+  {
+    "category": "traffic",
+    "instruction": "Can you summarize Electric vehicle for me?",
+    "output": "An electric vehicle (EV) is a motorized vehicle whose propulsion is provided fully or mostly by electric power, via grid electricity or from onboard rechargeable batteries. EVs encompass a wide range of transportation modes, including road and rail vehicles, electric boats and submersibles, electric aircraft and electric spacecraft."
+  },
+  {
+    "category": "tourism",
+    "instruction": "How does Kok Tobe affect everyday life?",
+    "output": "Köktöbe or Koktyube is a hill in Almaty, Kazakhstan's largest city and former capital. At 1,100 meters above sea level, it is one of the main landmarks of the city and a symbol of Almaty."
+  },
+  {
+    "category": "ecology",
+    "instruction": "What is the practical meaning of Waste management?",
+    "output": "Waste management or waste disposal includes the processes and actions required to manage waste from its inception to its final disposal. This includes the collection, transport, treatment, and disposal of waste, together with monitoring and regulation of the waste management process and waste-related laws, technologies, and economic mechanisms."
+  },
+  {
+    "category": "tourism",
+    "instruction": "Explain Ascension Cathedral, Almaty in simple words.",
+    "output": "The Ascension Cathedral, also known as Zenkov Cathedral, is a Russian Orthodox cathedral located in Panfilov Park in Almaty, Kazakhstan. Completed in 1907, the cathedral is made out of wood but without nails. It stands 56 meters tall, and is claimed to be the second tallest wooden church in the world."
+  },
+  {
+    "category": "tourism",
+    "instruction": "Why is Ascension Cathedral, Almaty important for a modern city?",
+    "output": "The Ascension Cathedral, also known as Zenkov Cathedral, is a Russian Orthodox cathedral located in Panfilov Park in Almaty, Kazakhstan. Completed in 1907, the cathedral is made out of wood but without nails. It stands 56 meters tall, and is claimed to be the second tallest wooden church in the world."
+  },
+  {
+    "category": "food",
+    "instruction": "Can you summarize Green Bazaar for me?",
+    "output": "The Green Bazar is a public market in Almaty, Kazakhstan. Since its inauguration in 1875, the market has been an important trading point in Almaty. The market currently sells spices, prepared foods, produce, textile, furniture, and a wide variety of different objects, including antiques."
+  },
+  {
+    "category": "traffic",
+    "instruction": "Can you summarize Public transport for me?",
+    "output": "Public transport refers to forms of transport made available for use by the general public. Public transport systems typically operate on fixed routes and schedules and charge a standardized fare intended to cover operating costs, often supplemented by public funding where required."
+  },
+  {
+    "category": "ecology",
+    "instruction": "What should I know about Wind power?",
+    "output": "Wind power is the use of wind energy to generate useful work. Historically, wind power was used by sails, windmills and windpumps, but today it is mostly used to generate electricity. This article deals only with wind power for electricity generation.\nToday, wind power is generated almost completely using wind turbines, generally grouped into wind farms and connected to the electrical grid."
+  },
+  {
+    "category": "finance",
+    "instruction": "Explain Gross domestic product in simple words.",
+    "output": "Gross domestic product (GDP) is a monetary measure of the total market value of all of the final goods and services which are produced and rendered during a specific period of time by a country or countries. GDP is often used to measure the economic activity of a country or region. The major components of GDP are consumption, government spending, net exports, and investment. Changing any of these factors can increase the size of the economy. For example, population growth through mass immigration can raise consumption and demand for public services, thereby contributing to GDP growth. However, GDP is not a measure of overall standard of living or well-being, as it does not account for how income is distributed among the population. A country may rank high in GDP but still experience jobless growth depending on its planned economic structure and strategies. Dividing total GDP by the population gives an idealized rough measure of GDP per capita. Several national and international economic organizations, such as the OECD and the International Monetary Fund, maintain their own definitions of GDP."
+  },
+  {
+    "category": "education",
+    "instruction": "Give me key facts about Digital transformation.",
+    "output": "Digital transformation (DT) is the process of adoption and implementation of digital technology by an organization in order to create new or modify existing products, services and operations by the means of translating business processes into a digital format."
+  },
+  {
+    "category": "food",
+    "instruction": "Why is Green Bazaar important for a modern city?",
+    "output": "The Green Bazar is a public market in Almaty, Kazakhstan. Since its inauguration in 1875, the market has been an important trading point in Almaty. The market currently sells spices, prepared foods, produce, textile, furniture, and a wide variety of different objects, including antiques."
+  },
+  {
+    "category": "traffic",
+    "instruction": "Give me key facts about Public transport.",
+    "output": "Public transport refers to forms of transport made available for use by the general public. Public transport systems typically operate on fixed routes and schedules and charge a standardized fare intended to cover operating costs, often supplemented by public funding where required."
+  },
+  {
+    "category": "emergency",
+    "instruction": "Can you summarize Emergency management for me?",
+    "output": "Emergency management refers to the systematic reduction of a community's vulnerability to natural and man-made hazards as well as the coordinated response to disasters after they occur. Emergency management focuses on destructive events that overwhelm a community's ability to handle on its own, such as hurricanes, pandemics, and terrorism. Professional emergency management activities include search and rescue, providing for the basic needs of affected individuals, and issuing evacuation alerts. The management of disasters requires collaboration between individuals, households, non-governmental organizations, and local, provincial, and federal governments."
+  },
+  {
+    "category": "finance",
+    "instruction": "Give me key facts about Public finance.",
+    "output": "Public finance refers to the monetary resources available to governments and also to the study of finance within government and role of the government in the economy. Within academic settings, public finance is a widely studied subject in many branches of political science, political economy and public economics. Research assesses the government revenue and government expenditure of the public authorities and the adjustment of one or the other to achieve desirable effects and avoid undesirable ones. The purview of public finance is considered to be threefold, consisting of governmental effects on:The efficient allocation of available resources;\nThe distribution of income among citizens; and\nThe stability of the economy."
+  },
+  {
+    "category": "education",
+    "instruction": "Explain Smart city in simple words.",
+    "output": "A smart city is an urban model that leverages technology, human capital, and governance to improve sustainability, efficiency, and social inclusion, which are considered goals for cities of the future. Smart cities use digital technology to collect data and operate services. Data is collected from citizens, devices, buildings, or cameras. Smart city applications are diverse and include, but are not limited to, traffic and transportation systems, power plants, utilities, urban forestry, water supply networks, waste disposal, criminal investigations, information systems, schools, libraries, hospitals, and other community services. The foundation of a smart city is built on the integration of people, technology, and processes, which connect and interact across sectors such as healthcare, transportation, education, infrastructure, etc. Smart cities are characterized by the ways in which their local governments monitor, analyze, plan, and govern the city. In a smart city, data sharing extends to businesses, citizens, and other third parties who can derive benefit from using that data. The three largest sources of spending associated with smart cities as of 2022 were visual surveillance, public transit, and outdoor lighting."
+  },
+  {
+    "category": "ecology",
+    "instruction": "Why is Air quality index important for a modern city?",
+    "output": "An air quality index (AQI) is an approximation of how polluted the air currently is or how polluted it is forecast to become. As air pollution levels rise, so does the AQI, along with the associated public health risks."
+  },
+  {
+    "category": "housing",
+    "instruction": "What is the practical meaning of Water supply network?",
+    "output": "A water supply network or water supply system is a system of engineered hydrologic and hydraulic components that provide water supply. A water supply system typically includes the following:A drainage basin \nA raw water collection point where the water accumulates, such as a lake, a river, or groundwater from an underground aquifer. Raw water may be transferred using uncovered ground-level aqueducts, covered tunnels, or underground pipes to water purification facilities..\nWater purification facilities. Treated water is transferred using water pipes.\nWater storage facilities such as reservoirs, water tanks, or water towers. Smaller water systems may store the water in cisterns or pressure vessels. Tall buildings may also need to store water locally in pressure vessels in order for the water to reach the upper floors.\nAdditional water pressurizing components such as pumping stations may need to be situated at the outlet of underground or aboveground reservoirs or cisterns.\nA pipe network for distribution of water to consumers and other usage points \nConnections to the sewers are generally found downstream of the water consumers, but the sewer system is considered to be a separate system, rather than part of the water supply system."
+  },
+  {
+    "category": "tourism",
+    "instruction": "Why is Almaty important for a modern city?",
+    "output": "Almaty is the largest city in Kazakhstan, with a population exceeding two million residents within its metropolitan area. Located in the foothills of the Trans-Ili Alatau mountains in southern Kazakhstan, near the border with Kyrgyzstan, Almaty stands as a pivotal center of culture, commerce, finance and innovation. The city is nestled at an elevation of 700–900 metres, with the Big Almaty and Small Almaty rivers running through it, originating from the surrounding mountains and flowing into the plains. Almaty is the second-largest city in Central Asia and the fourth-largest in the Commonwealth of Independent States (CIS)."
+  },
+  {
+    "category": "tourism",
+    "instruction": "Explain Medeu in simple words.",
+    "output": "The Medeu is an outdoor speed skating and bandy rink. It is located in Medeu Valley on the southeastern outskirts of Almaty, Kazakhstan. Medeu sits 1,691 m (5,548 ft) above sea level. It consists of 10,500 m2 of ice and utilizes a sophisticated freezing and watering system to ensure the quality of the ice."
+  },
+  {
+    "category": "traffic",
+    "instruction": "What should I know about Traffic congestion?",
+    "output": "Traffic congestion is a condition in transport that is characterized by slower speeds, longer trip times, and increased vehicular queuing. Traffic congestion on urban road networks has increased substantially since the 1950s, resulting in many of the roads becoming obsolete. When traffic demand is great enough that the interaction between vehicles slows the traffic stream, this results in congestion. While congestion is a possibility for any mode of transportation, this article will focus on automobile congestion on public roads. Mathematically, traffic is modeled as a flow through a fixed point on the route, analogously to fluid dynamics."
+  },
+  {
+    "category": "ecology",
+    "instruction": "Why is Sustainable city important for a modern city?",
+    "output": "A sustainable city, eco-city, or green city is a city designed with consideration for the social, economic, and environmental impact, as well as a resilient habitat for existing populations. The UN Sustainable Development Goal 11 defines as one that is dedicated to achieving green, social, and economic sustainability, facilitating opportunities that prioritize inclusivity as well as maintaining a sustainable economic growth. Furthermore, the objective is to minimize the inputs of energy, water, and food, and to drastically reduce waste, as well as the outputs of heat, air pollution."
+  },
+  {
+    "category": "emergency",
+    "instruction": "Explain Emergency management in simple words.",
+    "output": "Emergency management refers to the systematic reduction of a community's vulnerability to natural and man-made hazards as well as the coordinated response to disasters after they occur. Emergency management focuses on destructive events that overwhelm a community's ability to handle on its own, such as hurricanes, pandemics, and terrorism. Professional emergency management activities include search and rescue, providing for the basic needs of affected individuals, and issuing evacuation alerts. The management of disasters requires collaboration between individuals, households, non-governmental organizations, and local, provincial, and federal governments."
+  },
+  {
+    "category": "food",
+    "instruction": "What should I know about Green Bazaar?",
+    "output": "The Green Bazar is a public market in Almaty, Kazakhstan. Since its inauguration in 1875, the market has been an important trading point in Almaty. The market currently sells spices, prepared foods, produce, textile, furniture, and a wide variety of different objects, including antiques."
+  },
+  {
+    "category": "ecology",
+    "instruction": "Why is Renewable energy important for a modern city?",
+    "output": "Renewable energy is energy made from renewable natural resources that are replenished on a human timescale. The most widely used renewable energy types are solar energy, wind power, and hydropower. Bioenergy and geothermal power are also significant in some countries. Renewable energy installations can be large or small and are suited for both urban and rural areas. Renewable energy is often deployed together with further electrification. This has several benefits: electricity can move heat and vehicles efficiently and is clean at the point of consumption. Variable renewable energy sources are those that have a fluctuating nature, such as wind power and solar power. In contrast, controllable renewable energy sources include dammed hydroelectricity, bioenergy, or geothermal power."
+  },
+  {
+    "category": "education",
+    "instruction": "Can you summarize Cybersecurity for me?",
+    "output": "Computer security is a subdiscipline within the field of information security. It focuses on protecting computer software, systems, and networks from threats that can lead to unauthorized information disclosure, theft or damage to hardware, software, or data, as well as to the disruption or misdirection of the services they provide."
+  },
+  {
+    "category": "housing",
+    "instruction": "How does Sanitation affect everyday life?",
+    "output": "Sanitation refers to public health conditions related to clean drinking water and treatment and disposal of human excreta and sewage. Preventing human contact with feces is part of sanitation, as is hand washing with soap. Sanitation systems aim to protect human health by providing a clean environment that will stop the transmission of disease, especially through the fecal–oral route. For example, diarrhea, a main cause of malnutrition and stunted growth in children, can be reduced through adequate sanitation. There are many other diseases which are easily transmitted in communities that have low levels of sanitation, such as ascariasis, cholera, hepatitis, polio, schistosomiasis, and trachoma, to name just a few."
+  },
+  {
+    "category": "education",
+    "instruction": "Explain Internet of things in simple words.",
+    "output": "Internet of things (IoT) describes physical objects that are embedded with sensors, processing ability, software, and other technologies that connect and exchange data with other devices and systems over the Internet or other communication networks. The field of IoT encompasses electronics, communication, and computer science engineering. \"Internet of things\" has been considered a misnomer because most devices do not need to be connected to the public Internet; they only need to be connected to a network and be individually addressable."
+  },
+  {
+    "category": "housing",
+    "instruction": "Give me key facts about Sanitation.",
+    "output": "Sanitation refers to public health conditions related to clean drinking water and treatment and disposal of human excreta and sewage. Preventing human contact with feces is part of sanitation, as is hand washing with soap. Sanitation systems aim to protect human health by providing a clean environment that will stop the transmission of disease, especially through the fecal–oral route. For example, diarrhea, a main cause of malnutrition and stunted growth in children, can be reduced through adequate sanitation. There are many other diseases which are easily transmitted in communities that have low levels of sanitation, such as ascariasis, cholera, hepatitis, polio, schistosomiasis, and trachoma, to name just a few."
+  },
+  {
+    "category": "traffic",
+    "instruction": "How does Traffic congestion affect everyday life?",
+    "output": "Traffic congestion is a condition in transport that is characterized by slower speeds, longer trip times, and increased vehicular queuing. Traffic congestion on urban road networks has increased substantially since the 1950s, resulting in many of the roads becoming obsolete. When traffic demand is great enough that the interaction between vehicles slows the traffic stream, this results in congestion. While congestion is a possibility for any mode of transportation, this article will focus on automobile congestion on public roads. Mathematically, traffic is modeled as a flow through a fixed point on the route, analogously to fluid dynamics."
+  },
+  {
+    "category": "traffic",
+    "instruction": "Give me key facts about Bicycle-sharing system.",
+    "output": "A bicycle-sharing system, bike share program, public bicycle scheme, or public bike share (PBS) scheme, is a shared transport service where bicycles or electric bicycles are available for shared use by individuals at low cost."
+  },
+  {
+    "category": "traffic",
+    "instruction": "Why is Traffic congestion important for a modern city?",
+    "output": "Traffic congestion is a condition in transport that is characterized by slower speeds, longer trip times, and increased vehicular queuing. Traffic congestion on urban road networks has increased substantially since the 1950s, resulting in many of the roads becoming obsolete. When traffic demand is great enough that the interaction between vehicles slows the traffic stream, this results in congestion. While congestion is a possibility for any mode of transportation, this article will focus on automobile congestion on public roads. Mathematically, traffic is modeled as a flow through a fixed point on the route, analogously to fluid dynamics."
+  },
+  {
+    "category": "tourism",
+    "instruction": "Explain Almaty in simple words.",
+    "output": "Almaty is the largest city in Kazakhstan, with a population exceeding two million residents within its metropolitan area. Located in the foothills of the Trans-Ili Alatau mountains in southern Kazakhstan, near the border with Kyrgyzstan, Almaty stands as a pivotal center of culture, commerce, finance and innovation. The city is nestled at an elevation of 700–900 metres, with the Big Almaty and Small Almaty rivers running through it, originating from the surrounding mountains and flowing into the plains. Almaty is the second-largest city in Central Asia and the fourth-largest in the Commonwealth of Independent States (CIS)."
+  },
+  {
+    "category": "education",
+    "instruction": "How does Cybersecurity affect everyday life?",
+    "output": "Computer security is a subdiscipline within the field of information security. It focuses on protecting computer software, systems, and networks from threats that can lead to unauthorized information disclosure, theft or damage to hardware, software, or data, as well as to the disruption or misdirection of the services they provide."
+  },
+  {
+    "category": "education",
+    "instruction": "Explain Telemedicine in simple words.",
+    "output": "Telehealth is the distribution of health-related services and information via electronic information and telecommunication technologies. It facilitates long-distance patient and clinician contact, care, advice, reminders, education, intervention, monitoring, and remote admissions. This includes data sharing by way of patient portals and electronic medical records."
+  },
+  {
+    "category": "education",
+    "instruction": "Why is Digital transformation important for a modern city?",
+    "output": "Digital transformation (DT) is the process of adoption and implementation of digital technology by an organization in order to create new or modify existing products, services and operations by the means of translating business processes into a digital format."
+  },
+  {
+    "category": "education",
+    "instruction": "Can you summarize Cloud computing for me?",
+    "output": "Cloud computing is defined by the International Organization for Standardization (ISO) as \"a paradigm for enabling network access to a scalable and elastic pool of shareable physical or virtual resources with self-service provisioning and administration on demand\". It is commonly referred to as \"the cloud\"."
+  },
+  {
+    "category": "ecology",
+    "instruction": "Can you summarize Solar power for me?",
+    "output": "Solar power, also known as solar electricity, is the conversion of energy from sunlight into electricity, either directly using photovoltaics (PV) or indirectly using concentrated solar power. Solar panels use the photovoltaic effect to convert light into an electric current. Concentrated solar power systems use lenses or mirrors and solar tracking systems to focus a large area of sunlight to a hot spot, often to drive a steam turbine."
+  },
+  {
+    "category": "ecology",
+    "instruction": "What should I know about Solar power?",
+    "output": "Solar power, also known as solar electricity, is the conversion of energy from sunlight into electricity, either directly using photovoltaics (PV) or indirectly using concentrated solar power. Solar panels use the photovoltaic effect to convert light into an electric current. Concentrated solar power systems use lenses or mirrors and solar tracking systems to focus a large area of sunlight to a hot spot, often to drive a steam turbine."
+  },
+  {
+    "category": "education",
+    "instruction": "What should I know about Machine learning?",
+    "output": "Machine learning (ML) is a field of study in artificial intelligence concerned with the development and study of statistical algorithms that can learn from data and generalize to unseen data, and thus perform tasks without explicit instructions. Within a subdiscipline in machine learning, advances in the field of deep learning have allowed neural networks, a class of statistical algorithms, to surpass many previous machine learning approaches in performance."
+  },
+  {
+    "category": "traffic",
+    "instruction": "How does Public transport affect everyday life?",
+    "output": "Public transport refers to forms of transport made available for use by the general public. Public transport systems typically operate on fixed routes and schedules and charge a standardized fare intended to cover operating costs, often supplemented by public funding where required."
+  },
+  {
+    "category": "education",
+    "instruction": "What should I know about Geographic information system?",
+    "output": "A geographic information system (GIS) consists of integrated computer hardware and software that store, manage, analyze, edit, output, and visualize geographic data. Much of this often happens within a spatial database; however, this is not essential to meet the definition of a GIS. In a broader sense, one may consider such a system also to include human users and support staff, procedures and workflows, the body of knowledge of relevant concepts and methods, and institutional organizations."
+  },
+  {
+    "category": "traffic",
+    "instruction": "How does Bicycle-sharing system affect everyday life?",
+    "output": "A bicycle-sharing system, bike share program, public bicycle scheme, or public bike share (PBS) scheme, is a shared transport service where bicycles or electric bicycles are available for shared use by individuals at low cost."
+  },
+  {
+    "category": "ecology",
+    "instruction": "How does Wind power affect everyday life?",
+    "output": "Wind power is the use of wind energy to generate useful work. Historically, wind power was used by sails, windmills and windpumps, but today it is mostly used to generate electricity. This article deals only with wind power for electricity generation.\nToday, wind power is generated almost completely using wind turbines, generally grouped into wind farms and connected to the electrical grid."
+  },
+  {
+    "category": "ecology",
+    "instruction": "Give me key facts about Air pollution.",
+    "output": "Air pollution is the presence of substances in the air that are harmful to humans, other living beings or the environment. Pollutants can be gases, like ozone or nitrogen oxides, or small particles like soot and dust. Both outdoor and indoor air can be polluted."
+  },
+  {
+    "category": "education",
+    "instruction": "Why is Neural network (machine learning) important for a modern city?",
+    "output": "In machine learning, a neural network (NN) or neural net, also called an artificial neural network (ANN), is a computational model inspired by the structure and functions of biological neural networks."
+  },
+  {
+    "category": "education",
+    "instruction": "What is the practical meaning of Open data?",
+    "output": "Open data are data that are openly accessible, exploitable, editable and shareable by anyone for any purpose. Open data are generally licensed under an open license."
+  },
+  {
+    "category": "education",
+    "instruction": "Give me key facts about Telemedicine.",
+    "output": "Telehealth is the distribution of health-related services and information via electronic information and telecommunication technologies. It facilitates long-distance patient and clinician contact, care, advice, reminders, education, intervention, monitoring, and remote admissions. This includes data sharing by way of patient portals and electronic medical records."
+  },
+  {
+    "category": "emergency",
+    "instruction": "Can you summarize Road safety for me?",
+    "output": "Road traffic safety refers to the methods and measures, such as traffic calming, to prevent road users from being killed or seriously injured. Typical road users include pedestrians, cyclists, motorists, passengers of vehicles, and passengers of on-road public transport, mainly buses and trams."
+  },
+  {
+    "category": "ecology",
+    "instruction": "Explain Waste management in simple words.",
+    "output": "Waste management or waste disposal includes the processes and actions required to manage waste from its inception to its final disposal. This includes the collection, transport, treatment, and disposal of waste, together with monitoring and regulation of the waste management process and waste-related laws, technologies, and economic mechanisms."
+  },
+  {
+    "category": "education",
+    "instruction": "Explain Digital transformation in simple words.",
+    "output": "Digital transformation (DT) is the process of adoption and implementation of digital technology by an organization in order to create new or modify existing products, services and operations by the means of translating business processes into a digital format."
+  },
+  {
+    "category": "education",
+    "instruction": "What is the practical meaning of Smart city?",
+    "output": "A smart city is an urban model that leverages technology, human capital, and governance to improve sustainability, efficiency, and social inclusion, which are considered goals for cities of the future. Smart cities use digital technology to collect data and operate services. Data is collected from citizens, devices, buildings, or cameras. Smart city applications are diverse and include, but are not limited to, traffic and transportation systems, power plants, utilities, urban forestry, water supply networks, waste disposal, criminal investigations, information systems, schools, libraries, hospitals, and other community services. The foundation of a smart city is built on the integration of people, technology, and processes, which connect and interact across sectors such as healthcare, transportation, education, infrastructure, etc. Smart cities are characterized by the ways in which their local governments monitor, analyze, plan, and govern the city. In a smart city, data sharing extends to businesses, citizens, and other third parties who can derive benefit from using that data. The three largest sources of spending associated with smart cities as of 2022 were visual surveillance, public transit, and outdoor lighting."
+  },
+  {
+    "category": "education",
+    "instruction": "Explain Machine learning in simple words.",
+    "output": "Machine learning (ML) is a field of study in artificial intelligence concerned with the development and study of statistical algorithms that can learn from data and generalize to unseen data, and thus perform tasks without explicit instructions. Within a subdiscipline in machine learning, advances in the field of deep learning have allowed neural networks, a class of statistical algorithms, to surpass many previous machine learning approaches in performance."
+  },
+  {
+    "category": "tourism",
+    "instruction": "What should I know about Kok Tobe?",
+    "output": "Köktöbe or Koktyube is a hill in Almaty, Kazakhstan's largest city and former capital. At 1,100 meters above sea level, it is one of the main landmarks of the city and a symbol of Almaty."
+  },
+  {
+    "category": "education",
+    "instruction": "How does Cloud computing affect everyday life?",
+    "output": "Cloud computing is defined by the International Organization for Standardization (ISO) as \"a paradigm for enabling network access to a scalable and elastic pool of shareable physical or virtual resources with self-service provisioning and administration on demand\". It is commonly referred to as \"the cloud\"."
+  },
+  {
+    "category": "ecology",
+    "instruction": "Can you summarize Renewable energy for me?",
+    "output": "Renewable energy is energy made from renewable natural resources that are replenished on a human timescale. The most widely used renewable energy types are solar energy, wind power, and hydropower. Bioenergy and geothermal power are also significant in some countries. Renewable energy installations can be large or small and are suited for both urban and rural areas. Renewable energy is often deployed together with further electrification. This has several benefits: electricity can move heat and vehicles efficiently and is clean at the point of consumption. Variable renewable energy sources are those that have a fluctuating nature, such as wind power and solar power. In contrast, controllable renewable energy sources include dammed hydroelectricity, bioenergy, or geothermal power."
+  },
+  {
+    "category": "ecology",
+    "instruction": "Explain Air pollution in simple words.",
+    "output": "Air pollution is the presence of substances in the air that are harmful to humans, other living beings or the environment. Pollutants can be gases, like ozone or nitrogen oxides, or small particles like soot and dust. Both outdoor and indoor air can be polluted."
+  },
+  {
+    "category": "emergency",
+    "instruction": "Give me key facts about Road safety.",
+    "output": "Road traffic safety refers to the methods and measures, such as traffic calming, to prevent road users from being killed or seriously injured. Typical road users include pedestrians, cyclists, motorists, passengers of vehicles, and passengers of on-road public transport, mainly buses and trams."
+  }
+]

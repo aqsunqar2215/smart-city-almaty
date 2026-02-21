@@ -36,13 +36,8 @@ except ImportError:
     VOCABULARY = {}
     EXTENDED_DATASET = []
 
-# Import LLM engine for smarter responses when available
-try:
-    from llm_engine import get_llm, SmartAlmatyLLM
-    HAS_LLM = True
-except ImportError:
-    HAS_LLM = False
-    get_llm = None
+# V4.1: LLM runtime is intentionally disabled.
+HAS_LLM = False
 
 
 # ============================================
@@ -720,17 +715,6 @@ class ResponseGenerator:
         facts = self.knowledge.find_answers(raw_text, result.language, limit=2)
         if facts:
             return self._synthesize_facts(facts, result.language)
-        
-        # Try LLM for better responses when available
-        if HAS_LLM and get_llm:
-            try:
-                llm = get_llm()
-                if llm.is_enabled():
-                    llm_response = llm.ask(raw_text, context=None, context_type="default")
-                    if llm_response and len(llm_response) > 10:
-                        return llm_response
-            except Exception:
-                pass  # Fall through to simple fallback
         
         # Short query clarification
         words = raw_text.split()

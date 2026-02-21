@@ -205,7 +205,7 @@ const SmartCityMap: React.FC<SmartCityMapProps> = ({ trafficCongestion, airQuali
                   </span>
                 </div>
                 <div style="font-size:11px; color:#666">
-                  📍 GEO: ${bus.lat.toFixed(4)}, ${bus.lng.toFixed(4)}<br/>
+                  📍 GEO: ${bus.lat.toFixed(6)}, ${bus.lng.toFixed(6)}<br/>
                   ❄️ AC: ${bus.has_ac ? 'Active' : 'Offline'}<br/>
                   📡 WiFi: ${bus.has_wifi ? 'Connected' : 'N/A'}<br/>
                   🔋 Type: ${bus.is_eco ? 'Electric' : 'Diesel'}

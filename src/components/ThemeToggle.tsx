@@ -10,7 +10,7 @@ import {
 import { useTheme } from '@/contexts/ThemeContext';
 
 export const ThemeToggle: React.FC = () => {
-    const { theme, actualTheme, setTheme, toggleTheme } = useTheme();
+    const { theme, actualTheme, setTheme } = useTheme();
 
     return (
         <DropdownMenu>
@@ -18,20 +18,12 @@ export const ThemeToggle: React.FC = () => {
                 <Button
                     variant="ghost"
                     size="icon"
-                    className="relative w-10 h-10 rounded-full glass hover:bg-muted transition-all group"
+                    className="relative w-9 h-9 rounded-lg border border-border bg-muted/45 text-foreground/80 hover:text-foreground hover:bg-primary/8 hover:border-primary/20 transition-all duration-200"
                 >
                     <Sun className={`h-5 w-5 transition-all duration-500 ${actualTheme === 'dark' ? 'rotate-90 scale-0' : 'rotate-0 scale-100'} absolute`} />
                     <Moon className={`h-5 w-5 transition-all duration-500 ${actualTheme === 'dark' ? 'rotate-0 scale-100' : '-rotate-90 scale-0'} absolute`} />
                     <span className="sr-only">Toggle theme</span>
 
-                    {/* Glow effect */}
-                    <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                        style={{
-                            background: actualTheme === 'dark'
-                                ? 'radial-gradient(circle, rgba(250, 204, 21, 0.2) 0%, transparent 70%)'
-                                : 'radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%)'
-                        }}
-                    />
                 </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="glass-card border-border">

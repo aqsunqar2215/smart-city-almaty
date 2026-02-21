@@ -25,17 +25,37 @@ from neural_engine import LSTMClassifier, SmartTokenizer
 # CONFIGURATION
 # ==========================================
 
+def _env_int(name: str, default: int) -> int:
+    raw = os.getenv(name)
+    if raw is None:
+        return default
+    try:
+        return int(raw)
+    except ValueError:
+        return default
+
+
+def _env_float(name: str, default: float) -> float:
+    raw = os.getenv(name)
+    if raw is None:
+        return default
+    try:
+        return float(raw)
+    except ValueError:
+        return default
+
+
 CONFIG = {
-    "embedding_dim": 256,   # Increased for larger vocabulary
-    "hidden_dim": 256,
-    "num_layers": 2,
-    "dropout": 0.3,
-    "max_length": 50,
-    "batch_size": 32,
-    "epochs": 100,
-    "learning_rate": 0.001,
+    "embedding_dim": _env_int("TRAIN_EMBEDDING_DIM", 256),
+    "hidden_dim": _env_int("TRAIN_HIDDEN_DIM", 256),
+    "num_layers": _env_int("TRAIN_NUM_LAYERS", 2),
+    "dropout": _env_float("TRAIN_DROPOUT", 0.3),
+    "max_length": _env_int("TRAIN_MAX_LENGTH", 50),
+    "batch_size": _env_int("TRAIN_BATCH_SIZE", 32),
+    "epochs": _env_int("TRAIN_EPOCHS", 100),
+    "learning_rate": _env_float("TRAIN_LR", 0.001),
     "validation_split": 0.1,
-    "target_size": 12000,   # expansion target
+    "target_size": _env_int("TRAIN_TARGET_SIZE", 12000),
 }
 
 # ==========================================
@@ -56,8 +76,9 @@ def load_datasets():
     convo_en = [entry for entry in CONVERSATION_DATASET if entry.get('language', 'en') == 'en']
     print(f"Loaded {len(convo_en)} English patterns from CONVERSATION_DATASET.")
 
-    # 4. Load Massive External Datasets (30,000 Patterns)
-    external_data = load_external_datasets()
+    # 4. Load external datasets (json files + optional site crawl)
+    external_limit = _env_int("EXTERNAL_LIMIT_PER_FILE", 3000)
+    external_data = load_external_datasets(limit_per_file=external_limit)
     print(f"Loaded {len(external_data)} external patterns.")
     
     # Merge all

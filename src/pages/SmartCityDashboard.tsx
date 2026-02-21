@@ -111,32 +111,32 @@ const SmartCityDashboard: React.FC = () => {
 
   return (
     <div className="min-h-screen pb-10 relative overflow-hidden">
-      <div className="max-w-6xl mx-auto px-4 lg:px-8 relative z-10 pt-10 bg-background/40 backdrop-blur-2xl rounded-[3rem] border border-border/10 shadow-2xl my-10 pb-16">
+      <div className="max-w-6xl mx-auto px-4 lg:px-6 relative z-10 pt-6 bg-background/40 backdrop-blur-2xl rounded-[2rem] border border-border/10 shadow-2xl my-6 pb-10">
         {/* Header */}
         <ScrollReveal direction="down" delay={0.1}>
           <div className="mb-3 relative">
-            <div className="flex items-center justify-between flex-wrap gap-6 p-6 rounded-3xl border border-primary/20 bg-gradient-to-r from-white via-white to-sky-50 dark:bg-gradient-to-br dark:from-slate-900/95 dark:to-slate-800/95 text-foreground dark:text-white shadow-xl dark:shadow-2xl overflow-hidden group">
+            <div className="flex items-center justify-between flex-wrap gap-4 p-4 rounded-2xl border border-border bg-background/90 dark:bg-card/80 text-foreground shadow-sm overflow-hidden group">
 
-              <div className="absolute inset-0 opacity-20 dark:opacity-30 group-hover:opacity-30 dark:group-hover:opacity-40 transition-opacity duration-700 pointer-events-none overflow-hidden">
+              <div className="absolute inset-0 opacity-10 dark:opacity-12 transition-opacity duration-700 pointer-events-none overflow-hidden">
                 <img
                   src="/city_hero.png"
-                  className="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-1000"
+                  className="w-full h-full object-cover"
                   alt="City Background"
                 />
               </div>
 
               <SpotlightCard className="rounded-2xl relative z-10 overflow-hidden">
-                <Card className="bg-white dark:bg-slate-900 border-primary/20 shadow-2xl relative group">
+                <Card className="bg-background border-border shadow-sm relative group">
                   <div className="absolute top-0 right-0 p-1">
                     <div className={`w-2 h-2 rounded-full animate-ping ${(analysis?.healthScore || 0) > 80 ? 'bg-emerald-500' :
                       (analysis?.healthScore || 0) > 50 ? 'bg-orange-500' : 'bg-red-500'
                       }`} />
                   </div>
-                  <CardContent className="p-6 flex items-center gap-6">
+                  <CardContent className="p-4 flex items-center gap-4">
                     <div className="relative">
-                      <Zap className={`w-10 h-10 transition-colors duration-500 ${(analysis?.healthScore || 0) > 80 ? 'text-emerald-500' :
+                      <Zap className={`w-8 h-8 transition-colors duration-500 ${(analysis?.healthScore || 0) > 80 ? 'text-emerald-500' :
                         (analysis?.healthScore || 0) > 50 ? 'text-orange-500' : 'text-red-500'
-                        } ${((analysis?.healthScore || 0) < 50) ? 'animate-bounce' : 'animate-pulse'}`} />
+                        }`} />
 
                       {/* Neural Pulse Circles */}
                       <div className={`absolute inset-0 rounded-full border-2 animate-ping opacity-20 ${(analysis?.healthScore || 0) > 80 ? 'border-emerald-500' : 'border-red-500'
@@ -146,8 +146,8 @@ const SmartCityDashboard: React.FC = () => {
                     </div>
                     <div className="text-right">
                       <div className="text-[10px] font-black text-muted-foreground uppercase tracking-widest mb-1">City Health Index</div>
-                      <div className="text-4xl font-black text-foreground tabular-nums tracking-tighter">
-                        {analysis?.healthScore || '--'}<span className="text-xl opacity-30">/100</span>
+                      <div className="text-3xl font-black text-foreground tabular-nums tracking-tighter">
+                        {analysis?.healthScore || '--'}<span className="text-lg opacity-30">/100</span>
                       </div>
                     </div>
                   </CardContent>
@@ -157,9 +157,9 @@ const SmartCityDashboard: React.FC = () => {
 
               <div className="relative z-10 flex items-center gap-6">
                 <div>
-                  <h1 className="text-4xl font-black tracking-tight uppercase flex items-center gap-3">
-                    <span className="bg-gradient-to-r from-primary via-cyan-500 to-secondary bg-clip-text text-transparent drop-shadow-sm">Smart Almaty OS</span>
-                    <Badge className="bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border-emerald-500/30 text-[10px] animate-pulse badge-pulse">
+                  <h1 className="text-3xl xl:text-4xl font-black tracking-tight uppercase flex items-center gap-2.5">
+                    <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Smart Almaty OS</span>
+                    <Badge className="bg-muted/70 text-foreground border-border text-[10px]">
                       v5.0-ULTRA
                     </Badge>
                   </h1>
@@ -191,12 +191,11 @@ const SmartCityDashboard: React.FC = () => {
 
         <ScrollReveal direction="up" delay={0.2}>
           <div className="flex items-center gap-3 mt-1 mb-4 text-[11px] font-mono uppercase tracking-widest text-foreground/70 dark:text-muted-foreground bg-muted/40 dark:bg-muted/30 w-fit px-4 py-1.5 rounded-full border border-border/80 dark:border-border/60 backdrop-blur-md relative overflow-hidden group">
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             <MapPin className="h-3 w-3 text-primary" />
             <span className="font-bold text-foreground">Almaty, Kazakhstan</span>
             <span className="opacity-30">|</span>
             <span className="flex items-center gap-1.5">
-              Status: <span className="text-emerald-500 flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" /> Active</span>
+              Status: <span className="text-emerald-600 dark:text-emerald-400 flex items-center gap-1"><span className="w-1.5 h-1.5 rounded-full bg-emerald-500" /> Active</span>
             </span>
             <span className="opacity-30">|</span>
             <span>Last sync: {lastUpdate.toLocaleTimeString()}</span>

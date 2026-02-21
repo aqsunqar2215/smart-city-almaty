@@ -16,41 +16,129 @@ import { ScrollReveal, SpotlightCard, CursorGlow } from '@/components/effects/In
 import { DirectionalScrollEffect } from '@/components/effects/ScrollInteractions';
 import {
   RoutePoint,
-  Route,
-  RoutePreference,
+  Route as LocalRoute,
   calculateRoutes,
   ALMATY_LOCATIONS,
 } from '@/lib/routingEngine';
+import { EcoRoute, EcoRoutingProfile } from '@/types/ecoRouting';
+import { fetchEcoRoutes } from '@/lib/ecoRoutingApi';
+import { ECO_ROUTING_TEXT } from '@/lib/ecoRoutingTexts';
 
 const EcoRouting: React.FC = () => {
   const [startPoint, setStartPoint] = useState<RoutePoint | null>(null);
   const [endPoint, setEndPoint] = useState<RoutePoint | null>(null);
-  const [preference, setPreference] = useState<RoutePreference>('balanced');
-  const [routes, setRoutes] = useState<Route[]>([]);
+  const [preference, setPreference] = useState<EcoRoutingProfile>('balanced');
+  const [routes, setRoutes] = useState<EcoRoute[]>([]);
   const [selectedRouteId, setSelectedRouteId] = useState<string | null>(null);
   const [showTraffic, setShowTraffic] = useState(true);
   const [showAirQuality, setShowAirQuality] = useState(true);
   const [isCalculating, setIsCalculating] = useState(false);
+  const [routingStatus, setRoutingStatus] = useState<string>(ECO_ROUTING_TEXT.status.selectPoints);
   const [clickMode, setClickMode] = useState<'start' | 'end' | null>(null);
   const { playClick, playSuccess } = useSoundEffects();
+
+  const mapLocalRoutesToEcoRoutes = useCallback((localRoutes: LocalRoute[]): EcoRoute[] => {
+    if (localRoutes.length === 0) return [];
+
+    const fastest = localRoutes.reduce((best, current) =>
+      current.totalTime < best.totalTime ? current : best
+    , localRoutes[0]);
+
+    return localRoutes.map((route) => {
+      const distanceKm = route.totalDistance / 1000;
+      const co2G = Math.round(distanceKm * 168 * (1 + route.avgTraffic / 150));
+      const fastestCo2G = Math.round((fastest.totalDistance / 1000) * 168 * (1 + fastest.avgTraffic / 150));
+      const aqiExposure = Math.round(route.avgAirQuality * route.totalTime);
+      const fastestExposure = Math.round(fastest.avgAirQuality * fastest.totalTime);
+      const polyline: [number, number][] = route.segments.length > 0
+        ? [
+            [route.segments[0].start.lat, route.segments[0].start.lng],
+            ...route.segments.map((segment) => [segment.end.lat, segment.end.lng] as [number, number]),
+          ]
+        : [];
+
+      return {
+        id: route.id,
+        type: route.type,
+        source: route.source,
+        mode: route.source === 'road' ? 'road' : 'estimated',
+        polyline,
+        distanceM: Math.round(route.totalDistance),
+        etaS: Math.round(route.totalTime),
+        avgTraffic: route.avgTraffic,
+        avgAqi: route.avgAirQuality,
+        aqiExposure,
+        co2G,
+        ecoScore: route.ecoScore,
+        compareFastest: {
+          deltaTimeS: Math.round(route.totalTime - fastest.totalTime),
+          deltaAqiExposure: Math.round(aqiExposure - fastestExposure),
+          deltaCo2G: Math.round(co2G - fastestCo2G),
+        },
+        explanation: route.explanation,
+        degraded: route.source !== 'road',
+        aqiProfile: route.segments.map((segment) => segment.airQuality).slice(0, 120),
+        steps: route.segments.slice(0, 8).map((segment, index) => ({
+          instruction: index === 0 ? 'Start route' : `Continue to waypoint ${index + 1}`,
+          distanceM: Math.round(segment.distance),
+          durationS: Math.round(segment.estimatedTime),
+          distanceText: segment.distance >= 1000 ? `${(segment.distance / 1000).toFixed(1)} km` : `${Math.round(segment.distance)} m`,
+        })),
+      };
+    });
+  }, []);
+
+  const calculateViaBackend = useCallback(async (start: RoutePoint, end: RoutePoint, profile: EcoRoutingProfile) => {
+    try {
+      const payload = await fetchEcoRoutes(
+        { lat: start.lat, lng: start.lng },
+        { lat: end.lat, lng: end.lng },
+        profile
+      );
+      if (!payload.routes || payload.routes.length === 0) {
+        throw new Error('Backend returned empty routes');
+      }
+      setRoutes(payload.routes);
+      setSelectedRouteId(payload.routes[0]?.id || null);
+      if (payload.mode === 'road') {
+        setRoutingStatus(payload.degraded ? `${ECO_ROUTING_TEXT.status.roadReady} • ${ECO_ROUTING_TEXT.status.degraded}` : ECO_ROUTING_TEXT.status.roadReady);
+      } else {
+        setRoutingStatus(ECO_ROUTING_TEXT.status.estimated);
+      }
+    } catch {
+      const localRoutes = await calculateRoutes(start, end, profile);
+      const fallback = mapLocalRoutesToEcoRoutes(localRoutes);
+      setRoutes(fallback);
+      setSelectedRouteId(fallback[0]?.id || null);
+      if (fallback.some((route) => route.mode === 'road')) {
+        setRoutingStatus(ECO_ROUTING_TEXT.status.roadReady);
+      } else {
+        setRoutingStatus(ECO_ROUTING_TEXT.status.estimated);
+      }
+    }
+  }, [mapLocalRoutesToEcoRoutes]);
 
   // Calculate routes when points or preference changes
   useEffect(() => {
     if (startPoint && endPoint) {
+      let isCancelled = false;
       setIsCalculating(true);
-      // Simulate calculation delay
-      const timer = setTimeout(() => {
-        const newRoutes = calculateRoutes(startPoint, endPoint, preference);
-        setRoutes(newRoutes);
-        setSelectedRouteId(newRoutes[0]?.id || null);
+      // Debounced backend request for smoother UX
+      const timer = setTimeout(async () => {
+        await calculateViaBackend(startPoint, endPoint, preference);
+        if (isCancelled) return;
         setIsCalculating(false);
-      }, 500);
-      return () => clearTimeout(timer);
+      }, 280);
+      return () => {
+        isCancelled = true;
+        clearTimeout(timer);
+      };
     } else {
       setRoutes([]);
       setSelectedRouteId(null);
+      setRoutingStatus(ECO_ROUTING_TEXT.status.selectPoints);
     }
-  }, [startPoint, endPoint, preference]);
+  }, [startPoint, endPoint, preference, calculateViaBackend]);
 
   const handleMapClick = useCallback((point: RoutePoint) => {
     if (clickMode === 'start') {
@@ -68,15 +156,11 @@ const EcoRouting: React.FC = () => {
     setEndPoint(temp);
   };
 
-  const handleRefresh = () => {
+  const handleRefresh = async () => {
     if (startPoint && endPoint) {
       setIsCalculating(true);
-      setTimeout(() => {
-        const newRoutes = calculateRoutes(startPoint, endPoint, preference);
-        setRoutes(newRoutes);
-        setSelectedRouteId(newRoutes[0]?.id || null);
-        setIsCalculating(false);
-      }, 500);
+      await calculateViaBackend(startPoint, endPoint, preference);
+      setIsCalculating(false);
     }
   };
 
@@ -140,17 +224,34 @@ const EcoRouting: React.FC = () => {
                   onClick={handleDemoRoute}
                 >
                   <Sparkles className="h-4 w-4 mr-2 text-primary" />
-                  Demo Analysis
+                  {ECO_ROUTING_TEXT.buttons.demo}
                 </Button>
+                <Badge
+                  className={`border text-[10px] uppercase tracking-widest font-black ${
+                    routingStatus.includes(ECO_ROUTING_TEXT.status.roadReady)
+                      ? 'bg-emerald-500/15 text-emerald-400 border-emerald-500/40'
+                      : routingStatus.includes(ECO_ROUTING_TEXT.status.estimated)
+                        ? 'bg-amber-500/15 text-amber-400 border-amber-500/40'
+                        : 'bg-primary/10 text-primary border-primary/30'
+                  }`}
+                >
+                  {routingStatus}
+                </Badge>
               </div>
 
               <Button
-                className="bg-primary hover:bg-primary/80 text-white rounded-xl shadow-[0_0_20px_rgba(59,130,246,0.5)] h-11 group px-8"
+                data-testid="optimize-route-button"
+                className={`text-white rounded-xl h-11 group px-8 transition-all duration-300 ${
+                  isCalculating
+                    ? 'bg-primary/70 shadow-[0_0_24px_rgba(59,130,246,0.45)]'
+                    : 'bg-gradient-to-r from-primary via-cyan-500 to-emerald-500 hover:brightness-110 shadow-[0_0_24px_rgba(56,189,248,0.45)]'
+                }`}
                 onClick={handleRefresh}
                 disabled={!startPoint || !endPoint || isCalculating}
+                title={!startPoint || !endPoint ? ECO_ROUTING_TEXT.tooltips.invalidPoints : undefined}
               >
                 <RefreshCw className={`h-4 w-4 mr-2 group-hover:rotate-180 transition-transform duration-500 ${isCalculating ? 'animate-spin' : ''}`} />
-                Recalculate
+                {isCalculating ? ECO_ROUTING_TEXT.buttons.optimizing : ECO_ROUTING_TEXT.buttons.optimize}
               </Button>
             </div>
           </div>
@@ -206,6 +307,7 @@ const EcoRouting: React.FC = () => {
                       showAirQuality={showAirQuality}
                       onMapClick={handleMapClick}
                       selectedRouteId={selectedRouteId || undefined}
+                      onRouteSelect={setSelectedRouteId}
                     />
                   </div>
                 </Card>

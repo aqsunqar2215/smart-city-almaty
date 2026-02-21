@@ -7,8 +7,6 @@ import { Layout } from "@/components/Layout";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { AtmosphereProvider } from "@/contexts/AtmosphereContext";
-import { CursorGlow, ScrollProgress } from "@/components/effects/InteractionEffects";
-import { AtmosphereEffects } from "@/components/effects/AtmosphereEffects";
 import Analytics from "./pages/Analytics";
 import Profile from "./pages/Profile";
 import SmartCityDashboard from "./pages/SmartCityDashboard";
@@ -31,11 +29,6 @@ const App = () => (
       <AtmosphereProvider>
         <AuthProvider>
           <TooltipProvider>
-            {/* Global Effects */}
-            <CursorGlow />
-            <ScrollProgress />
-            <AtmosphereEffects />
-
             <Toaster />
             <Sonner />
             <BrowserRouter>
@@ -63,4 +56,3 @@ const App = () => (
 );
 
 export default App;
-
